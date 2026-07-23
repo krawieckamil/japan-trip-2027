@@ -5,5 +5,7 @@ import { defineConfig } from "vite";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/japan-trip-2027/",
+  build: { outDir: "docs" },
   plugins: [react(), babel({ presets: [reactCompilerPreset()] }), tailwindcss()],
 });
