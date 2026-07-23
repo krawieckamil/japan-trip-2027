@@ -1,59 +1,32 @@
-import { useEffect, useRef, useState } from "react";
-import { flushSync } from "react-dom";
+import { useEffect, useState } from "react";
 
 import type { City } from "../data/trip";
 
-/* który rozdział jest teraz — steruje etykietą i akcentem w nawigacji (Nav ustawia data-accent) */
+/* który rozdział jest teraz — steruje etykietą i akcentem w nawigacji (Nav ustawia data-accent).
+   IntersectionObserver z „linią" na 42% viewportu: brak odczytów layoutu przy scrollu. */
 export function useActiveCity(cities: Record<string, City>) {
   const [activeCity, setActiveCity] = useState<string | null>(null);
-  const activeCityRef = useRef<string | null>(null);
 
   useEffect(() => {
-    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+    const chapters = Array.from(document.querySelectorAll<HTMLElement>("[data-city]"));
+    if (!chapters.length) return;
 
-    const applyCity = (key: string | null) => {
-      activeCityRef.current = key;
-      setActiveCity(key);
-    };
-
-    const update = () => {
-      const chapters = Array.from(document.querySelectorAll<HTMLElement>("[data-city]"));
-      const mid = window.innerHeight * 0.42;
-      let found: HTMLElement | null = null;
-      for (const ch of chapters) {
-        const r = ch.getBoundingClientRect();
-        if (r.top <= mid && r.bottom > mid) {
-          found = ch;
-          break;
+    const visible = new Set<HTMLElement>();
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          const el = e.target as HTMLElement;
+          if (e.isIntersecting) visible.add(el);
+          else visible.delete(el);
         }
-        if (r.top > mid) break;
-        found = ch;
-      }
-      const key =
-        found && window.scrollY > window.innerHeight * 0.5 ? (found.dataset.city ?? null) : null;
-      if (key === activeCityRef.current) return;
+        const active = chapters.find((ch) => visible.has(ch));
+        setActiveCity(active?.dataset.city ?? null);
+      },
+      { rootMargin: "-42% 0px -58% 0px" },
+    );
 
-      const run = () => applyCity(key);
-      if (!reduceMotion && document.startViewTransition) {
-        document.startViewTransition(() => flushSync(run));
-      } else {
-        run();
-      }
-    };
-
-    let ticking = false;
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        update();
-        ticking = false;
-      });
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    update();
-    return () => window.removeEventListener("scroll", onScroll);
+    chapters.forEach((ch) => io.observe(ch));
+    return () => io.disconnect();
   }, [cities]);
 
   return activeCity;
