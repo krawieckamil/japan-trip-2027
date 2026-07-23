@@ -1,4 +1,5 @@
 import { Seal } from "../ui";
+import { Sakura } from "./Sakura";
 
 const FACTS = [
   { v: "15", l: "dni w Japonii" },
@@ -18,6 +19,7 @@ export function Hero() {
         <span className="hero-ridge hero-ridge-far"></span>
         <span className="hero-ridge hero-ridge-near"></span>
         <span className="hero-mist"></span>
+        <Sakura />
       </div>
       <span
         className="hero-colophon absolute top-[46%] right-[clamp(6px,2.4vw,20px)] font-jp text-[0.86rem] tracking-[0.34em] text-ink-3 opacity-80 [writing-mode:vertical-rl]"
