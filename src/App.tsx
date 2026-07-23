@@ -15,7 +15,7 @@ function App() {
   const activeCity = useActiveCity(TRIP.cities);
 
   return (
-    <div className="relative z-[2]">
+    <div className="relative">
       <Nav trip={TRIP} activeCity={activeCity} />
       <Hero />
 
