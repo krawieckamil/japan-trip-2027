@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 import type { GalleryImage } from "../data/trip";
@@ -130,11 +130,7 @@ function Lightbox({
       )}
 
       <figure className="m-0 flex max-h-full flex-col items-center" onClick={(e) => e.stopPropagation()}>
-        <img
-          src={img.large}
-          alt={img.credit}
-          className="max-h-[82svh] max-w-[92vw] object-contain shadow-grand"
-        />
+        <ZoomImage src={img.large} alt={img.credit} canSwipe={many} onSwipe={go} />
         <figcaption className="mt-[14px] flex max-w-[92vw] flex-wrap items-baseline justify-center gap-x-[12px] gap-y-[3px] text-center text-[0.78rem] text-plate-fg/70">
           <span>
             © {img.credit}
@@ -153,6 +149,150 @@ function Lightbox({
       </figure>
     </div>,
     document.body,
+  );
+}
+
+type Pt = { x: number; y: number };
+const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
+const dist = (a: Pt, b: Pt) => Math.hypot(a.x - b.x, a.y - b.y);
+
+const MAX_SCALE = 4;
+const TAP_MAX = 8; // px ruchu, poniżej którego traktujemy gest jako tap
+const DBL_TAP_MS = 300;
+const SWIPE_MIN = 60; // px, próg nawigacji swipem
+
+/* Obraz w lightboxie z gestami dotykowymi: pinch-to-zoom, pan po powiększeniu,
+   swipe lewo/prawo do nawigacji (gdy niepowiększony), double-tap = zoom in/out. */
+function ZoomImage({
+  src,
+  alt,
+  canSwipe,
+  onSwipe,
+}: {
+  src: string;
+  alt: string;
+  canSwipe: boolean;
+  onSwipe: (d: 1 | -1) => void;
+}) {
+  const [t, setT] = useState({ scale: 1, x: 0, y: 0 });
+  const [animate, setAnimate] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+  const pointers = useRef(new Map<number, Pt>());
+  const g = useRef({
+    mode: "none" as "none" | "pan" | "pinch" | "swipe",
+    startDist: 1,
+    startScale: 1,
+    startX: 0,
+    startY: 0,
+    baseX: 0,
+    baseY: 0,
+    dx: 0,
+    lastTap: 0,
+  });
+
+  useEffect(() => {
+    setAnimate(true);
+    setT({ scale: 1, x: 0, y: 0 });
+  }, [src]);
+
+  const clampT = (nt: { scale: number; x: number; y: number }) => {
+    const el = imgRef.current;
+    const maxX = el ? ((nt.scale - 1) * el.offsetWidth) / 2 : 0;
+    const maxY = el ? ((nt.scale - 1) * el.offsetHeight) / 2 : 0;
+    return { scale: nt.scale, x: clamp(nt.x, -maxX, maxX), y: clamp(nt.y, -maxY, maxY) };
+  };
+
+  const begin = (cur: { scale: number; x: number; y: number }) => {
+    const pts = [...pointers.current.values()];
+    if (pts.length >= 2) {
+      g.current.mode = "pinch";
+      g.current.startDist = dist(pts[0], pts[1]) || 1;
+      g.current.startScale = cur.scale;
+    } else if (pts.length === 1) {
+      g.current.mode = cur.scale > 1 ? "pan" : "swipe";
+      g.current.startX = pts[0].x;
+      g.current.startY = pts[0].y;
+      g.current.baseX = cur.x;
+      g.current.baseY = cur.y;
+      g.current.dx = 0;
+    } else {
+      g.current.mode = "none";
+    }
+  };
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    (e.target as Element).setPointerCapture(e.pointerId);
+    pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    setAnimate(false);
+    begin(t);
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!pointers.current.has(e.pointerId)) return;
+    pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    setAnimate(false);
+    const pts = [...pointers.current.values()];
+    if (g.current.mode === "pinch" && pts.length >= 2) {
+      const scale = clamp(g.current.startScale * (dist(pts[0], pts[1]) / g.current.startDist), 1, MAX_SCALE);
+      setT((p) => clampT({ scale, x: p.x, y: p.y }));
+    } else if (g.current.mode === "pan") {
+      setT((p) =>
+        clampT({ scale: p.scale, x: g.current.baseX + (e.clientX - g.current.startX), y: g.current.baseY + (e.clientY - g.current.startY) }),
+      );
+    } else if (g.current.mode === "swipe") {
+      g.current.dx = e.clientX - g.current.startX;
+      setT({ scale: 1, x: g.current.dx, y: 0 });
+    }
+  };
+
+  const settle = () => setT((p) => (p.scale <= 1.02 ? { scale: 1, x: 0, y: 0 } : clampT(p)));
+
+  const onPointerUp = (e: React.PointerEvent) => {
+    pointers.current.delete(e.pointerId);
+    const { mode, dx, startX, startY } = g.current;
+    setAnimate(true);
+    if (mode === "swipe" || mode === "pan") {
+      const moved = Math.hypot(e.clientX - startX, e.clientY - startY);
+      if (moved < TAP_MAX) {
+        const now = Date.now();
+        if (now - g.current.lastTap < DBL_TAP_MS) {
+          g.current.lastTap = 0;
+          setT(t.scale > 1 ? { scale: 1, x: 0, y: 0 } : { scale: 2.5, x: 0, y: 0 });
+        } else {
+          g.current.lastTap = now;
+          settle();
+        }
+      } else if (mode === "swipe" && canSwipe && Math.abs(dx) > SWIPE_MIN) {
+        onSwipe(dx < 0 ? 1 : -1);
+        setT({ scale: 1, x: 0, y: 0 });
+      } else {
+        settle();
+      }
+    } else if (mode === "pinch") {
+      settle();
+    }
+    begin(t);
+  };
+
+  return (
+    <img
+      ref={imgRef}
+      src={src}
+      alt={alt}
+      draggable={false}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}
+      style={{
+        transform: `translate3d(${t.x}px, ${t.y}px, 0) scale(${t.scale})`,
+        transition: animate ? "transform 0.28s cubic-bezier(0.2,0.8,0.2,1)" : "none",
+        touchAction: "none",
+        willChange: "transform",
+        cursor: t.scale > 1 ? "grab" : "auto",
+      }}
+      className="max-h-[82svh] max-w-[92vw] touch-none object-contain shadow-grand select-none"
+    />
   );
 }
 
