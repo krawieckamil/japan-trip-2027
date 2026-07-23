@@ -2248,12 +2248,6 @@
       <span class="bar-track"><span class="bar-fill" style="width:${(pct * 100).toFixed(1)}%"></span></span>
     </div>`;
         }).join("");
-
-        const big = Math.round(((GROUP_TOTALS[0] + GROUP_TOTALS[1]) / TOTAL) * 100);
-        $("insight").innerHTML =
-            `Dolecieć i się wyspać to <b>${big}%</b> budżetu. Wszystko, co będziecie pamiętać — ` +
-            `teamLab, Shibuya Sky, pływające torii, piekła Beppu, rowery w Itoshimie — ` +
-            `kosztuje razem <b>${money(GROUP_TOTALS[3])} zł</b>.`;
     }
 
     function renderCosts() {
