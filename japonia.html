@@ -15,7 +15,7 @@
   --paper-2:  #F1E7D1;   /* jaśniejszy papier na karty/plansze */
   --ink:      #211A11;
   --ink-2:    #574B37;
-  --ink-3:    #8B7D62;
+  --ink-3:    #6B5D40;   /* przyciemnione — 4.7:1 na washi, przechodzi WCAG AA */
   --line:     rgba(33,26,17,0.90);   /* keyline drzeworytu */
   --hair:     rgba(33,26,17,0.16);
   --seal:     #B23A2B;
@@ -199,7 +199,7 @@ h1,h2,h3,h4 { margin: 0; font-weight: 750; letter-spacing: -0.03em; line-height:
 }
 .seal {
   position: absolute;
-  top: -0.06em; right: -0.5em;
+  top: -0.16em; right: -0.66em;
   width: clamp(58px, 15vw, 104px);
   aspect-ratio: 3 / 3.4;
   display: grid;
@@ -248,7 +248,7 @@ h1,h2,h3,h4 { margin: 0; font-weight: 750; letter-spacing: -0.03em; line-height:
 
   a {
     display: grid;
-    grid-template-columns: 3ch 2.4rem 1fr auto;
+    grid-template-columns: 3ch 2.4rem auto minmax(14px, 1fr) auto;
     align-items: center;
     gap: 16px;
     padding: 16px 4px;
@@ -263,7 +263,9 @@ h1,h2,h3,h4 { margin: 0; font-weight: 750; letter-spacing: -0.03em; line-height:
   font-size: 1rem; color: var(--ink-3); font-variant-numeric: tabular-nums;
 }
 .idx-k { font-family: var(--f-jp); font-size: 1.7rem; color: var(--tint); line-height: 1; }
-.idx-name { display: block; font-weight: 700; font-size: 1.06rem; letter-spacing: -0.01em; }
+/* prowadnica jak w spisie treści — łączy miasto z liczbą nocy */
+.idx-lead { align-self: center; height: 0; border-bottom: 1px dotted var(--hair); }
+.idx-name { display: block; font-weight: 700; font-size: 1.06rem; letter-spacing: -0.01em; white-space: nowrap; }
 .idx-dates { display: block; font-size: 0.8rem; color: var(--ink-3); font-variant-numeric: tabular-nums; margin-top: 2px; }
 .idx-nights { font-size: 0.8rem; color: var(--ink-3); font-variant-numeric: tabular-nums; white-space: nowrap; }
 
@@ -314,9 +316,10 @@ h1,h2,h3,h4 { margin: 0; font-weight: 750; letter-spacing: -0.03em; line-height:
   min-height: 44svh;
   margin: 6px clamp(2px, 3vw, 16px) 0;
   border-radius: 3px;
+  --pmix: 82%;   /* pełny kolor drzeworytu; kremowy tekst ≥5:1 (Beppu ma własny) */
   background:
-    linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.10)),
-    color-mix(in srgb, var(--tint) 60%, var(--ground));
+    linear-gradient(180deg, rgba(255,255,255,0.10), rgba(0,0,0,0.14)),
+    color-mix(in srgb, var(--tint) var(--pmix), var(--ink));
   box-shadow:
     0 1px 0 rgba(255,255,255,0.22) inset,
     0 20px 46px -26px rgba(33,26,17,0.6),
@@ -326,7 +329,16 @@ h1,h2,h3,h4 { margin: 0; font-weight: 750; letter-spacing: -0.03em; line-height:
   grid-template-rows: 1fr auto;
   gap: 10px;
   padding: clamp(40px, 9vw, 68px) clamp(26px, 6vw, 52px);
+  overflow: hidden;
 
+  /* sylwetka-znak miasta, tuszem, cicho w rogu — jak góra w hero */
+  &::after {
+    content: ""; position: absolute; z-index: 0; pointer-events: none;
+    right: 16px; bottom: 16px; width: 52%; height: 66%;
+    background: var(--plate-fg); opacity: 0.13;
+    -webkit-mask: var(--motif, none) right bottom / contain no-repeat;
+    mask: var(--motif, none) right bottom / contain no-repeat;
+  }
   /* delikatna wewnętrzna linia (keyline plakatu) */
   &::before {
     content: ""; position: absolute; inset: 13px; pointer-events: none; z-index: 1;
@@ -339,7 +351,7 @@ h1,h2,h3,h4 { margin: 0; font-weight: 750; letter-spacing: -0.03em; line-height:
   grid-column: 1; grid-row: 1;
   align-self: start; justify-self: start;
   font-family: var(--f-jp); font-size: 1rem; font-variant-numeric: tabular-nums;
-  letter-spacing: 0.28em; opacity: 0.82;
+  letter-spacing: 0.28em; opacity: 0.9;
 }
 /* kanji drobne w rogu */
 .plate-k {
@@ -354,11 +366,58 @@ h1,h2,h3,h4 { margin: 0; font-weight: 750; letter-spacing: -0.03em; line-height:
   display: block; font-size: clamp(1.8rem, 8vw, 2.8rem); font-weight: 800;
   text-transform: uppercase; letter-spacing: 0.01em;
 }
-.plate-when { display: block; margin-top: 6px; font-size: 0.9rem; font-weight: 600; opacity: 0.86; font-variant-numeric: tabular-nums; }
+.plate-when { display: block; margin-top: 6px; font-size: 0.9rem; font-weight: 600; opacity: 0.94; font-variant-numeric: tabular-nums; }
+
+/* Beppu (pomarańcz) — więcej tuszu, żeby kremowy tekst utrzymał kontrast */
+[data-city="beppu"] .plate { --pmix: 66%; }
+
+/* sylwetki-znaki miast: wieża, pagoda, zamek, torii, wieża, onsen */
+[data-city="tokyo"] .plate { --motif: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%20300%27%20preserveAspectRatio%3D%27xMaxYMax%20meet%27%3E%3Crect%20x%3D%27147%27%20y%3D%272%27%20width%3D%276%27%20height%3D%2740%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C40%20129%2C140%20171%2C140%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%27118%27%20y%3D%27138%27%20width%3D%2764%27%20height%3D%2716%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27128%2C156%20172%2C156%20216%2C296%20178%2C296%20150%2C206%20122%2C296%2084%2C296%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E"); }
+[data-city="kyoto"] .plate { --motif: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%20300%27%20preserveAspectRatio%3D%27xMaxYMax%20meet%27%3E%3Crect%20x%3D%27146%27%20y%3D%274%27%20width%3D%278%27%20height%3D%2726%27%20fill%3D%27black%27%2F%3E%3Ccircle%20cx%3D%27150%27%20cy%3D%278%27%20r%3D%278%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C28%20118%2C58%20182%2C58%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C56%20108%2C92%20192%2C92%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C90%2098%2C128%20202%2C128%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C126%2088%2C166%20212%2C166%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C164%2078%2C210%20222%2C210%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%27122%27%20y%3D%27202%27%20width%3D%2756%27%20height%3D%2794%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E"); }
+[data-city="osaka"] .plate { --motif: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%20300%27%20preserveAspectRatio%3D%27xMaxYMax%20meet%27%3E%3Crect%20x%3D%27146%27%20y%3D%2714%27%20width%3D%278%27%20height%3D%2718%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C30%20120%2C64%20180%2C64%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C60%20102%2C102%20198%2C102%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C98%2086%2C146%20214%2C146%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%27106%27%20y%3D%27140%27%20width%3D%2788%27%20height%3D%2764%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%2778%2C204%20222%2C204%20234%2C296%2066%2C296%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E"); }
+[data-city="hiroshima"] .plate { --motif: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%20300%27%20preserveAspectRatio%3D%27xMaxYMax%20meet%27%3E%3Cpath%20d%3D%27M78%2060%20Q150%2046%20222%2060%20L222%2078%20Q150%2066%2078%2078%20Z%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%27106%27%20y%3D%2796%27%20width%3D%2788%27%20height%3D%2715%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%27146%27%20y%3D%2774%27%20width%3D%278%27%20height%3D%2724%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%27104%27%20y%3D%2772%27%20width%3D%2715%27%20height%3D%27182%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%27181%27%20y%3D%2772%27%20width%3D%2715%27%20height%3D%27182%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%2740%27%20y%3D%27258%27%20width%3D%27230%27%20height%3D%277%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%2760%27%20y%3D%27276%27%20width%3D%27120%27%20height%3D%275%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E"); }
+[data-city="fukuoka"] .plate { --motif: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%20300%27%20preserveAspectRatio%3D%27xMaxYMax%20meet%27%3E%3Crect%20x%3D%27148%27%20y%3D%270%27%20width%3D%274%27%20height%3D%2718%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C16%20171%2C286%20129%2C286%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E"); }
+[data-city="beppu"] .plate { --motif: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%20300%27%20preserveAspectRatio%3D%27xMaxYMax%20meet%27%3E%3Cpath%20d%3D%27M74%20214%20Q150%20246%20226%20214%20L214%20258%20Q150%20284%2086%20258%20Z%27%20fill%3D%27black%27%2F%3E%3Cpath%20d%3D%27M118%20208%20C98%20182%20138%20162%20118%20132%20C102%20106%20136%2090%20118%2060%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%2710%27%20stroke-linecap%3D%27round%27%2F%3E%3Cpath%20d%3D%27M150%20216%20C130%20188%20170%20168%20150%20136%20C132%20108%20168%2092%20150%2058%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%2710%27%20stroke-linecap%3D%27round%27%2F%3E%3Cpath%20d%3D%27M182%20208%20C162%20182%20202%20162%20182%20132%20C166%20106%20200%2090%20182%2060%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%2710%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E"); }
 
 .chapter-body { padding-top: 34px; }
 
-/* przejazd — nitka tuszu z kolorem obu miast */
+/* ---------- setup: dojazd + nocleg w jednej karcie ---------- */
+.setup {
+  padding: 24px clamp(20px, 5vw, 28px); background: var(--paper-2);
+  border-radius: 6px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset, 0 22px 44px -34px rgba(33,26,17,0.6);
+}
+.setup-leg {
+  display: grid; grid-template-columns: 38px 1fr; gap: 15px; align-items: start;
+
+  .mode {
+    width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%;
+    font-family: var(--f-jp); font-size: 1.1rem; color: var(--plate-fg);
+    background: var(--tint); box-shadow: 0 6px 16px -10px rgba(33,26,17,0.9);
+  }
+  .label { color: var(--tint); }
+  .w { display: block; margin-top: 3px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+  .t { display: block; margin-top: 2px; font-size: 0.88rem; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .note { margin: 8px 0 0; font-size: 0.82rem; color: var(--ink-3); line-height: 1.5; }
+}
+/* pasmo mgły rozdziela dojazd i nocleg wewnątrz karty */
+.setup-div {
+  margin: 22px 0; height: 10px;
+  background-image: var(--brush); background-repeat: no-repeat; background-position: center; background-size: 100% 10px;
+}
+
+/* nagłówek bloku — Plan dnia / Warto zobaczyć */
+.block { padding-top: 44px; }
+.block-head {
+  display: flex; align-items: baseline; gap: 14px; margin-bottom: 4px; padding-bottom: 12px;
+  background-image: var(--brush-b); background-repeat: no-repeat; background-position: bottom; background-size: 100% 12px;
+
+  .label { color: var(--ink-3); }
+  .block-k { font-family: var(--f-jp); font-size: 1.35rem; color: var(--tint); line-height: 1; margin-left: auto; }
+}
+.block > .days { margin-top: 20px; }
+
+/* przejazd — nitka tuszu z kolorem obu miast (lot powrotny) */
 .leg {
   display: grid; grid-template-columns: 30px 1fr; gap: 14px; align-items: start;
   padding: 6px 0 30px;
@@ -377,12 +436,8 @@ h1,h2,h3,h4 { margin: 0; font-weight: 750; letter-spacing: -0.03em; line-height:
   .note { margin: 6px 0 0; font-size: 0.82rem; color: var(--ink-3); line-height: 1.5; }
 }
 
-/* nocleg — miękka karta na papierze */
+/* nocleg — wnętrze karty setup (bez własnej ramki) */
 .stay {
-  margin-top: 8px; padding: 24px; background: var(--paper-2);
-  border-radius: 6px;
-  box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset, 0 22px 44px -34px rgba(33,26,17,0.6);
-
   .label { color: var(--tint); }
   h3 { font-size: 1.35rem; margin-top: 8px; }
   p { margin: 13px 0 0; font-size: 0.94rem; color: var(--ink-2); line-height: 1.6; }
@@ -393,74 +448,80 @@ h1,h2,h3,h4 { margin: 0; font-weight: 750; letter-spacing: -0.03em; line-height:
   background-image: var(--brush); background-repeat: no-repeat; background-position: top; background-size: 100% 9px;
   display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between;
 
-  .cost { font-weight: 800; font-variant-numeric: tabular-nums; }
+  .cost { font-weight: 800; font-variant-numeric: tabular-nums; display: flex; align-items: baseline; gap: 8px; }
+  .per-night { font-size: 0.76rem; font-weight: 400; color: var(--ink-3); }
   .yen { flex: 1 1 100%; font-size: 0.74rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
   a { font-size: 0.86rem; font-weight: 700; text-decoration: none; color: var(--tint); border-bottom: 1.5px solid var(--tint); }
 }
 
-/* ---------- galeria — ryciny w ramkach ---------- */
-.gal { margin-top: 26px; }
-.gal-track {
-  display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  margin-inline: calc(var(--pad) * -1); padding-inline: var(--pad); padding-bottom: 2px;
-
-  &::-webkit-scrollbar { display: none; }
-}
-.shot {
-  flex: 0 0 76%; scroll-snap-align: center;
-  display: flex; flex-direction: column; text-decoration: none; color: inherit;
-  padding: 20px 20px 22px; border-radius: 3px;
-  background: var(--paper-2);
-  box-shadow: 0 0 0 1px var(--hair) inset, 0 18px 34px -24px rgba(33,26,17,0.5);
-  transition: transform 0.35s cubic-bezier(0.2,0.8,0.2,1);
-
-  &:hover { transform: translateY(-3px); }
-  b { display: block; font-size: 0.98rem; font-weight: 800; }
-  span { display: block; margin-top: 6px; font-size: 0.82rem; color: var(--ink-3); line-height: 1.5; }
-}
-.shot-go { display: inline-block; align-self: start; margin-top: 14px; font-style: normal;
-  font-size: 0.78rem; font-weight: 700; color: var(--tint); border-bottom: 1.5px solid var(--tint); }
-.gal-hint { margin-top: 12px; font-size: 0.74rem; color: var(--ink-3); letter-spacing: 0.04em; }
 
 /* ---------- dni ---------- */
-.days {
-  margin-top: 26px; display: flex; flex-direction: column;
-  background-image: var(--brush-b); background-repeat: no-repeat; background-position: bottom; background-size: 100% 12px;
-}
+.days { margin-top: 22px; display: flex; flex-direction: column; }
 .day {
-  background-image: var(--brush); background-repeat: no-repeat; background-position: top; background-size: 100% 10px;
+  /* spokojna cienka linia zamiast falującego pasma między dniami */
+  border-top: 1px solid var(--hair);
 
-  > summary {
-    list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px;
-    padding: 16px 2px; min-height: 56px;
-
-    &::-webkit-details-marker { display: none; }
-  }
-  &[open] .day-x { transform: rotate(45deg); }
+  &:first-child { border-top: 0; }
 }
+.day-hd { display: flex; align-items: baseline; gap: 12px; padding: 22px 2px 6px; }
 .day-d { font-family: var(--f-jp); font-weight: 600; font-size: 1.1rem; flex: none; }
 .day-w { font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); flex: 1; }
-.day-x { flex: none; color: var(--tint); font-family: var(--f-jp); transition: transform 0.35s cubic-bezier(0.2,0.8,0.2,1); }
-.day-in { padding: 0 2px 10px; }
+.day-in { padding: 8px 2px 20px; }
 
+/* oś czasu dnia — jedna nitka tuszu z węzłami zamiast wielu kresek */
 .it {
-  padding: 18px 0 16px; background-image: var(--brush); background-repeat: no-repeat; background-position: top; background-size: 100% 9px;
+  position: relative;
+  display: grid; grid-template-columns: 3.4rem 1fr; column-gap: 26px;
+  padding-bottom: 30px;
 
-  &:first-child { background-image: none; padding-top: 6px; }
+  /* nitka łącząca kolejne godziny */
+  &::before {
+    content: ""; position: absolute; left: calc(3.4rem + 12px); top: 9px; bottom: -9px;
+    width: 2px; background: color-mix(in srgb, var(--tint) 28%, var(--hair));
+  }
+  &:last-child::before { display: none; }
+  /* węzeł godziny */
+  &::after {
+    content: ""; position: absolute; left: calc(3.4rem + 7px); top: 8px;
+    width: 12px; height: 12px; border-radius: 50%; background: var(--tint);
+  }
+
   h4 {
-    font-size: 1.14rem; margin-top: 6px; font-weight: 750; letter-spacing: -0.01em;
+    font-size: 1.14rem; margin-top: 3px; font-weight: 750; letter-spacing: -0.01em;
 
     a { text-decoration: none; border-bottom: 2px solid var(--tint); }
   }
   p { margin: 8px 0 0; font-size: 0.94rem; color: var(--ink-2); line-height: 1.58; }
-  .tip { margin-top: 10px; font-size: 0.82rem; color: var(--ink-3); line-height: 1.5; padding-left: 13px; border-left: 2px solid var(--hair); }
+  /* tip bez lewej krechy — znak ※ (kome-jirushi) zamiast linii */
+  .tip {
+    margin-top: 10px; font-size: 0.82rem; color: var(--ink-3); line-height: 1.5;
+
+    &::before { content: "\203B\00A0"; color: var(--tint); font-weight: 700; }
+  }
 }
-.it-top { display: flex; align-items: baseline; gap: 10px; }
-.it-t { font-size: 0.8rem; font-weight: 800; color: var(--tint); font-variant-numeric: tabular-nums; flex: none; }
-.it-k { font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--ink-3); }
+.it-t {
+  grid-column: 1; text-align: right; padding-top: 3px; line-height: 1.25;
+  font-size: 0.82rem; font-weight: 800; color: var(--tint); font-variant-numeric: tabular-nums;
+}
+.it-body { grid-column: 2; min-width: 0; }
+.it-k { display: block; margin-bottom: 3px; font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--ink-3); }
+/* stopka pozycji: cena + dyskretny link do zdjęć */
+.it-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; margin-top: 13px; }
+/* ta sama pigułka co badge ceny (wariant ghost), żeby rząd był spójny */
+.it-ph {
+  display: inline-flex; align-items: center; gap: 5px; white-space: nowrap;
+  padding: 4px 13px; border-radius: 999px;
+  font-size: 0.74rem; font-weight: 600; color: var(--ink-3); text-decoration: none;
+  background: transparent; box-shadow: inset 0 0 0 1px var(--hair);
+  transition: color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover, &:focus-visible {
+    color: var(--tint);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tint) 55%, transparent);
+  }
+}
 .price {
-  display: inline-block; margin-top: 12px; padding: 4px 13px;
+  display: inline-block; padding: 4px 13px;
   font-size: 0.8rem; font-weight: 700; font-variant-numeric: tabular-nums;
   border-radius: 999px; background: var(--paper-2); box-shadow: inset 0 0 0 1px var(--hair);
 
@@ -526,7 +587,6 @@ h1,h2,h3,h4 { margin: 0; font-weight: 750; letter-spacing: -0.03em; line-height:
 @media (min-width: 720px) {
   :root { --pad: 40px; }
   body { font-size: 18px; }
-  .shot { flex-basis: 46%; }
   .sec { padding-top: 96px; }
   .chapter { padding-top: 56px; }
   .plate { min-height: 40svh; padding: clamp(56px, 7vw, 84px) clamp(48px, 6vw, 76px); }
@@ -617,8 +677,7 @@ h1,h2,h3,h4 { margin: 0; font-weight: 750; letter-spacing: -0.03em; line-height:
     <span class="jp">また明日</span>
     <p>Plan wyjazdu 10–26 maja 2027. Dane pochodzą z Tripsy i są odświeżane przy każdej zmianie —
     ten link zawsze pokazuje aktualną wersję.</p>
-    <p style="margin-top:14px">Zdjęcia: Wikimedia Commons, na licencjach Creative Commons.
-    Autor i licencja każdego zdjęcia są podane po jego otwarciu.</p>
+    <p style="margin-top:14px">Przy każdej pozycji planu link „zdjęcia ↗” otwiera Grafikę Google w nowej karcie.</p>
   </footer>
 </div>
 
@@ -628,62 +687,6 @@ h1,h2,h3,h4 { margin: 0; font-weight: 750; letter-spacing: -0.03em; line-height:
    Godziny przeliczone z UTC na czas japoński (UTC+9) przy budowie.
    Odświeżenie z Tripsy = podmiana tego obiektu.
    ============================================================ */
-
-/* ============================================================
-   ZDJECIA
-   Wbudowane jako data: URI — CSP artefaktow blokuje wszystkie
-   zewnetrzne hosty, wiec podlinkowane zdjecia by sie nie zaladowaly.
-   Zrodlo: Wikimedia Commons, licencje CC (autor przy kazdym zdjeciu).
-   ============================================================ */
-
-const PHOTOS = {
-  tokyo: [
-    { cap: "Sensō-ji i brama Kaminarimon", desc: "Najstarsza świątynia Tokio. Wielki czerwony lampion i uliczka Nakamise pełna straganów.",
-    },
-    { cap: "Shibuya Crossing", desc: "Najsłynniejsze przejście dla pieszych na świecie. Nad nim taras Shibuya Sky.",
-    },
-    { cap: "Akihabara", desc: "Elektronika, gry i manga. Wielopiętrowe sklepy i retro salony arcade.",
-    },
-    { cap: "Omoide Yokocho", desc: "Uliczka maleńkich barów yakitori przy Shinjuku — kolacja pierwszego wieczoru.",
-    },
-  ],
-  kyoto: [
-    { cap: "Fushimi Inari Taisha", desc: "Tysiące pomarańczowych bram torii tworzących tunele w górę świętej góry.",
-    },
-    { cap: "Gaj bambusowy w Arashiyamie", desc: "Ścieżka przez bambusowy las. Obok Tenryū-ji i restauracja Shōraian nad rzeką.",
-    },
-    { cap: "Kinkaku-ji, Złoty Pawilon", desc: "Pokryty złotem pawilon odbijający się w stawie. Do wpasowania razem z Arashiyamą.",
-    },
-    { cap: "Gion", desc: "Drewniane uliczki dzielnicy gejsz. Wieczorny spacer — uwaga na zakaz fotografowania.",
-    },
-    { cap: "Wielki Budda w Tōdai-ji", desc: "Piętnastometrowy posąg z brązu w Narze, w największym drewnianym budynku świata.",
-    },
-    { cap: "Jelenie w Narze", desc: "Oswojone jelenie kłaniają się po ciasteczka shika senbei.",
-    },
-  ],
-  osaka: [
-    { cap: "Dōtonbori", desc: "Kanał w neonach ze słynnym biegaczem Glico. Takoyaki, okonomiyaki, kushikatsu.",
-    },
-  ],
-  hiroshima: [
-    { cap: "Genbaku Dome", desc: "Jedyny budynek, który przetrwał wybuch bomby atomowej. Zachowany jako pomnik.",
-    },
-    { cap: "Pływające torii na Miyajimie", desc: "Brama „unosi się” na wodzie przy przypływie. Najpiękniej o zachodzie słońca.",
-    },
-  ],
-  fukuoka: [
-    { cap: "Yatai nad rzeką Naka", desc: "Uliczne stragany-bary rozstawiane wieczorem wzdłuż nabrzeża w Nakasu. Ramen tonkotsu ramię w ramię z lokalsami.",
-    },
-    { cap: "Futamigaura w Itoshimie", desc: "Biała brama torii stojąca w morzu — cel przejażdżki rowerowej wzdłuż wybrzeża.",
-    },
-  ],
-  beppu: [
-    { cap: "Umi Jigoku, Morskie Piekło", desc: "Parujące, mlecznobłękitne gorące źródło. Jedno z siedmiu „piekieł Beppu”.",
-    },
-    { cap: "Chinoike Jigoku, Krwawy Staw", desc: "Krwistoczerwone źródło od tlenku żelaza. Najbardziej znane z piekieł.",
-    },
-  ],
-};
 
 const TRIP = {
   people: 4,
@@ -702,7 +705,7 @@ const TRIP = {
     {
       city: "tokyo", dates: "11–15 maja", nights: 4,
       legIn: { mode: "空", what: "LOT LO79 · Warszawa → Narita", when: "10 maja, 22:50 → 11 maja, 18:30",
-               price: 4000, note: "Premium Economy, Boeing 787-8. Data przesunięta o tydzień — pobyt wydłużony do 14 nocy, wymaga przebukowania w LOT." },
+               price: 4000, note: "Premium Economy, Boeing 787-8." },
       stay: { name: "TSUKI Tokyo", room: "2 pokoje dwuosobowe", price: 1397,
               from: "11 maja, 15:00", to: "15 maja, 11:00", url: "https://www.tsukihotel.com/",
               yen: "¥240 000 za 2 pokoje × 4 noce",
@@ -982,9 +985,10 @@ function renderRibbon() {
         <span class="idx-no">${no}</span>
         <span class="idx-k">${c.jp}</span>
         <span class="idx-main">
-          <span class="idx-name">${esc(c.name)}${s.coda ? " · powrót" : ""}</span>
+          <span class="idx-name">${esc(c.name)}</span>
           <span class="idx-dates">${esc(s.dates)}</span>
         </span>
+        <span class="idx-lead" aria-hidden="true"></span>
         <span class="idx-nights">${nights(s.nights)}</span>
       </a>
     </li>`;
@@ -1040,7 +1044,7 @@ function legHTML(leg, fromKey, toKey) {
   </div>`;
 }
 
-function dayHTML(d, key, open, id) {
+function dayHTML(d, key) {
   const items = d.items.map((it) => {
     let price = "";
     if (it.price === 0) price = `<span class="price free">wstęp wolny</span>`;
@@ -1048,50 +1052,60 @@ function dayHTML(d, key, open, id) {
     const title = it.url
       ? `<a href="${esc(it.url)}" target="_blank" rel="noopener noreferrer">${esc(it.title)}</a>`
       : esc(it.title);
+    const q = encodeURIComponent(`${it.title} Japonia`);
+    const photos = `<a class="it-ph" href="https://www.google.com/search?tbm=isch&q=${q}" target="_blank" rel="noopener noreferrer">zdjęcia&nbsp;↗</a>`;
     return `<div class="it">
-      <span class="it-top"><span class="it-t">${esc(it.time)}</span><span class="it-k">${esc(it.kind)}</span></span>
-      <h4>${title}</h4>
-      <p>${esc(it.desc)}</p>
-      ${it.tip ? `<p class="tip">${esc(it.tip)}</p>` : ""}
-      ${price}
+      <span class="it-t">${esc(it.time)}</span>
+      <div class="it-body">
+        <span class="it-k">${esc(it.kind)}</span>
+        <h4>${title}</h4>
+        <p>${esc(it.desc)}</p>
+        ${it.tip ? `<p class="tip">${esc(it.tip)}</p>` : ""}
+        <div class="it-foot">${price}${photos}</div>
+      </div>
     </div>`;
   }).join("");
 
-  return `<details class="day" id="${id}"${open ? " open" : ""} style="--tint:${tint(key)}">
-    <summary>
+  return `<div class="day" style="--tint:${tint(key)}">
+    <div class="day-hd">
       <span class="day-d">${esc(d.date)}</span>
       <span class="day-w">${esc(d.wd)}</span>
-      <span class="day-x" aria-hidden="true">＋</span>
-    </summary>
+    </div>
     <div class="day-in">${items}</div>
-  </details>`;
+  </div>`;
 }
 
-/* ---------- galeria ---------- */
-
-function galleryHTML(cityKey) {
-  const list = PHOTOS[cityKey];
-  if (!list || !list.length) return "";
-  const shots = list.map((p) => {
-    const q = encodeURIComponent(`${p.cap} Japonia`);
-    return `<a class="shot" href="https://www.google.com/search?tbm=isch&q=${q}" target="_blank" rel="noopener noreferrer">
-      <b>${esc(p.cap)}</b>
-      <span>${esc(p.desc)}</span>
-      <em class="shot-go">Grafika Google →</em>
-    </a>`;
-  }).join("");
-  return `<div class="gal">
-    <div class="gal-track">${shots}</div>
-    <p class="gal-hint">${list.length > 1 ? `${list.length} miejsc — ` : ""}linki otwierają Grafikę Google w nowej karcie.</p>
-  </div>`;
+/* setup: dojazd + nocleg scalone w jedną kartę */
+function setupHTML(s) {
+  const leg = s.legIn, st = s.stay;
+  return `<article class="setup">
+    <div class="setup-leg">
+      <span class="mode" aria-hidden="true">${leg.mode}</span>
+      <span class="setup-leg-b">
+        <span class="label">Dojazd</span>
+        <span class="w">${esc(leg.what)}</span>
+        <span class="t">${esc(leg.when)} · ${money(leg.price)} zł</span>
+        <p class="note">${esc(leg.note)}</p>
+      </span>
+    </div>
+    <div class="setup-div" aria-hidden="true"></div>
+    <div class="stay">
+      <span class="label">Nocleg</span>
+      <h3>${esc(st.name)}</h3>
+      <div class="stay-when">${esc(st.from)} → ${esc(st.to)}</div>
+      <p>${esc(st.why)}</p>
+      <div class="stay-foot">
+        <span class="cost">${money(st.price)} zł${mult === 1 ? "/os." : ""}<span class="per-night">${zl(Math.round(st.price / s.nights))} zł/os./noc</span></span>
+        <a href="${esc(st.url)}" target="_blank" rel="noopener noreferrer">strona hotelu →</a>
+        <span class="yen">${esc(st.room)} · ${esc(st.yen)}</span>
+      </div>
+    </div>
+  </article>`;
 }
 
 function renderJourney() {
   $("journey").innerHTML = TRIP.stints.map((s, i) => {
     const c = TRIP.cities[s.city];
-    const prev = i > 0 ? TRIP.stints[i - 1].city : null;
-    const st = s.stay;
-
     const no = String(i + 1).padStart(2, "0");
     return `<section class="chapter" id="ch-${i}" data-city="${s.city}" style="--tint:${tint(s.city)}">
       <header class="plate">
@@ -1104,43 +1118,26 @@ function renderJourney() {
       </header>
 
       <div class="wrap chapter-body">
-        ${legHTML(s.legIn, prev, s.city)}
+        ${setupHTML(s)}
 
-        ${s.coda ? "" : galleryHTML(s.city)}
-
-        <article class="stay">
-          <span class="label">Nocleg</span>
-          <h3>${esc(st.name)}</h3>
-          <div class="stay-when">${esc(st.from)} → ${esc(st.to)}</div>
-          <p>${esc(st.why)}</p>
-          <div class="stay-foot">
-            <span class="cost">${money(st.price)} zł${mult === 1 ? "/os." : ""}</span>
-            <a href="${esc(st.url)}" target="_blank" rel="noopener noreferrer">strona hotelu →</a>
-            <span class="yen">${esc(st.room)} · ${esc(st.yen)}</span>
+        <section class="block">
+          <div class="block-head"><span class="label">Plan dnia</span><span class="block-k">日程</span></div>
+          <div class="days">
+            ${s.days.map((d) => dayHTML(d, s.city)).join("")}
           </div>
-        </article>
-
-        <div class="days">
-          ${s.days.map((d, k) => dayHTML(d, s.city, k === 0, `day-${i}-${k}`)).join("")}
-        </div>
+        </section>
       </div>
     </section>`;
-  }).join("") + `<div class="sec wrap">${legHTML(TRIP.legOut, "tokyo", "tokyo")}</div>`;
+  }).join("") + `<section class="sec wrap"><div class="block-head"><span class="label">Powrót</span><span class="block-k" style="--tint:var(--seal)">帰</span></div>${legHTML(TRIP.legOut, "tokyo", "tokyo")}</section>`;
 }
 
 function setMult(m) {
   mult = m;
   $("bPer").setAttribute("aria-pressed", String(m === 1));
   $("bAll").setAttribute("aria-pressed", String(m !== 1));
-  /* zachowaj który dzień jest rozwinięty przy przeliczaniu kwot */
-  const hadJourney = $("journey").querySelector(".day") !== null;
-  const openIds = new Set([...document.querySelectorAll(".day[open]")].map((d) => d.id));
   renderMoney();
   renderRibbon();
   renderJourney();
-  if (hadJourney) {
-    document.querySelectorAll(".day").forEach((d) => { d.open = openIds.has(d.id); });
-  }
   bindChapters();
 }
 
