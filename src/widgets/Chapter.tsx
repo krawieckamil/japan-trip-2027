@@ -1,6 +1,6 @@
 import type { Stint, City } from "../data/trip";
 
-import { cssVar, money, nightsLabel, formatCurrency } from "../lib/format";
+import { money, nightsLabel, formatCurrency } from "../lib/format";
 import { BlockHead } from "../ui";
 import { DayView } from "./DayView";
 
@@ -34,16 +34,16 @@ function PlateAbout({
 function Setup({ stint, mult }: { stint: Stint; mult: number }) {
   const { legIn: leg, stay: st } = stint;
   return (
-    <article className="setup rounded-[6px] bg-paper-2 px-[clamp(20px,5vw,28px)] py-6">
+    <article className="setup-leg-card rounded-[6px] bg-paper-2 px-[clamp(20px,5vw,28px)] py-6 shadow-card">
       <div className="setup-leg grid grid-cols-[38px_1fr] items-start gap-[15px]">
         <span
-          className="mode grid h-[38px] w-[38px] place-items-center rounded-full bg-[var(--tint)] font-jp text-[1.1rem] text-plate-fg"
+          className="grid h-[38px] w-[38px] place-items-center rounded-full bg-accent font-jp text-[1.1rem] text-plate-fg shadow-mode"
           aria-hidden="true"
         >
           {leg.mode}
         </span>
         <span className="setup-leg-b">
-          <span className="label text-[var(--tint)]">Dojazd</span>
+          <span className="label text-accent">Dojazd</span>
           <span className="mt-[3px] block font-bold tracking-[-0.01em] text-ink">{leg.what}</span>
           <span className="mt-[2px] block text-[0.88rem] text-ink-2 tabular-nums">
             {leg.when} · {formatCurrency(leg.price * mult)}
@@ -53,9 +53,9 @@ function Setup({ stint, mult }: { stint: Stint; mult: number }) {
           </p>
         </span>
       </div>
-      <div className="setup-div my-[22px] h-[10px]" aria-hidden="true"></div>
+      <div className="brush-mid my-[22px] h-[10px]" aria-hidden="true"></div>
       <div className="stay">
-        <span className="label text-[var(--tint)]">Nocleg</span>
+        <span className="label text-accent">Nocleg</span>
         <h3 className="mt-2 text-[1.35rem]">{st.name}</h3>
         <div className="stay-when mt-[5px] text-[0.82rem] text-ink-3 tabular-nums">
           {st.from} → {st.to}
@@ -63,7 +63,7 @@ function Setup({ stint, mult }: { stint: Stint; mult: number }) {
         <p className="mt-[13px] text-[0.94rem] leading-[1.6] whitespace-pre-wrap text-ink-2">
           {st.description}
         </p>
-        <div className="stay-foot mt-[18px] flex flex-wrap items-center justify-between gap-x-[16px] gap-y-2 pt-[17px]">
+        <div className="brush-top mt-[18px] flex flex-wrap items-center justify-between gap-x-[16px] gap-y-2 pt-[17px]">
           <span className="cost flex items-baseline gap-2 font-extrabold tabular-nums">
             {money(st.price, mult)}
             <span className="per-night text-[0.76rem] font-normal text-ink-3">
@@ -74,7 +74,7 @@ function Setup({ stint, mult }: { stint: Stint; mult: number }) {
             href={st.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="border-b-[1.5px] border-b-[var(--tint)] text-[0.86rem] font-bold text-[var(--tint)] no-underline"
+            className="border-b-[1.5px] border-b-accent text-[0.86rem] font-bold text-accent no-underline"
           >
             strona hotelu →
           </a>
@@ -106,9 +106,9 @@ export function Chapter({
       className="pt-[26px] min-[720px]:pt-14"
       id={`ch-${index}`}
       data-city={stint.city}
-      style={{ "--tint": cssVar(city.v) } as React.CSSProperties}
+      data-accent={stint.city}
     >
-      <header className="plate relative mx-[clamp(2px,3vw,16px)] mt-[6px] mb-0 grid min-h-[44svh] grid-cols-[1fr_auto] grid-rows-[1fr_auto_auto] gap-[10px] overflow-hidden rounded-[3px] px-[clamp(26px,6vw,52px)] py-[clamp(40px,9vw,68px)] text-plate-fg min-[720px]:min-h-[40svh] min-[720px]:px-[clamp(48px,6vw,76px)] min-[720px]:py-[clamp(56px,7vw,84px)]">
+      <header className="plate relative mx-[clamp(2px,3vw,16px)] mt-[6px] mb-0 grid min-h-[44svh] grid-cols-[1fr_auto] grid-rows-[1fr_auto_auto] gap-[10px] overflow-hidden rounded-[3px] px-[clamp(26px,6vw,52px)] py-[clamp(40px,9vw,68px)] text-plate-fg shadow-plate min-[720px]:min-h-[40svh] min-[720px]:px-[clamp(48px,6vw,76px)] min-[720px]:py-[clamp(56px,7vw,84px)]">
         <span className="plate-no relative z-[2] col-start-1 row-start-1 self-start justify-self-start font-jp text-[1rem] tracking-[0.28em] tabular-nums opacity-90">
           {no}
         </span>

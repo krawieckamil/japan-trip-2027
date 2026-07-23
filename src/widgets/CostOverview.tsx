@@ -65,13 +65,13 @@ export function CostOverview({
       <SectionHead label="Koszt" title="Ile to kosztuje" />
 
       <div
-        className="toggle mb-[26px] inline-flex gap-[3px] rounded-full bg-paper-2 p-[3px]"
+        className="mb-[26px] inline-flex gap-[3px] rounded-full bg-paper-2 p-[3px] shadow-hairline"
         role="group"
         aria-label="Sposób pokazywania kwot"
       >
         <button
           type="button"
-          className="min-h-10 cursor-pointer appearance-none rounded-full border-0 bg-transparent px-[18px] py-[9px] [font-family:inherit] text-[0.76rem] font-bold tracking-[0.06em] text-ink-2 uppercase aria-pressed:bg-ink aria-pressed:text-ground"
+          className="min-h-10 cursor-pointer appearance-none rounded-full border-0 bg-transparent px-[18px] py-[9px] [font-family:inherit] text-[0.76rem] font-bold tracking-[0.06em] text-ink-2 uppercase transition-colors duration-[250ms] aria-pressed:bg-ink aria-pressed:text-ground"
           aria-pressed={mult === 1}
           onClick={() => onMultChange(1)}
         >
@@ -79,7 +79,7 @@ export function CostOverview({
         </button>
         <button
           type="button"
-          className="min-h-10 cursor-pointer appearance-none rounded-full border-0 bg-transparent px-[18px] py-[9px] [font-family:inherit] text-[0.76rem] font-bold tracking-[0.06em] text-ink-2 uppercase aria-pressed:bg-ink aria-pressed:text-ground"
+          className="min-h-10 cursor-pointer appearance-none rounded-full border-0 bg-transparent px-[18px] py-[9px] [font-family:inherit] text-[0.76rem] font-bold tracking-[0.06em] text-ink-2 uppercase transition-colors duration-[250ms] aria-pressed:bg-ink aria-pressed:text-ground"
           aria-pressed={mult !== 1}
           onClick={() => onMultChange(trip.people)}
         >
@@ -103,17 +103,17 @@ export function CostOverview({
           return (
             <div
               className="bar-row grid grid-cols-[1fr_auto] items-baseline gap-x-[12px] gap-y-[6px] py-[3px]"
-              style={{ "--bar-c": `var(${g.color})` } as React.CSSProperties}
+              data-accent={g.color}
               key={g.label}
             >
               <span className="flex items-center text-[0.94rem] font-semibold">
                 <i
-                  className="mr-[9px] inline-block h-2 w-2 flex-none rotate-45 bg-[var(--bar-c,var(--color-ink))]"
+                  className="mr-[9px] inline-block h-2 w-2 flex-none rotate-45 bg-accent"
                   aria-hidden="true"
                 ></i>
                 {g.label}
               </span>
-              <span className="text-[0.94rem] font-bold text-[var(--bar-c,var(--color-ink))] tabular-nums">
+              <span className="text-[0.94rem] font-bold text-accent tabular-nums">
                 {money(t)}
               </span>
               <span className="col-span-full h-[6px] overflow-hidden rounded-[3px] bg-hair">

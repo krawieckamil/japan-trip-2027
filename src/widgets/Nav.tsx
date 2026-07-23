@@ -2,8 +2,6 @@ import { useMemo } from "react";
 
 import type { Trip } from "../data/trip";
 
-import { cssVar } from "../lib/format";
-
 export function Nav({ trip, activeCity }: { trip: Trip; activeCity: string | null }) {
   const firstStint = useMemo(() => {
     const map: Record<string, number> = {};
@@ -25,9 +23,10 @@ export function Nav({ trip, activeCity }: { trip: Trip; activeCity: string | nul
     <nav
       className="nav sticky top-0 z-20 flex items-center justify-between gap-3.5 px-[22px] py-[11px] min-[720px]:px-10"
       aria-label="Nawigacja po wyjeździe"
+      data-accent={activeCity ?? "seal"}
     >
       <span className="nav-now flex min-w-0 items-baseline gap-[9px]">
-        <span className="font-jp text-[1.15rem] text-[var(--now)]">{now ? now.jp : "日本"}</span>
+        <span className="font-jp text-[1.15rem] text-accent">{now ? now.jp : "日本"}</span>
         <span className="overflow-hidden text-[0.72rem] font-bold tracking-[0.16em] text-ellipsis whitespace-nowrap text-ink-2 uppercase">
           {now ? now.name : "Plan wyjazdu"}
         </span>
@@ -39,7 +38,7 @@ export function Nav({ trip, activeCity }: { trip: Trip; activeCity: string | nul
             type="button"
             aria-label={`Przejdź do: ${city.name}`}
             aria-current={activeCity === key}
-            style={{ "--dot": cssVar(city.v) } as React.CSSProperties}
+            data-accent={key}
             onClick={() => jumpTo(key)}
           >
             <i></i>

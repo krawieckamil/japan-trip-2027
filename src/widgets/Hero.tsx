@@ -15,8 +15,8 @@ export function Hero() {
         aria-hidden="true"
       >
         <span className="hero-sun absolute top-[3%] right-[9%] aspect-square w-[clamp(110px,24vw,250px)] rounded-full bg-seal opacity-50"></span>
-        <span className="hero-ridge hero-ridge--far"></span>
-        <span className="hero-ridge hero-ridge--near"></span>
+        <span className="hero-ridge hero-ridge-far"></span>
+        <span className="hero-ridge hero-ridge-near"></span>
         <span className="hero-mist"></span>
       </div>
       <span
@@ -29,11 +29,11 @@ export function Hero() {
         <span className="hero-jp m-0 mb-[0.1em] ml-[-0.04em] block font-jp text-[clamp(5rem,34vw,12rem)] leading-[0.82] font-medium tracking-[0.03em]">
           日本
         </span>
-        <Seal className="seal absolute top-[-0.16em] right-[-0.66em] w-[clamp(58px,15vw,104px)] rotate-3">
+        <Seal className="seal absolute top-[-0.16em] right-[-0.66em] w-[clamp(58px,15vw,104px)] rotate-3 shadow-seal">
           <span className="text-[clamp(1.9rem,6.5vw,3.4rem)] leading-none">旅</span>
         </Seal>
       </span>
-      <h1 className="mb-[0.5em] pb-[0.32em] text-[clamp(2rem,7vw,3.1rem)] font-extrabold tracking-[0.02em] uppercase">
+      <h1 className="hero-h1 mb-[0.5em] pb-[0.32em] text-[clamp(2rem,7vw,3.1rem)] font-extrabold tracking-[0.02em] uppercase">
         Japonia
       </h1>
       <div className="hero-when mb-[26px] font-jp text-[1.2rem] tracking-[0.04em] text-ink-2">
@@ -42,7 +42,7 @@ export function Hero() {
       <div className="hero-facts mb-[6px] flex flex-wrap gap-0">
         {FACTS.map((f) => (
           <span
-            className="fact border-l border-l-hair px-4 text-[0.82rem] font-semibold text-ink-2"
+            className="fact border-l border-l-hair px-4 text-[0.82rem] font-semibold text-ink-2 first:border-l-0 first:pl-0"
             key={f.l}
           >
             <b className="font-extrabold text-ink tabular-nums">{f.v}</b> {f.l}

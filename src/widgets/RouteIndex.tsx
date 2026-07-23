@@ -1,6 +1,6 @@
 import type { Trip } from "../data/trip";
 
-import { cssVar, nightsLabel } from "../lib/format";
+import { nightsLabel } from "../lib/format";
 import { Section, SectionHead } from "../ui";
 
 export function RouteIndex({ trip }: { trip: Trip }) {
@@ -10,18 +10,18 @@ export function RouteIndex({ trip }: { trip: Trip }) {
         Pięć przystanków, każdy odbity w swoim kolorze — jak plansze jednej serii drzeworytów.
         Dotknij, żeby przeskoczyć do miasta.
       </SectionHead>
-      <ol className="index m-0 list-none pt-1.5">
+      <ol className="brush-b-top m-0 list-none pt-1.5">
         {trip.stints.map((s, i) => {
           const c = trip.cities[s.city];
           const no = String(i + 1).padStart(2, "0");
           return (
-            <li className="idx" style={{ "--tint": cssVar(c.v) } as React.CSSProperties} key={i}>
+            <li className="idx" data-accent={s.city} key={i}>
               <a
                 href={`#ch-${i}`}
                 className="grid grid-cols-[3ch_2.4rem_auto_minmax(14px,1fr)_auto] items-center gap-4 px-1 py-4 no-underline"
               >
                 <span className="font-jp text-[1rem] text-ink-3 tabular-nums">{no}</span>
-                <span className="font-jp text-[1.7rem] leading-none text-[var(--tint)]">
+                <span className="font-jp text-[1.7rem] leading-none text-accent">
                   {c.jp}
                 </span>
                 <span className="idx-main">

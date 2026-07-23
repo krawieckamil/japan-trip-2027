@@ -6,7 +6,7 @@
        Pasma mgły (kasumi) rozdzielają sceny. Zero animowanego tła.
        ============================================================ */
 
-/* tokeny projektu — statyczna paleta i kroje; mapują się na utility (text-ink, bg-ground, font-jp …) */
+/* tokeny projektu — mapują się na utility (text-ink, bg-ground, bg-tokyo, shadow-card, font-jp …) */
 @theme {
   --color-ground: #e7dbc0; /* washi */
   --color-paper-2: #f1e7d1; /* jaśniejszy papier na karty/plansze */
@@ -21,29 +21,62 @@
   --font-ui:
     -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Segoe UI", system-ui,
     sans-serif;
+
+  /* cienie jako tokeny → shadow-card / shadow-plate / shadow-mode / shadow-grand / shadow-seal */
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 22px 44px -34px rgba(33, 26, 17, 0.6);
+  --shadow-plate:
+    0 1px 0 rgba(255, 255, 255, 0.22) inset, 0 20px 46px -26px rgba(33, 26, 17, 0.6),
+    0 2px 8px rgba(33, 26, 17, 0.12);
+  --shadow-mode: 0 6px 16px -10px rgba(33, 26, 17, 0.9);
+  --shadow-grand: 0 20px 40px -30px rgba(33, 26, 17, 0.8);
+  --shadow-seal: 0 10px 26px -16px rgba(120, 30, 20, 0.9);
+  --shadow-hairline: inset 0 0 0 1px var(--color-hair); /* pigułki/przełącznik */
 }
 
-/* tokeny konsumowane przez var() w regułach niżej (nie przez utility), więc static wymusza emisję:
-   wspólna krzywa „pociągnięcia pędzla” + cień unoszącej się karty */
+/* static wymusza emisję do :root — konsumowane przez var() w regułach/@utility, nie przez utility:
+   krzywa „pociągnięcia pędzla” oraz paleta miast (wpinana przez [data-accent]) */
 @theme static {
   --ease-brush: cubic-bezier(0.2, 0.8, 0.2, 1);
-  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 22px 44px -34px rgba(33, 26, 17, 0.6);
+
+  --color-tokyo: #4b3fd9;
+  --color-kyoto: #17795e;
+  --color-osaka: #cf3a26;
+  --color-hiroshima: #1a6fbc;
+  --color-fukuoka: #0b7f7a;
+  --color-beppu: #b9761a;
 }
 
-/* zmienne runtime (nie mapują się na utility): paleta miast dobierana per-rozdział przez --tint,
-   nadpisywana inline, oraz tekstury pędzla wspólne dla wielu reguł */
+/* semantyczny akcent kontekstu → text-accent / bg-accent / border-accent.
+   Wartość bierze z runtime --accent (wpinanego atrybutem data-accent), fallback: tusz. */
+@theme inline {
+  --color-accent: var(--accent, var(--color-ink));
+}
+
+/* jedyny przełącznik dynamicznego koloru: atrybut data-accent ustawia --accent, dziedziczone w dół */
+[data-accent="tokyo"] {
+  --accent: var(--color-tokyo);
+}
+[data-accent="kyoto"] {
+  --accent: var(--color-kyoto);
+}
+[data-accent="osaka"] {
+  --accent: var(--color-osaka);
+}
+[data-accent="hiroshima"] {
+  --accent: var(--color-hiroshima);
+}
+[data-accent="fukuoka"] {
+  --accent: var(--color-fukuoka);
+}
+[data-accent="beppu"] {
+  --accent: var(--color-beppu);
+}
+[data-accent="seal"] {
+  --accent: var(--color-seal);
+}
+
+/* tekstury pędzla — wspólne dla wielu utility, nie mapują się na utility */
 :root {
-  --c-tokyo: #4b3fd9;
-  --c-kyoto: #17795e;
-  --c-osaka: #cf3a26;
-  --c-hiroshima: #1a6fbc;
-  --c-fukuoka: #0b7f7a;
-  --c-beppu: #b9761a;
-
-  --tint: var(--color-ink);
-  --now: var(--color-seal);
-
-  /* pociągnięcia pędzla zamiast twardych linijek */
   --brush: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%2012'%20preserveAspectRatio='none'%3E%3Cpath%20d='M5%207%20C%20200%204%20340%209%20560%206%20C%20760%203.5%20900%209.5%201195%206.5%20C%20900%208.5%20760%206%20560%208.5%20C%20340%2011%20200%206.5%205%209%20Z'%20fill='%23211a11'%20fill-opacity='0.42'/%3E%3C/svg%3E");
   --brush-b: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%2016'%20preserveAspectRatio='none'%3E%3Cpath%20d='M4%208%20C%20220%203%20360%2012%20580%207%20C%20800%202.5%20940%2012.5%201196%207.5%20C%20940%2011.5%20800%208%20580%2012%20C%20360%2015%20220%208.5%204%2011%20Z'%20fill='%23211a11'%20fill-opacity='0.72'/%3E%3C/svg%3E");
 
@@ -102,7 +135,7 @@ h4 {
   text-wrap: balance;
 }
 
-/* etykieta — podpis kuratorski pod ryciną, nie korporacyjny "eyebrow" */
+/* etykieta — podpis kuratorski pod ryciną; glif zależny od sekcji (parent selector — świadomie) */
 .sec-head .label::after {
   font-family: var(--font-jp);
   font-style: normal;
@@ -126,34 +159,34 @@ h4 {
 }
 
 /* ---------- nawigacja ---------- */
-.nav {
+@utility nav {
   background: color-mix(in srgb, var(--color-ground) 90%, transparent);
   background-image: var(--brush);
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: 100% 9px;
   backdrop-filter: blur(6px);
+
+  /* pasek postępu — to samo pociągnięcie pędzla, dotuszowane barwą aktywnego miasta */
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 9px;
+    background: var(--accent, var(--color-seal));
+    -webkit-mask: var(--brush) bottom / 100% 9px no-repeat;
+    mask: var(--brush) bottom / 100% 9px no-repeat;
+    clip-path: inset(0 calc(100% - var(--navp)) 0 0);
+    pointer-events: none;
+  }
 }
 
-/* pasek postępu — to samo pociągnięcie pędzla, tylko dotuszowane barwą miasta w miarę przewijania */
 @property --navp {
   syntax: "<percentage>";
   inherits: false;
   initial-value: 0%;
-}
-
-.nav::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 9px;
-  background: var(--now);
-  -webkit-mask: var(--brush) bottom / 100% 9px no-repeat;
-  mask: var(--brush) bottom / 100% 9px no-repeat;
-  clip-path: inset(0 calc(100% - var(--navp)) 0 0);
-  pointer-events: none;
 }
 
 @supports (animation-timeline: scroll()) {
@@ -172,7 +205,7 @@ h4 {
   }
 }
 
-.dots {
+@utility dots {
   button {
     appearance: none;
     border: 0;
@@ -183,30 +216,29 @@ h4 {
     cursor: pointer;
     display: grid;
     place-items: center;
+  }
 
-    i {
-      display: block;
-      width: 9px;
-      height: 9px;
-      background: var(--dot);
-      opacity: 0.3;
-      transform: rotate(45deg);
-      transition:
-        opacity 0.35s ease,
-        transform 0.35s ease;
-    }
+  button i {
+    display: block;
+    width: 9px;
+    height: 9px;
+    background: var(--accent, var(--color-ink));
+    opacity: 0.3;
+    transform: rotate(45deg);
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease;
+  }
 
-    &[aria-current="true"] i {
-      opacity: 1;
-      transform: rotate(45deg) scale(1.35);
-    }
+  button[aria-current="true"] i {
+    opacity: 1;
+    transform: rotate(45deg) scale(1.35);
   }
 }
 
 /* ---------- hero / okładka serii ---------- */
-.hero {
+@utility hero {
   /* pasmo mgły zamyka okładkę u dołu, zaciera krawędź grzbietu */
-
   &::after {
     content: "";
     position: absolute;
@@ -229,7 +261,6 @@ h4 {
 
   h1 {
     /* pociągnięcie pędzla pod tytułem, jak podpis pod ryciną */
-
     &::after {
       content: "";
       position: absolute;
@@ -245,7 +276,7 @@ h4 {
 }
 
 /* ---------- scena okładki — słońce i grzbiety gór, warstwami jak w serii Hokusaia ---------- */
-.hero-ridge {
+@utility hero-ridge {
   position: absolute;
   left: -8%;
   right: -8%;
@@ -253,7 +284,7 @@ h4 {
   background: var(--color-ink);
 }
 
-.hero-ridge--far {
+@utility hero-ridge-far {
   height: 34%;
   opacity: 0.055;
   --m: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 400' preserveAspectRatio='xMidYMax meet'%3E%3Cpath d='M0 400 L120 250 Q220 180 320 250 L430 190 Q540 130 650 210 L760 150 Q880 100 1000 190 L1200 280 L1200 400 Z'/%3E%3C/svg%3E");
@@ -261,7 +292,7 @@ h4 {
   -webkit-mask: var(--m) bottom center / cover no-repeat;
 }
 
-.hero-ridge--near {
+@utility hero-ridge-near {
   height: 52%;
   opacity: 0.12;
   --m: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 500' preserveAspectRatio='xMidYMax meet'%3E%3Cpath d='M0 500 L455 120 C560 40 640 40 745 120 L1200 500 Z'/%3E%3Cpath d='M470 108 L500 150 L540 120 L575 156 L615 118 L655 152 L690 120 L725 150' fill='none' stroke='black' stroke-width='9'/%3E%3C/svg%3E");
@@ -270,7 +301,7 @@ h4 {
 }
 
 /* mgła jako plama papieru na tuszu gór — kasumi zaciera grzbiet zamiast go kreślić */
-.hero-mist {
+@utility hero-mist {
   position: absolute;
   left: -10%;
   right: -10%;
@@ -288,7 +319,7 @@ h4 {
 }
 
 /* zaproszenie do przewinięcia */
-.hero-cue {
+@utility hero-cue {
   i {
     width: 1px;
     height: 28px;
@@ -298,7 +329,7 @@ h4 {
   }
 }
 
-/* wejście okładki — jak odbicie świeżo zdjęte z prasy */
+/* wejście okładki — jak odbicie świeżo zdjęte z prasy; per-element bo różnią się czasem/opóźnieniem */
 @keyframes heroFade {
   from {
     opacity: 0;
@@ -308,6 +339,28 @@ h4 {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@utility hero-art {
+  animation: heroFade 1.1s var(--ease-brush) both;
+}
+@utility hero-jp {
+  animation: heroFade 0.9s var(--ease-brush) both;
+}
+@utility hero-h1 {
+  animation: heroFade 0.9s var(--ease-brush) 0.12s both;
+}
+@utility hero-when {
+  animation: heroFade 0.9s var(--ease-brush) 0.22s both;
+}
+@utility hero-facts {
+  animation: heroFade 0.9s var(--ease-brush) 0.3s both;
+}
+@utility hero-note {
+  animation: heroFade 0.9s var(--ease-brush) 0.38s both;
+}
+@utility hero-colophon {
+  animation: heroFade 1s var(--ease-brush) 0.45s both;
 }
 
 @keyframes heroStamp {
@@ -337,42 +390,8 @@ h4 {
   }
 }
 
-.hero-art {
-  animation: heroFade 1.1s var(--ease-brush) both;
-}
-
-.hero-jp {
-  animation: heroFade 0.9s var(--ease-brush) both;
-}
-
-.hero h1 {
-  animation: heroFade 0.9s var(--ease-brush) 0.12s both;
-}
-
-.hero-when {
-  animation: heroFade 0.9s var(--ease-brush) 0.22s both;
-}
-
-.hero-facts {
-  animation: heroFade 0.9s var(--ease-brush) 0.3s both;
-
-  .fact:first-child {
-    padding-left: 0;
-    border-left: 0;
-  }
-}
-
-.hero-note {
-  animation: heroFade 0.9s var(--ease-brush) 0.38s both;
-}
-
-.hero-colophon {
-  animation: heroFade 1s var(--ease-brush) 0.45s both;
-}
-
-.seal {
+@utility seal {
   animation: heroStamp 0.7s cubic-bezier(0.3, 1.4, 0.4, 1) 0.5s both;
-  box-shadow: 0 10px 26px -16px rgba(120, 30, 20, 0.9);
 }
 
 /* przewijanie sceny — grzbiety i mgła oddalają się w różnym tempie */
@@ -382,8 +401,8 @@ h4 {
   }
 
   .hero-sun,
-  .hero-ridge--far,
-  .hero-ridge--near,
+  .hero-ridge-far,
+  .hero-ridge-near,
   .hero-mist {
     animation: heroParallax linear both;
     animation-timeline: --heroScene;
@@ -394,11 +413,11 @@ h4 {
     --amt: 30px;
   }
 
-  .hero-ridge--far {
+  .hero-ridge-far {
     --amt: 55px;
   }
 
-  .hero-ridge--near {
+  .hero-ridge-near {
     --amt: 95px;
   }
 
@@ -413,121 +432,71 @@ h4 {
   }
 }
 
+/* ---------- separatory „pędzla" (pasma mgły między scenami) ---------- */
+@utility brush-b-top {
+  background: var(--brush-b) top / 100% 12px no-repeat;
+}
+@utility brush-b-foot {
+  background: var(--brush-b) bottom / 100% 12px no-repeat;
+}
+@utility brush-mid {
+  background: var(--brush) center / 100% 10px no-repeat;
+}
+@utility brush-top {
+  background: var(--brush) top / 100% 9px no-repeat;
+}
+@utility brush-foot {
+  background: var(--brush) bottom / 100% 9px no-repeat;
+}
+
 /* ---------- indeks trasy (seria widoków) ---------- */
-#trasa {
-  ol {
-    padding-left: 0;
-  }
+#trasa ol {
+  padding-left: 0;
 }
 
-/* pasmo mgły / pociągnięcie pędzla jako separator — jeden wzorzec sterowany zmiennymi.
-   Domyślnie: --brush, dół, 9px; poszczególne klasy nadpisują tylko to, co inne. */
-.index,
-.idx,
-.setup-div,
-.block-head,
-.stay-foot,
-.cost-h,
-.cost-r {
-  background-image: var(--brush-img, var(--brush));
-  background-repeat: no-repeat;
-  background-position: var(--brush-pos, bottom);
-  background-size: 100% var(--brush-h, 9px);
-}
-
-.index {
-  --brush-img: var(--brush-b);
-  --brush-pos: top;
-  --brush-h: 12px;
-}
-
-.block-head,
-.cost-h {
-  --brush-img: var(--brush-b);
-  --brush-h: 12px;
-}
-
-.setup-div {
-  --brush-pos: center;
-  --brush-h: 10px;
-}
-
-.stay-foot {
-  --brush-pos: top;
-}
-
-/* .cost-r korzysta z domyślnych (--brush / bottom / 9px) */
-
-.idx {
-  --brush-h: 10px;
+@utility idx {
+  background: var(--brush) bottom / 100% 10px no-repeat;
 
   a {
     transition: padding-left 0.3s var(--ease-brush);
+  }
 
-    &:hover {
-      padding-left: 12px;
-    }
+  a:hover {
+    padding-left: 12px;
   }
 }
 
 /* ---------- koszt / rejestr ---------- */
-.toggle {
-  box-shadow: inset 0 0 0 1px var(--color-hair);
-
-  button {
-    transition:
-      background 0.25s ease,
-      color 0.25s ease;
-  }
-}
-
-.bar-row {
+@utility bar-row {
   transition: transform 0.25s ease;
 
   &:hover {
     transform: translateX(3px);
+  }
 
-    .bar-fill {
-      filter: brightness(1.12);
-    }
+  &:hover .bar-fill {
+    filter: brightness(1.12);
   }
 }
 
-.bar-fill {
+@utility bar-fill {
   background: linear-gradient(
     90deg,
-    var(--bar-c, var(--color-ink)),
-    color-mix(in srgb, var(--bar-c, var(--color-ink)) 70%, white 30%)
+    var(--accent, var(--color-ink)),
+    color-mix(in srgb, var(--accent, var(--color-ink)) 70%, white 30%)
   );
   transition: filter 0.2s ease;
 }
 
-.insight {
-  margin-top: 34px;
-  font-size: 1.06rem;
-  line-height: 1.55;
-  color: var(--color-ink);
-  max-width: 30rem;
-
-  b {
-    font-weight: 800;
-  }
-}
-
 /* ---------- rozdział miasta ---------- */
 /* PLANSZA — stonowane pole koloru w ramce, karta unosząca się na papierze (muji/plakat) */
-.plate {
+@utility plate {
   --pmix: 82%; /* pełny kolor drzeworytu; kremowy tekst ≥5:1 (Beppu ma własny) */
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.14)),
-    color-mix(in srgb, var(--tint) var(--pmix), var(--color-ink));
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.22) inset,
-    0 20px 46px -26px rgba(33, 26, 17, 0.6),
-    0 2px 8px rgba(33, 26, 17, 0.12);
+    color-mix(in srgb, var(--accent, var(--color-ink)) var(--pmix), var(--color-ink));
 
   /* sylwetka-znak miasta, tuszem, cicho w rogu — jak góra w hero */
-
   &::after {
     content: "";
     position: absolute;
@@ -544,7 +513,6 @@ h4 {
   }
 
   /* delikatna wewnętrzna linia (keyline plakatu) */
-
   &::before {
     content: "";
     position: absolute;
@@ -556,7 +524,7 @@ h4 {
   }
 }
 
-.plate-about-i {
+@utility plate-about-i {
   p {
     color: color-mix(in srgb, var(--color-plate-fg) 68%, transparent);
   }
@@ -573,7 +541,7 @@ h4 {
 }
 
 /* pasmo mgły między wątkami tego samego plakatu (np. wycieczka w środku pobytu) */
-.plate-about-div {
+@utility plate-about-div {
   background: linear-gradient(
     90deg,
     color-mix(in srgb, var(--color-plate-fg) 28%, transparent),
@@ -611,38 +579,19 @@ h4 {
   --motif: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%20300%27%20preserveAspectRatio%3D%27xMaxYMax%20meet%27%3E%3Cpath%20d%3D%27M74%20214%20Q150%20246%20226%20214%20L214%20258%20Q150%20284%2086%20258%20Z%27%20fill%3D%27black%27%2F%3E%3Cpath%20d%3D%27M118%20208%20C98%20182%20138%20162%20118%20132%20C102%20106%20136%2090%20118%2060%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%2710%27%20stroke-linecap%3D%27round%27%2F%3E%3Cpath%20d%3D%27M150%20216%20C130%20188%20170%20168%20150%20136%20C132%20108%20168%2092%20150%2058%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%2710%27%20stroke-linecap%3D%27round%27%2F%3E%3Cpath%20d%3D%27M182%20208%20C162%20182%20202%20162%20182%20132%20C166%20106%20200%2090%20182%2060%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%2710%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E");
 }
 
-/* ---------- setup: dojazd + nocleg w jednej karcie ---------- */
-.setup {
-  box-shadow: var(--shadow-card);
-}
-
-.mode {
-  box-shadow: 0 6px 16px -10px rgba(33, 26, 17, 0.9);
-}
-
-/* przejazd — nitka tuszu z kolorem obu miast (lot powrotny) */
-.leg-rail {
+/* ---------- setup: dojazd + nocleg; oś dnia ---------- */
+@utility leg-rail {
   i {
     width: 2px;
     flex: 1;
     min-height: 24px;
-    background: linear-gradient(var(--from), var(--to));
-  }
-}
-
-.day {
-  /* spokojna cienka linia zamiast falującego pasma między dniami */
-  border-top: 1px solid var(--color-hair);
-
-  &:first-child {
-    border-top: 0;
+    background: var(--accent, var(--color-ink));
   }
 }
 
 /* oś czasu dnia — jedna nitka tuszu z węzłami zamiast wielu kresek */
-.it {
+@utility it {
   /* nitka łącząca kolejne godziny */
-
   &::before {
     content: "";
     position: absolute;
@@ -650,7 +599,7 @@ h4 {
     top: 9px;
     bottom: -9px;
     width: 2px;
-    background: color-mix(in srgb, var(--tint) 28%, var(--color-hair));
+    background: color-mix(in srgb, var(--accent, var(--color-ink)) 28%, var(--color-hair));
   }
 
   &:last-child::before {
@@ -658,7 +607,6 @@ h4 {
   }
 
   /* węzeł godziny */
-
   &::after {
     content: "";
     position: absolute;
@@ -667,20 +615,18 @@ h4 {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: var(--tint);
+    background: var(--accent, var(--color-ink));
   }
 
-  .tip {
-    &::before {
-      content: "\203B\00A0";
-      color: var(--tint);
-      font-weight: 700;
-    }
+  .tip::before {
+    content: "\203B\00A0";
+    color: var(--accent, var(--color-ink));
+    font-weight: 700;
   }
 }
 
 /* ta sama pigułka co badge ceny (wariant ghost), żeby rząd był spójny */
-.it-ph {
+@utility it-ph {
   box-shadow: inset 0 0 0 1px var(--color-hair);
   transition:
     color 0.2s ease,
@@ -688,32 +634,20 @@ h4 {
 
   &:hover,
   &:focus-visible {
-    color: var(--tint);
-    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tint) 55%, transparent);
+    color: var(--accent, var(--color-ink));
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent, var(--color-ink)) 55%, transparent);
   }
 }
 
-.price {
-  box-shadow: inset 0 0 0 1px var(--color-hair);
-}
-
 /* ---------- rozbicie / rejestr ---------- */
-.grand {
-  box-shadow: 0 20px 40px -30px rgba(33, 26, 17, 0.8);
-}
-
-.excl {
-  box-shadow: var(--shadow-card);
-
-  li {
-    &::before {
-      content: "×";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--color-seal);
-      font-weight: 700;
-    }
+@utility excl {
+  li::before {
+    content: "×";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-seal);
+    font-weight: 700;
   }
 }
 
@@ -789,8 +723,8 @@ h4 {
 
   .hero-cue i,
   .hero-sun,
-  .hero-ridge--far,
-  .hero-ridge--near,
+  .hero-ridge-far,
+  .hero-ridge-near,
   .hero-mist {
     animation: none !important;
   }

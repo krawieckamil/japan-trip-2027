@@ -3,7 +3,6 @@ import rawExport from "./tripsy-export.json";
 export interface City {
   name: string;
   jp: string;
-  v: string;
 }
 
 export interface Leg {
@@ -119,17 +118,18 @@ const TRIP_PEOPLE = 4;
 
 /* Miasta, japońskie zapisy i kolory CSS nie są częścią eksportu Tripsy — trzymane tu ręcznie. */
 const CITY_META: Record<string, City> = {
-  tokyo: { name: "Tokio", jp: "東京", v: "--c-tokyo" },
-  kyoto: { name: "Kioto", jp: "京都", v: "--c-kyoto" },
-  osaka: { name: "Osaka", jp: "大阪", v: "--c-osaka" },
-  fukuoka: { name: "Fukuoka", jp: "福岡", v: "--c-fukuoka" },
-  beppu: { name: "Beppu", jp: "別府", v: "--c-beppu" },
+  tokyo: { name: "Tokio", jp: "東京" },
+  kyoto: { name: "Kioto", jp: "京都" },
+  osaka: { name: "Osaka", jp: "大阪" },
+  fukuoka: { name: "Fukuoka", jp: "福岡" },
+  beppu: { name: "Beppu", jp: "別府" },
 };
 
-const COLOR_FLIGHTS = "--c-tokyo";
-const COLOR_STAYS = "--c-kyoto";
-const COLOR_TRAINS = "--c-hiroshima";
-const COLOR_ATTRACTIONS = "--c-beppu";
+/* klucz koloru grupy = wartość atrybutu data-accent (miasto lub „seal") */
+const COLOR_FLIGHTS = "tokyo";
+const COLOR_STAYS = "kyoto";
+const COLOR_TRAINS = "hiroshima";
+const COLOR_ATTRACTIONS = "beppu";
 
 const TEMPLE_KEYWORDS = ["swiatyni", "chram", "jing", "taisha", "inari", "dera", "kinkaku"];
 

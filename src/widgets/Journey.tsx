@@ -1,12 +1,11 @@
 import type { Trip } from "../data/trip";
 
-import { cssVar, formatCurrency } from "../lib/format";
+import { formatCurrency } from "../lib/format";
 import { BlockHead, Section } from "../ui";
 import { Chapter } from "./Chapter";
 
 export function Journey({ trip, mult }: { trip: Trip; mult: number }) {
   const leg = trip.legOut;
-  const tokyo = cssVar(trip.cities.tokyo.v);
 
   return (
     <>
@@ -15,16 +14,12 @@ export function Journey({ trip, mult }: { trip: Trip; mult: number }) {
       ))}
 
       <Section>
-        <BlockHead
-          label="Powrót"
-          jp="帰"
-          style={{ "--tint": "var(--color-seal)" } as React.CSSProperties}
-        />
-        <div
-          className="grid grid-cols-[30px_1fr] items-start gap-[14px] pt-[6px] pb-[30px]"
-          style={{ "--from": tokyo, "--to": tokyo } as React.CSSProperties}
-        >
-          <span className="leg-rail flex flex-col items-center gap-[7px] pt-[4px]">
+        <BlockHead label="Powrót" jp="帰" accent="seal" />
+        <div className="grid grid-cols-[30px_1fr] items-start gap-[14px] pt-[6px] pb-[30px]">
+          <span
+            className="leg-rail flex flex-col items-center gap-[7px] pt-[4px]"
+            data-accent="tokyo"
+          >
             <i></i>
             <span className="font-jp text-[0.9rem] text-ink-3">{leg.mode}</span>
             <i></i>

@@ -3,20 +3,16 @@ import { flushSync } from "react-dom";
 
 import type { City } from "../data/trip";
 
-import { cssVar } from "../lib/format";
-
-/* który rozdział jest teraz — steruje kolorem --now i etykietą w nawigacji */
+/* który rozdział jest teraz — steruje etykietą i akcentem w nawigacji (Nav ustawia data-accent) */
 export function useActiveCity(cities: Record<string, City>) {
   const [activeCity, setActiveCity] = useState<string | null>(null);
   const activeCityRef = useRef<string | null>(null);
 
   useEffect(() => {
     const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
-    const root = document.documentElement;
 
     const applyCity = (key: string | null) => {
       activeCityRef.current = key;
-      root.style.setProperty("--now", key ? cssVar(cities[key].v) : "var(--color-seal)");
       setActiveCity(key);
     };
 

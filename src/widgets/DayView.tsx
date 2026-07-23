@@ -6,7 +6,7 @@ export function DayView({ day, mult }: { day: Day; mult: number }) {
   const items = day.items.filter((it) => it.kind !== "O mieście");
 
   return (
-    <div className="day">
+    <div className="border-t border-hair first:border-t-0">
       <div className="flex items-baseline gap-[12px] px-[2px] pt-[22px] pb-[6px]">
         <span className="flex-none font-jp text-[1.1rem] font-semibold">{day.date}</span>
         <span className="flex-1 font-jp text-[0.75rem] tracking-[0.1em] text-ink-3 uppercase">
@@ -18,11 +18,11 @@ export function DayView({ day, mult }: { day: Day; mult: number }) {
           const q = encodeURIComponent(`${it.title} Japonia`);
           return (
             <div className="it relative grid grid-cols-[3.4rem_1fr] gap-x-[26px] pb-[30px]" key={i}>
-              <span className="col-start-1 pt-[3px] text-right text-[0.82rem] leading-[1.25] font-extrabold text-[var(--tint)] tabular-nums">
+              <span className="col-start-1 pt-[3px] text-right text-[0.82rem] leading-[1.25] font-extrabold text-accent tabular-nums">
                 {it.time}
               </span>
               <div className="col-start-2 min-w-0">
-                <span className="block font-jp text-[0.825rem] font-medium text-[var(--tint)]">
+                <span className="block font-jp text-[0.825rem] font-medium text-accent">
                   {it.kind}
                 </span>
                 <h4 className="mt-[3px] text-[1.14rem] font-[750] tracking-[-0.01em]">
@@ -31,7 +31,7 @@ export function DayView({ day, mult }: { day: Day; mult: number }) {
                       href={it.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="border-b-2 border-b-[var(--tint)] no-underline"
+                      className="border-b-2 border-b-accent no-underline"
                     >
                       {it.title}
                     </a>
@@ -45,12 +45,12 @@ export function DayView({ day, mult }: { day: Day; mult: number }) {
                 )}
                 <div className="mt-[13px] flex flex-wrap items-center gap-[10px]">
                   {it.price === 0 && (
-                    <span className="price inline-block rounded-full bg-transparent px-[13px] py-[4px] text-[0.8rem] font-semibold text-ink-3 tabular-nums">
+                    <span className="shadow-hairline inline-block rounded-full bg-transparent px-[13px] py-[4px] text-[0.8rem] font-semibold text-ink-3 tabular-nums">
                       wstęp wolny
                     </span>
                   )}
                   {!!it.price && (
-                    <span className="price inline-block rounded-full bg-paper-2 px-[13px] py-[4px] text-[0.8rem] font-bold tabular-nums">
+                    <span className="shadow-hairline inline-block rounded-full bg-paper-2 px-[13px] py-[4px] text-[0.8rem] font-bold tabular-nums">
                       {money(it.price, mult)}
                     </span>
                   )}

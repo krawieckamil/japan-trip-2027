@@ -16,7 +16,7 @@ export function CostBreakdown({ trip }: { trip: Trip }) {
 
       {trip.costGroups.map((g, i) => (
         <div className="mt-[30px]" key={g.label}>
-          <div className="cost-h flex items-baseline justify-between gap-[12px] pb-[12px]">
+          <div className="brush-b-foot flex items-baseline justify-between gap-[12px] pb-[12px]">
             <span className="text-[1.06rem] font-extrabold">{g.label}</span>
             <span className="font-extrabold tabular-nums">
               {formatCurrency(totals[i])}
@@ -27,7 +27,7 @@ export function CostBreakdown({ trip }: { trip: Trip }) {
           </div>
           {g.rows.map((r) => (
             <div
-              className="cost-r flex items-baseline justify-between gap-[12px] py-[11px] text-[0.94rem]"
+              className="brush-foot flex items-baseline justify-between gap-[12px] py-[11px] text-[0.94rem]"
               key={r.name}
             >
               <span className="text-ink-2">{r.name}</span>
@@ -48,7 +48,7 @@ export function CostBreakdown({ trip }: { trip: Trip }) {
         </div>
       ))}
 
-      <div className="grand mt-[34px] flex items-center justify-between gap-2 rounded-[7px] bg-ink p-5 text-ground">
+      <div className="mt-[34px] flex items-center justify-between gap-2 rounded-[7px] bg-ink p-5 text-ground shadow-grand">
         <span className="max-w-[30%] text-[0.825rem] font-extrabold tracking-[0.02em] text-balance uppercase">
           Razem na osobę
         </span>
@@ -60,7 +60,7 @@ export function CostBreakdown({ trip }: { trip: Trip }) {
         </span>
       </div>
 
-      <div className="excl mt-[30px] rounded-[6px] bg-paper-2 p-6">
+      <div className="excl mt-[30px] rounded-[6px] bg-paper-2 p-6 shadow-card">
         <h3 className="text-[1.06rem]">Czego ta kwota nie obejmuje</h3>
         <ul className="m-0 mt-[14px] flex list-none flex-col gap-[11px] p-0">
           <li className="relative pl-[18px] text-[0.92rem] leading-[1.55] text-ink-2">
