@@ -1,37 +1,38 @@
 @import "tailwindcss";
 
-@theme inline {
-  --color-ink: var(--ink);
-  --color-ink-2: var(--ink-2);
-  --color-ink-3: var(--ink-3);
-  --color-seal: var(--seal);
-  --color-ground: var(--ground);
-  --color-paper-2: var(--paper-2);
-  --color-plate-fg: var(--plate-fg);
-  --color-hair: var(--hair);
-  --color-line: var(--line);
-  --font-jp: var(--f-jp);
-  --font-ui: var(--f-ui);
-}
-
 /* ============================================================
        浮世 — plan wyjazdu jako seria drzeworytów (ukiyo-e).
        Papier + tusz. Płaskie plamy koloru per miasto. Pieczęcie.
        Pasma mgły (kasumi) rozdzielają sceny. Zero animowanego tła.
        ============================================================ */
 
-:root {
-  --ground: #e7dbc0; /* washi */
-  --paper-2: #f1e7d1; /* jaśniejszy papier na karty/plansze */
-  --ink: #211a11;
-  --ink-2: #574b37;
-  --ink-3: #6b5d40; /* przyciemnione — 4.7:1 na washi, przechodzi WCAG AA */
-  --line: rgba(33, 26, 17, 0.9); /* keyline drzeworytu */
-  --hair: rgba(33, 26, 17, 0.16);
-  --seal: #b23a2b;
-  --plate-fg: #f4ecd8; /* tekst na kolorowej planszy */
-  --now: var(--seal);
+/* tokeny projektu — statyczna paleta i kroje; mapują się na utility (text-ink, bg-ground, font-jp …) */
+@theme {
+  --color-ground: #e7dbc0; /* washi */
+  --color-paper-2: #f1e7d1; /* jaśniejszy papier na karty/plansze */
+  --color-ink: #211a11;
+  --color-ink-2: #574b37;
+  --color-ink-3: #6b5d40; /* przyciemnione — 4.7:1 na washi, przechodzi WCAG AA */
+  --color-seal: #b23a2b;
+  --color-plate-fg: #f4ecd8; /* tekst na kolorowej planszy */
+  --color-hair: rgba(33, 26, 17, 0.16);
 
+  --font-jp: "Hiragino Mincho ProN", "Yu Mincho", YuMincho, "Songti SC", "Noto Serif JP", serif;
+  --font-ui:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Segoe UI", system-ui,
+    sans-serif;
+}
+
+/* tokeny konsumowane przez var() w regułach niżej (nie przez utility), więc static wymusza emisję:
+   wspólna krzywa „pociągnięcia pędzla” + cień unoszącej się karty */
+@theme static {
+  --ease-brush: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 22px 44px -34px rgba(33, 26, 17, 0.6);
+}
+
+/* zmienne runtime (nie mapują się na utility): paleta miast dobierana per-rozdział przez --tint,
+   nadpisywana inline, oraz tekstury pędzla wspólne dla wielu reguł */
+:root {
   --c-tokyo: #4b3fd9;
   --c-kyoto: #17795e;
   --c-osaka: #cf3a26;
@@ -39,12 +40,8 @@
   --c-fukuoka: #0b7f7a;
   --c-beppu: #b9761a;
 
-  --f-jp: "Hiragino Mincho ProN", "Yu Mincho", YuMincho, "Songti SC", "Noto Serif JP", serif;
-  --f-ui:
-    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Segoe UI", system-ui,
-    sans-serif;
-
-  --tint: var(--ink);
+  --tint: var(--color-ink);
+  --now: var(--color-seal);
 
   /* pociągnięcia pędzla zamiast twardych linijek */
   --brush: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%2012'%20preserveAspectRatio='none'%3E%3Cpath%20d='M5%207%20C%20200%204%20340%209%20560%206%20C%20760%203.5%20900%209.5%201195%206.5%20C%20900%208.5%20760%206%20560%208.5%20C%20340%2011%20200%206.5%205%209%20Z'%20fill='%23211a11'%20fill-opacity='0.42'/%3E%3C/svg%3E");
@@ -60,9 +57,9 @@
 
 body {
   margin: 0;
-  background: var(--ground);
-  color: var(--ink);
-  font-family: var(--f-ui);
+  background: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-ui);
   font-size: 17px;
   line-height: 1.62;
   letter-spacing: -0.006em;
@@ -90,7 +87,7 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--seal);
+  outline: 2px solid var(--color-seal);
   outline-offset: 3px;
 }
 
@@ -107,11 +104,11 @@ h4 {
 
 /* etykieta — podpis kuratorski pod ryciną, nie korporacyjny "eyebrow" */
 .sec-head .label::after {
-  font-family: var(--f-jp);
+  font-family: var(--font-jp);
   font-style: normal;
   font-size: 1.15em;
   letter-spacing: 0;
-  color: var(--seal);
+  color: var(--color-seal);
   margin-left: 0.5em;
   vertical-align: -0.14em;
 }
@@ -130,7 +127,7 @@ h4 {
 
 /* ---------- nawigacja ---------- */
 .nav {
-  background: color-mix(in srgb, var(--ground) 90%, transparent);
+  background: color-mix(in srgb, var(--color-ground) 90%, transparent);
   background-image: var(--brush);
   background-repeat: no-repeat;
   background-position: bottom;
@@ -206,7 +203,6 @@ h4 {
   }
 }
 
-/* ---------- układ ---------- */
 /* ---------- hero / okładka serii ---------- */
 .hero {
   /* pasmo mgły zamyka okładkę u dołu, zaciera krawędź grzbietu */
@@ -254,7 +250,7 @@ h4 {
   left: -8%;
   right: -8%;
   bottom: 0;
-  background: var(--ink);
+  background: var(--color-ink);
 }
 
 .hero-ridge--far {
@@ -283,21 +279,20 @@ h4 {
   background: linear-gradient(
     180deg,
     transparent,
-    var(--ground) 40%,
-    var(--ground) 60%,
+    var(--color-ground) 40%,
+    var(--color-ground) 60%,
     transparent
   );
   filter: blur(9px);
   opacity: 0.85;
 }
 
-/* kolofon — cichy pionowy podpis przy prawej krawędzi */
 /* zaproszenie do przewinięcia */
 .hero-cue {
   i {
     width: 1px;
     height: 28px;
-    background: linear-gradient(var(--ink-3), transparent);
+    background: linear-gradient(var(--color-ink-3), transparent);
     transform-origin: top;
     animation: cueDrop 2s ease-in-out infinite;
   }
@@ -343,35 +338,41 @@ h4 {
 }
 
 .hero-art {
-  animation: heroFade 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation: heroFade 1.1s var(--ease-brush) both;
 }
 
 .hero-jp {
-  animation: heroFade 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation: heroFade 0.9s var(--ease-brush) both;
 }
 
 .hero h1 {
-  animation: heroFade 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.12s both;
+  animation: heroFade 0.9s var(--ease-brush) 0.12s both;
 }
 
 .hero-when {
-  animation: heroFade 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.22s both;
+  animation: heroFade 0.9s var(--ease-brush) 0.22s both;
 }
 
 .hero-facts {
-  animation: heroFade 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s both;
+  animation: heroFade 0.9s var(--ease-brush) 0.3s both;
+
+  .fact:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
 }
 
 .hero-note {
-  animation: heroFade 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.38s both;
+  animation: heroFade 0.9s var(--ease-brush) 0.38s both;
 }
 
 .hero-colophon {
-  animation: heroFade 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.45s both;
+  animation: heroFade 1s var(--ease-brush) 0.45s both;
 }
 
 .seal {
   animation: heroStamp 0.7s cubic-bezier(0.3, 1.4, 0.4, 1) 0.5s both;
+  box-shadow: 0 10px 26px -16px rgba(120, 30, 20, 0.9);
 }
 
 /* przewijanie sceny — grzbiety i mgła oddalają się w różnym tempie */
@@ -412,17 +413,6 @@ h4 {
   }
 }
 
-.seal {
-  box-shadow: 0 10px 26px -16px rgba(120, 30, 20, 0.9);
-}
-
-.hero-facts {
-  .fact:first-child {
-    padding-left: 0;
-    border-left: 0;
-  }
-}
-
 /* ---------- indeks trasy (seria widoków) ---------- */
 #trasa {
   ol {
@@ -430,21 +420,49 @@ h4 {
   }
 }
 
-.index {
-  background-image: var(--brush-b);
+/* pasmo mgły / pociągnięcie pędzla jako separator — jeden wzorzec sterowany zmiennymi.
+   Domyślnie: --brush, dół, 9px; poszczególne klasy nadpisują tylko to, co inne. */
+.index,
+.idx,
+.setup-div,
+.block-head,
+.stay-foot,
+.cost-h,
+.cost-r {
+  background-image: var(--brush-img, var(--brush));
   background-repeat: no-repeat;
-  background-position: top;
-  background-size: 100% 12px;
+  background-position: var(--brush-pos, bottom);
+  background-size: 100% var(--brush-h, 9px);
 }
 
+.index {
+  --brush-img: var(--brush-b);
+  --brush-pos: top;
+  --brush-h: 12px;
+}
+
+.block-head,
+.cost-h {
+  --brush-img: var(--brush-b);
+  --brush-h: 12px;
+}
+
+.setup-div {
+  --brush-pos: center;
+  --brush-h: 10px;
+}
+
+.stay-foot {
+  --brush-pos: top;
+}
+
+/* .cost-r korzysta z domyślnych (--brush / bottom / 9px) */
+
 .idx {
-  background-image: var(--brush);
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: 100% 10px;
+  --brush-h: 10px;
 
   a {
-    transition: padding-left 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: padding-left 0.3s var(--ease-brush);
 
     &:hover {
       padding-left: 12px;
@@ -454,7 +472,7 @@ h4 {
 
 /* ---------- koszt / rejestr ---------- */
 .toggle {
-  box-shadow: inset 0 0 0 1px var(--hair);
+  box-shadow: inset 0 0 0 1px var(--color-hair);
 
   button {
     transition:
@@ -478,8 +496,8 @@ h4 {
 .bar-fill {
   background: linear-gradient(
     90deg,
-    var(--bar-c, var(--ink)),
-    color-mix(in srgb, var(--bar-c, var(--ink)) 70%, white 30%)
+    var(--bar-c, var(--color-ink)),
+    color-mix(in srgb, var(--bar-c, var(--color-ink)) 70%, white 30%)
   );
   transition: filter 0.2s ease;
 }
@@ -488,7 +506,7 @@ h4 {
   margin-top: 34px;
   font-size: 1.06rem;
   line-height: 1.55;
-  color: var(--ink);
+  color: var(--color-ink);
   max-width: 30rem;
 
   b {
@@ -502,7 +520,7 @@ h4 {
   --pmix: 82%; /* pełny kolor drzeworytu; kremowy tekst ≥5:1 (Beppu ma własny) */
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.14)),
-    color-mix(in srgb, var(--tint) var(--pmix), var(--ink));
+    color-mix(in srgb, var(--tint) var(--pmix), var(--color-ink));
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.22) inset,
     0 20px 46px -26px rgba(33, 26, 17, 0.6),
@@ -519,7 +537,7 @@ h4 {
     bottom: 16px;
     width: 52%;
     height: 66%;
-    background: var(--plate-fg);
+    background: var(--color-plate-fg);
     opacity: 0.13;
     -webkit-mask: var(--motif, none) right bottom / contain no-repeat;
     mask: var(--motif, none) right bottom / contain no-repeat;
@@ -540,17 +558,17 @@ h4 {
 
 .plate-about-i {
   p {
-    color: color-mix(in srgb, var(--plate-fg) 68%, transparent);
+    color: color-mix(in srgb, var(--color-plate-fg) 68%, transparent);
   }
 
   &.lead p::first-letter {
     float: left;
-    font-family: var(--f-jp);
+    font-family: var(--font-jp);
     font-weight: 600;
     font-size: 1.7em;
     line-height: 0.78;
     padding: 0.03em 0.06em 0 0;
-    color: color-mix(in srgb, var(--plate-fg) 88%, transparent);
+    color: color-mix(in srgb, var(--color-plate-fg) 88%, transparent);
   }
 }
 
@@ -558,7 +576,7 @@ h4 {
 .plate-about-div {
   background: linear-gradient(
     90deg,
-    color-mix(in srgb, var(--plate-fg) 28%, transparent),
+    color-mix(in srgb, var(--color-plate-fg) 28%, transparent),
     transparent 70%
   );
 }
@@ -595,29 +613,11 @@ h4 {
 
 /* ---------- setup: dojazd + nocleg w jednej karcie ---------- */
 .setup {
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.4) inset,
-    0 22px 44px -34px rgba(33, 26, 17, 0.6);
+  box-shadow: var(--shadow-card);
 }
 
 .mode {
   box-shadow: 0 6px 16px -10px rgba(33, 26, 17, 0.9);
-}
-
-/* pasmo mgły rozdziela dojazd i nocleg wewnątrz karty */
-.setup-div {
-  background-image: var(--brush);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 10px;
-}
-
-/* nagłówek bloku — Plan dnia / Warto zobaczyć */
-.block-head {
-  background-image: var(--brush-b);
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: 100% 12px;
 }
 
 /* przejazd — nitka tuszu z kolorem obu miast (lot powrotny) */
@@ -630,17 +630,9 @@ h4 {
   }
 }
 
-/* nocleg — wnętrze karty setup (bez własnej ramki) */
-.stay-foot {
-  background-image: var(--brush);
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: 100% 9px;
-}
-
 .day {
   /* spokojna cienka linia zamiast falującego pasma między dniami */
-  border-top: 1px solid var(--hair);
+  border-top: 1px solid var(--color-hair);
 
   &:first-child {
     border-top: 0;
@@ -658,7 +650,7 @@ h4 {
     top: 9px;
     bottom: -9px;
     width: 2px;
-    background: color-mix(in srgb, var(--tint) 28%, var(--hair));
+    background: color-mix(in srgb, var(--tint) 28%, var(--color-hair));
   }
 
   &:last-child::before {
@@ -689,7 +681,7 @@ h4 {
 
 /* ta sama pigułka co badge ceny (wariant ghost), żeby rząd był spójny */
 .it-ph {
-  box-shadow: inset 0 0 0 1px var(--hair);
+  box-shadow: inset 0 0 0 1px var(--color-hair);
   transition:
     color 0.2s ease,
     box-shadow 0.2s ease;
@@ -702,32 +694,16 @@ h4 {
 }
 
 .price {
-  box-shadow: inset 0 0 0 1px var(--hair);
+  box-shadow: inset 0 0 0 1px var(--color-hair);
 }
 
 /* ---------- rozbicie / rejestr ---------- */
-.cost-h {
-  background-image: var(--brush-b);
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: 100% 12px;
-}
-
-.cost-r {
-  background-image: var(--brush);
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: 100% 9px;
-}
-
 .grand {
   box-shadow: 0 20px 40px -30px rgba(33, 26, 17, 0.8);
 }
 
 .excl {
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.4) inset,
-    0 22px 44px -34px rgba(33, 26, 17, 0.6);
+  box-shadow: var(--shadow-card);
 
   li {
     &::before {
@@ -735,13 +711,12 @@ h4 {
       position: absolute;
       left: 0;
       top: 0;
-      color: var(--seal);
+      color: var(--color-seal);
       font-weight: 700;
     }
   }
 }
 
-/* ---------- stopka ---------- */
 /* ---------- tablet ---------- */
 @media (min-width: 720px) {
   body {
@@ -759,7 +734,7 @@ h4 {
       }
     }
     .plate {
-      animation: plateStamp 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+      animation: plateStamp 0.9s var(--ease-brush) backwards;
       animation-timeline: view();
       animation-range: entry 0% entry 55%;
     }
@@ -771,7 +746,7 @@ h4 {
       }
     }
     .idx {
-      animation: idxIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+      animation: idxIn 0.7s var(--ease-brush) backwards;
       animation-timeline: view();
       animation-range: entry 0% entry 85%;
     }
@@ -783,15 +758,13 @@ h4 {
       }
     }
     .it {
-      animation: itIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+      animation: itIn 0.7s var(--ease-brush) backwards;
       animation-timeline: view();
       animation-range: entry 0% entry 60%;
     }
   }
-}
 
-/* przejście etykiety w nawigacji przy zmianie rozdziału */
-@media (prefers-reduced-motion: no-preference) {
+  /* przejście etykiety w nawigacji przy zmianie rozdziału */
   .nav-now {
     view-transition-name: nav-label;
   }
@@ -804,7 +777,7 @@ h4 {
   ::view-transition-old(nav-label),
   ::view-transition-new(nav-label) {
     animation-duration: 0.32s;
-    animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+    animation-timing-function: var(--ease-brush);
   }
 }
 

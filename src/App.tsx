@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { TRIP } from "./data/trip";
+import { useActiveCity } from "./hooks/useActiveCity";
 import { CostBreakdown } from "./widgets/CostBreakdown";
 import { CostOverview } from "./widgets/CostOverview";
 import { Footer } from "./widgets/Footer";
@@ -7,8 +9,6 @@ import { Hero } from "./widgets/Hero";
 import { Journey } from "./widgets/Journey";
 import { Nav } from "./widgets/Nav";
 import { RouteIndex } from "./widgets/RouteIndex";
-import { TRIP } from "./data/trip";
-import { useActiveCity } from "./hooks/useActiveCity";
 
 function App() {
   const [mult, setMult] = useState(1);

@@ -16,7 +16,7 @@ export function useActiveCity(cities: Record<string, City>) {
 
     const applyCity = (key: string | null) => {
       activeCityRef.current = key;
-      root.style.setProperty("--now", key ? cssVar(cities[key].v) : "var(--seal)");
+      root.style.setProperty("--now", key ? cssVar(cities[key].v) : "var(--color-seal)");
       setActiveCity(key);
     };
 

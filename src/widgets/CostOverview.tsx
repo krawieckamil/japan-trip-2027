@@ -108,12 +108,12 @@ export function CostOverview({
             >
               <span className="flex items-center text-[0.94rem] font-semibold">
                 <i
-                  className="mr-[9px] inline-block h-2 w-2 flex-none rotate-45 bg-[var(--bar-c,var(--ink))]"
+                  className="mr-[9px] inline-block h-2 w-2 flex-none rotate-45 bg-[var(--bar-c,var(--color-ink))]"
                   aria-hidden="true"
                 ></i>
                 {g.label}
               </span>
-              <span className="text-[0.94rem] font-bold text-[var(--bar-c,var(--ink))] tabular-nums">
+              <span className="text-[0.94rem] font-bold text-[var(--bar-c,var(--color-ink))] tabular-nums">
                 {money(t)}
               </span>
               <span className="col-span-full h-[6px] overflow-hidden rounded-[3px] bg-hair">

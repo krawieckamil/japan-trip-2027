@@ -48,7 +48,9 @@ function Setup({ stint, mult }: { stint: Stint; mult: number }) {
           <span className="mt-[2px] block text-[0.88rem] text-ink-2 tabular-nums">
             {leg.when} · {formatCurrency(leg.price * mult)}
           </span>
-          <p className="mt-2 text-[0.82rem] leading-[1.5] text-ink-3 whitespace-pre-wrap">{leg.note}</p>
+          <p className="mt-2 text-[0.82rem] leading-[1.5] whitespace-pre-wrap text-ink-3">
+            {leg.note}
+          </p>
         </span>
       </div>
       <div className="setup-div my-[22px] h-[10px]" aria-hidden="true"></div>
@@ -58,7 +60,9 @@ function Setup({ stint, mult }: { stint: Stint; mult: number }) {
         <div className="stay-when mt-[5px] text-[0.82rem] text-ink-3 tabular-nums">
           {st.from} → {st.to}
         </div>
-        <p className="mt-[13px] text-[0.94rem] leading-[1.6] text-ink-2 whitespace-pre-wrap">{st.description}</p>
+        <p className="mt-[13px] text-[0.94rem] leading-[1.6] whitespace-pre-wrap text-ink-2">
+          {st.description}
+        </p>
         <div className="stay-foot mt-[18px] flex flex-wrap items-center justify-between gap-x-[16px] gap-y-2 pt-[17px]">
           <span className="cost flex items-baseline gap-2 font-extrabold tabular-nums">
             {money(st.price, mult)}

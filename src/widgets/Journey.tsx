@@ -18,7 +18,7 @@ export function Journey({ trip, mult }: { trip: Trip; mult: number }) {
         <BlockHead
           label="Powrót"
           jp="帰"
-          style={{ "--tint": "var(--seal)" } as React.CSSProperties}
+          style={{ "--tint": "var(--color-seal)" } as React.CSSProperties}
         />
         <div
           className="grid grid-cols-[30px_1fr] items-start gap-[14px] pt-[6px] pb-[30px]"

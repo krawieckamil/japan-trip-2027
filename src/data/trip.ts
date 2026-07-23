@@ -325,7 +325,7 @@ function buildStay(h: TripsyHosting): Stay {
     from: withComma(h.starts_at_jst),
     to: withComma(h.ends_at_jst),
     url: h.website ?? "",
-    description: h.description || '',
+    description: h.description || "",
   };
 }
 

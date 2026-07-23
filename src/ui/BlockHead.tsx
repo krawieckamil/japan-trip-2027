@@ -12,7 +12,10 @@ export function BlockHead({
   return (
     <div className="block-head mb-1 flex items-baseline gap-[14px] pb-[12px]">
       <Label>{label}</Label>
-      <span className="ml-auto font-jp text-[1.35rem] leading-none text-[var(--tint)]" style={style}>
+      <span
+        className="ml-auto font-jp text-[1.35rem] leading-none text-[var(--tint)]"
+        style={style}
+      >
         {jp}
       </span>
     </div>
