@@ -318,6 +318,33 @@ h4 {
 }
 
 /* ---------- scena okładki — słońce i grzbiety gór, warstwami jak w serii Hokusaia ---------- */
+/* słońce jako dysk tuszu wsiąkły w papier — rdzeń nasycony, krawędź rozmyta w washi + cicha aureola */
+@utility hero-sun {
+  /* 日本 = źródło słońca: dysk wypływa w górę zza grzbietu i zastyga (top, nie transform — parallax siedzi na transform) */
+  animation: heroSunRise 1.4s var(--ease-brush) 0.15s both;
+  background: radial-gradient(
+    circle at 50% 46%,
+    color-mix(in srgb, var(--color-seal) 88%, #e08a52) 0%,
+    var(--color-seal) 44%,
+    color-mix(in srgb, var(--color-seal) 64%, transparent) 80%,
+    transparent 100%
+  );
+
+  /* aureola — pierścień mgły wokół tarczy, jak słońce przez kasumi */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -16%;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      transparent 58%,
+      color-mix(in srgb, var(--color-seal) 24%, transparent) 71%,
+      transparent 84%
+    );
+  }
+}
+
 @utility hero-ridge {
   position: absolute;
   left: -8%;
@@ -490,6 +517,14 @@ h4 {
 
   .hero-sun {
     --amt: 30px;
+    /* wschód (czas dokumentu) + parallax (oś scrolla) równolegle — osobne osie i właściwości, bez kolizji */
+    animation:
+      heroSunRise 1.4s var(--ease-brush) 0.15s both,
+      heroParallax linear both;
+    animation-timeline: auto, --heroScene;
+    animation-range:
+      normal,
+      cover 0% cover 100%;
   }
 
   .hero-ridge-far {
@@ -508,6 +543,21 @@ h4 {
 @keyframes heroParallax {
   to {
     transform: translateY(var(--amt, 60px));
+  }
+}
+
+/* wschód słońca — dysk podnosi się do rogu i rozjaśnia, jak tarcza wynurzająca się zza gór */
+@keyframes heroSunRise {
+  from {
+    top: 27%;
+    opacity: 0;
+  }
+  55% {
+    opacity: 0.5;
+  }
+  to {
+    top: 3%;
+    opacity: 0.5;
   }
 }
 
@@ -682,17 +732,37 @@ h4 {
   top: 0;
   width: 12px;
   height: 9px;
-  background: radial-gradient(120% 120% at 30% 20%, #f7cbd9, #e79cb6 68%, #d5809f);
+  background: radial-gradient(
+    120% 120% at 30% 20%,
+    var(--p1, #f7cbd9),
+    var(--p2, #e79cb6) 68%,
+    var(--p3, #d5809f)
+  );
   border-radius: 100% 0 55% 0 / 100% 0 55% 0;
+  /* płatki w tle rozmyte — plan głębi, jak w scenie z lotnymi kwiatami */
+  filter: blur(var(--blur, 0));
   will-change: transform;
   animation: petalFall linear infinite;
 }
 
+/* opadanie z kołysaniem: dryf nie jest prostą przekątną, płatek odbija się bokiem w powietrzu */
 @keyframes petalFall {
-  from {
+  0% {
     transform: translate3d(0, -12svh, 0) rotate(0) scale(var(--s, 1));
   }
-  to {
+  25% {
+    transform: translate3d(calc(var(--drift, 24px) * 0.55), 18svh, 0) rotate(160deg)
+      scale(var(--s, 1));
+  }
+  50% {
+    transform: translate3d(calc(var(--drift, 24px) * 0.15), 50svh, 0) rotate(350deg)
+      scale(var(--s, 1));
+  }
+  75% {
+    transform: translate3d(calc(var(--drift, 24px) * 0.85), 80svh, 0) rotate(520deg)
+      scale(var(--s, 1));
+  }
+  100% {
     transform: translate3d(var(--drift, 24px), 106svh, 0) rotate(680deg) scale(var(--s, 1));
   }
 }

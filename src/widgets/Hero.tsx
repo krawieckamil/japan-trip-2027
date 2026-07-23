@@ -1,12 +1,4 @@
-import { Seal } from "../ui";
 import { Sakura } from "./Sakura";
-
-const FACTS = [
-  { v: "15", l: "dni w Japonii" },
-  { v: "6", l: "miast" },
-  { v: "14", l: "nocy" },
-  { v: "4", l: "osoby" },
-];
 
 export function Hero() {
   return (
@@ -15,7 +7,7 @@ export function Hero() {
         className="hero-art pointer-events-none absolute inset-y-0 left-1/2 z-0 w-screen -translate-x-1/2 overflow-hidden"
         aria-hidden="true"
       >
-        <span className="hero-sun absolute top-[3%] right-[9%] aspect-square w-[clamp(110px,24vw,250px)] rounded-full bg-seal opacity-50"></span>
+        <span className="hero-sun absolute top-[3%] right-[9%] aspect-square w-[clamp(110px,24vw,250px)] rounded-full opacity-50"></span>
         <span className="hero-ridge hero-ridge-far"></span>
         <span className="hero-ridge hero-ridge-near"></span>
         <span className="hero-mist"></span>
@@ -31,25 +23,12 @@ export function Hero() {
         <span className="hero-jp m-0 mb-[0.1em] ml-[-0.04em] block font-jp text-[clamp(5rem,34vw,12rem)] leading-[0.82] font-medium tracking-[0.03em]">
           日本
         </span>
-        <Seal className="seal absolute top-[-0.16em] right-[-0.66em] w-[clamp(58px,15vw,104px)] rotate-3 shadow-seal">
-          <span className="text-[clamp(1.9rem,6.5vw,3.4rem)] leading-none">旅</span>
-        </Seal>
       </span>
       <h1 className="hero-h1 mb-[0.5em] pb-[0.32em] font-title text-[clamp(2.2rem,7.6vw,3.4rem)] font-extrabold tracking-[0.06em] uppercase">
         Japonia
       </h1>
       <div className="hero-when mb-[26px] font-jp text-[1.2rem] tracking-[0.04em] text-ink-2">
         10 – 26 maja 2027
-      </div>
-      <div className="hero-facts mb-[6px] flex flex-wrap gap-0">
-        {FACTS.map((f) => (
-          <span
-            className="fact border-l border-l-hair px-4 text-[0.82rem] font-semibold text-ink-2 first:border-l-0 first:pl-0"
-            key={f.l}
-          >
-            <b className="font-extrabold text-ink tabular-nums">{f.v}</b> {f.l}
-          </span>
-        ))}
       </div>
       <p className="hero-note mt-[30px] max-w-[30rem] border-l-[3px] border-l-seal pl-[15px] text-[0.86rem] leading-[1.6] text-ink-2">
         Plan wciąż się układa. Noclegi to wybrane propozycje do rezerwacji, ceny — szacunki po
