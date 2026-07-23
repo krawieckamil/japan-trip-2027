@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import { CostBreakdown } from "./components/CostBreakdown";
-import { CostOverview } from "./components/CostOverview";
-import { Footer } from "./components/Footer";
-import { Hero } from "./components/Hero";
-import { Journey } from "./components/Journey";
-import { Nav } from "./components/Nav";
-import { RouteIndex } from "./components/RouteIndex";
+import { CostBreakdown } from "./widgets/CostBreakdown";
+import { CostOverview } from "./widgets/CostOverview";
+import { Footer } from "./widgets/Footer";
+import { Hero } from "./widgets/Hero";
+import { Journey } from "./widgets/Journey";
+import { Nav } from "./widgets/Nav";
+import { RouteIndex } from "./widgets/RouteIndex";
 import { TRIP } from "./data/trip";
 import { useActiveCity } from "./hooks/useActiveCity";
 
