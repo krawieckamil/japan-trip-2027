@@ -17,12 +17,14 @@
   --color-plate-fg: #f4ecd8; /* tekst na kolorowej planszy */
   --color-hair: rgba(33, 26, 17, 0.16);
 
-  /* Shippori Mincho B1 — odrodzenie 明朝 w duchu druku/drzeworytu; wspólny głos dla glifów JP
-     i wielkich tytułów łacińskich (font-title). Systemowe Mincho jako fallback. */
+  /* Playfair Display — wysokokontrastowy szeryf display z pełną polską łaciną (ą/ć/ę/ł/ń/ó/ś/ź/ż),
+     w duchu Mincho. Prowadzi dla całego tekstu łacińskiego. Shippori Mincho B1 zostaje tylko jako
+     fallback dla glifów CJK (日本, 京都…), których Playfair nie ma. */
   --font-jp:
-    "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", YuMincho, "Songti SC",
-    "Noto Serif JP", serif;
-  --font-title: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", YuMincho, serif;
+    "Playfair Display", "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", YuMincho,
+    "Songti SC", "Noto Serif JP", serif;
+  --font-title:
+    "Playfair Display", "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
   --font-ui:
     -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Segoe UI", system-ui,
     sans-serif;
@@ -138,9 +140,12 @@ h2,
 h3,
 h4 {
   margin: 0;
-  font-weight: 750;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  /* nagłówki treści w kroju display (Mincho) — spójnie z tytułem, glifami i etykietami;
+     tekst bieżący, liczby i drobne etykiety nawigacji zostają w sansie (kontrast) */
+  font-family: var(--font-title);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
   text-wrap: balance;
 }
 

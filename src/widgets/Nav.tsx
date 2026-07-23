@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
 import type { Trip } from "../data/trip";
+import { Label } from "../ui";
 
 export function Nav({ trip, activeCity }: { trip: Trip; activeCity: string | null }) {
   const firstStint = useMemo(() => {
@@ -25,11 +26,11 @@ export function Nav({ trip, activeCity }: { trip: Trip; activeCity: string | nul
       aria-label="Nawigacja po wyjeździe"
       data-accent={activeCity ?? "seal"}
     >
-      <span className="nav-now flex min-w-0 items-baseline gap-[9px]">
+      <span className="nav-now flex min-w-0 items-center gap-[9px]">
         <span className="font-jp text-[1.15rem] text-accent">{now ? now.jp : "日本"}</span>
-        <span className="overflow-hidden text-[0.72rem] font-bold tracking-[0.16em] text-ellipsis whitespace-nowrap text-ink-2 uppercase">
+        <Label className="overflow-hidden font-bold  text-ellipsis whitespace-nowrap text-ink-2">
           {now ? now.name : "Plan wyjazdu"}
-        </span>
+        </Label>
       </span>
       <span className="dots flex flex-none gap-[9px]">
         {Object.entries(trip.cities).map(([key, city]) => (

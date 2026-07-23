@@ -1,7 +1,7 @@
 import type { Stint, City } from "../data/trip";
 
 import { money, nightsLabel, formatCurrency } from "../lib/format";
-import { BlockHead } from "../ui";
+import { BlockHead, Label } from "../ui";
 import { DayView } from "./DayView";
 
 function PlateAbout({
@@ -43,7 +43,7 @@ function Setup({ stint, mult }: { stint: Stint; mult: number }) {
           {leg.mode}
         </span>
         <span className="setup-leg-b">
-          <span className="label text-accent">Dojazd</span>
+          <Label className=" text-accent">Dojazd</Label>
           <span className="mt-[3px] block font-bold tracking-[-0.01em] text-ink">{leg.what}</span>
           <span className="mt-[2px] block text-[0.88rem] text-ink-2 tabular-nums">
             {leg.when} · {formatCurrency(leg.price * mult)}
@@ -55,7 +55,7 @@ function Setup({ stint, mult }: { stint: Stint; mult: number }) {
       </div>
       <div className="brush-mid my-[22px] h-[10px]" aria-hidden="true"></div>
       <div className="stay">
-        <span className="label text-accent">Nocleg</span>
+        <Label className=" text-accent">Nocleg</Label>
         <h3 className="mt-2 text-[1.35rem]">{st.name}</h3>
         <div className="stay-when mt-[5px] text-[0.82rem] text-ink-3 tabular-nums">
           {st.from} → {st.to}

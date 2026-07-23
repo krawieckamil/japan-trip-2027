@@ -1,6 +1,7 @@
 import type { Day } from "../data/trip";
 
 import { money } from "../lib/format";
+import { Label } from "../ui";
 
 export function DayView({ day, mult }: { day: Day; mult: number }) {
   const items = day.items.filter((it) => it.kind !== "O mieście");
@@ -21,10 +22,10 @@ export function DayView({ day, mult }: { day: Day; mult: number }) {
               <span className="col-start-1 pt-[3px] text-right text-[0.82rem] leading-[1.25] font-extrabold text-accent tabular-nums">
                 {it.time}
               </span>
-              <div className="col-start-2 min-w-0">
-                <span className="block font-jp text-[0.825rem] font-medium text-accent">
+              <div className="col-start-2 min-w-0 -mt-[5px]">
+                <Label className="block text-[0.75rem]  text-accent">
                   {it.kind}
-                </span>
+                </Label>
                 <h4 className="mt-[3px] text-[1.14rem] font-[750] tracking-[-0.01em]">
                   {it.url ? (
                     <a

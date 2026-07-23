@@ -4,7 +4,7 @@ export function Label({ children, className }: { children: React.ReactNode; clas
   return (
     <span
       className={cn(
-        "label inline-block font-jp text-base font-medium tracking-[0.05em]",
+        "label inline-block font-title font-bold uppercase text-sm tracking-[0.05em]",
         className,
       )}
     >
