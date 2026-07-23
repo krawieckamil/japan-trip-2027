@@ -1,0 +1,1610 @@
+{
+  "fetched_at": "2026-07-23T18:27:48.044Z",
+  "cities": {
+    "tokyo": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Shibuya_Crossing%2C_Aerial.jpg/500px-Shibuya_Crossing%2C_Aerial.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Shibuya_Crossing%2C_Aerial.jpg/1920px-Shibuya_Crossing%2C_Aerial.jpg",
+        "w": 480,
+        "h": 270,
+        "credit": "David Kernan",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Shibuya_Crossing,_Aerial.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Sensoji_2023.jpg/500px-Sensoji_2023.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Sensoji_2023.jpg/1920px-Sensoji_2023.jpg",
+        "w": 480,
+        "h": 343,
+        "credit": "Akonnchiroll",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Sensoji_2023.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Tokyo_Tower_2023.jpg/500px-Tokyo_Tower_2023.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Tokyo_Tower_2023.jpg/1920px-Tokyo_Tower_2023.jpg",
+        "w": 480,
+        "h": 640,
+        "credit": "Akonnchiroll",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Tokyo_Tower_2023.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Tokyo_Skytree_2014_%E2%85%A2.jpg/500px-Tokyo_Skytree_2014_%E2%85%A2.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/8/84/Tokyo_Skytree_2014_%E2%85%A2.jpg",
+        "w": 480,
+        "h": 735,
+        "credit": "Kakidai",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Tokyo_Skytree_2014_%E2%85%A2.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Tokyo_%2C_%E6%9D%B1%E4%BA%AC_-_Flickr_-_Melvin_Loi_%281%29.jpg/500px-Tokyo_%2C_%E6%9D%B1%E4%BA%AC_-_Flickr_-_Melvin_Loi_%281%29.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Tokyo_%2C_%E6%9D%B1%E4%BA%AC_-_Flickr_-_Melvin_Loi_%281%29.jpg/1920px-Tokyo_%2C_%E6%9D%B1%E4%BA%AC_-_Flickr_-_Melvin_Loi_%281%29.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Melvin Loi from Macau, Macau",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Tokyo_,_%E6%9D%B1%E4%BA%AC_-_Flickr_-_Melvin_Loi_(1).jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Hozomon_Gate%28left%29%E3%83%BBFive-storied_Pagoda%28center%29%E3%83%BBFortune_Slip_Shop%28right%29.jpg/500px-Hozomon_Gate%28left%29%E3%83%BBFive-storied_Pagoda%28center%29%E3%83%BBFortune_Slip_Shop%28right%29.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Hozomon_Gate%28left%29%E3%83%BBFive-storied_Pagoda%28center%29%E3%83%BBFortune_Slip_Shop%28right%29.jpg/1920px-Hozomon_Gate%28left%29%E3%83%BBFive-storied_Pagoda%28center%29%E3%83%BBFortune_Slip_Shop%28right%29.jpg",
+        "w": 480,
+        "h": 94,
+        "credit": "Souka Kinmei",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Hozomon_Gate(left)%E3%83%BBFive-storied_Pagoda(center)%E3%83%BBFortune_Slip_Shop(right).jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Inside_the_main_hall.jpg/500px-Inside_the_main_hall.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Inside_the_main_hall.jpg/1920px-Inside_the_main_hall.jpg",
+        "w": 480,
+        "h": 99,
+        "credit": "Souka Kinmei",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Inside_the_main_hall.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Worm%27s-eye_view_of_Tokyo_Skytree_with_vertical_symmetry_impression%2C_a_sunny_day%2C_in_Japan.jpg/500px-Worm%27s-eye_view_of_Tokyo_Skytree_with_vertical_symmetry_impression%2C_a_sunny_day%2C_in_Japan.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Worm%27s-eye_view_of_Tokyo_Skytree_with_vertical_symmetry_impression%2C_a_sunny_day%2C_in_Japan.jpg/1920px-Worm%27s-eye_view_of_Tokyo_Skytree_with_vertical_symmetry_impression%2C_a_sunny_day%2C_in_Japan.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Basile Morin",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Worm%27s-eye_view_of_Tokyo_Skytree_with_vertical_symmetry_impression,_a_sunny_day,_in_Japan.jpg"
+      }
+    ],
+    "kyoto": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Torii_path_with_lantern_at_Fushimi_Inari_Taisha_Shrine%2C_Kyoto%2C_Japan.jpg/500px-Torii_path_with_lantern_at_Fushimi_Inari_Taisha_Shrine%2C_Kyoto%2C_Japan.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Torii_path_with_lantern_at_Fushimi_Inari_Taisha_Shrine%2C_Kyoto%2C_Japan.jpg/1920px-Torii_path_with_lantern_at_Fushimi_Inari_Taisha_Shrine%2C_Kyoto%2C_Japan.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Basile Morin",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Torii_path_with_lantern_at_Fushimi_Inari_Taisha_Shrine,_Kyoto,_Japan.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Arashiyama%2C_Part_II_-_Arashiyama7534.jpg/500px-Arashiyama%2C_Part_II_-_Arashiyama7534.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Arashiyama%2C_Part_II_-_Arashiyama7534.jpg/1920px-Arashiyama%2C_Part_II_-_Arashiyama7534.jpg",
+        "w": 480,
+        "h": 292,
+        "credit": "lumoplank",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Arashiyama,_Part_II_-_Arashiyama7534.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Golden_Pavilion_Kinkaku-ji_water_mirror_2024.jpg/500px-Golden_Pavilion_Kinkaku-ji_water_mirror_2024.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Golden_Pavilion_Kinkaku-ji_water_mirror_2024.jpg/1920px-Golden_Pavilion_Kinkaku-ji_water_mirror_2024.jpg",
+        "w": 480,
+        "h": 720,
+        "credit": "Nacaru",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Golden_Pavilion_Kinkaku-ji_water_mirror_2024.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Kiyomizu.jpg/500px-Kiyomizu.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Kiyomizu.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Jordy Meow",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Kiyomizu.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Aerial_panorama_of_Arashiyama_%28%E5%B5%90%E5%B1%B1%29.jpg/500px-Aerial_panorama_of_Arashiyama_%28%E5%B5%90%E5%B1%B1%29.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Aerial_panorama_of_Arashiyama_%28%E5%B5%90%E5%B1%B1%29.jpg/1920px-Aerial_panorama_of_Arashiyama_%28%E5%B5%90%E5%B1%B1%29.jpg",
+        "w": 480,
+        "h": 194,
+        "credit": "Bob Tan",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Aerial_panorama_of_Arashiyama_(%E5%B5%90%E5%B1%B1).jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Aerial_perspective_of_Arashiyama_Park_Nakanoshima_Area_%E5%B5%90%E5%B1%B1%E5%85%AC%E5%9C%92_%E4%B8%AD%E4%B9%8B%E5%B3%B6%E5%9C%B0%E5%8C%BA.jpg/500px-Aerial_perspective_of_Arashiyama_Park_Nakanoshima_Area_%E5%B5%90%E5%B1%B1%E5%85%AC%E5%9C%92_%E4%B8%AD%E4%B9%8B%E5%B3%B6%E5%9C%B0%E5%8C%BA.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Aerial_perspective_of_Arashiyama_Park_Nakanoshima_Area_%E5%B5%90%E5%B1%B1%E5%85%AC%E5%9C%92_%E4%B8%AD%E4%B9%8B%E5%B3%B6%E5%9C%B0%E5%8C%BA.jpg/1920px-Aerial_perspective_of_Arashiyama_Park_Nakanoshima_Area_%E5%B5%90%E5%B1%B1%E5%85%AC%E5%9C%92_%E4%B8%AD%E4%B9%8B%E5%B3%B6%E5%9C%B0%E5%8C%BA.jpg",
+        "w": 480,
+        "h": 194,
+        "credit": "Bob Tan",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Aerial_perspective_of_Arashiyama_Park_Nakanoshima_Area_%E5%B5%90%E5%B1%B1%E5%85%AC%E5%9C%92_%E4%B8%AD%E4%B9%8B%E5%B3%B6%E5%9C%B0%E5%8C%BA.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Kiyomizu-dera_panorama.jpg/500px-Kiyomizu-dera_panorama.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Kiyomizu-dera_panorama.jpg/1920px-Kiyomizu-dera_panorama.jpg",
+        "w": 480,
+        "h": 216,
+        "credit": "lumoplank",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Kiyomizu-dera_panorama.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Nio-mon%2C_Kiyomizu-dera_Temple%2C_Kyoto%2C_West_view_20190416_1.jpg/500px-Nio-mon%2C_Kiyomizu-dera_Temple%2C_Kyoto%2C_West_view_20190416_1.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Nio-mon%2C_Kiyomizu-dera_Temple%2C_Kyoto%2C_West_view_20190416_1.jpg/1920px-Nio-mon%2C_Kiyomizu-dera_Temple%2C_Kyoto%2C_West_view_20190416_1.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "DXR",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Nio-mon,_Kiyomizu-dera_Temple,_Kyoto,_West_view_20190416_1.jpg"
+      }
+    ],
+    "osaka": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Osaka_Castle_and_Osaka_Business_Park_skyscraper_20260610.jpg/500px-Osaka_Castle_and_Osaka_Business_Park_skyscraper_20260610.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Osaka_Castle_and_Osaka_Business_Park_skyscraper_20260610.jpg/1920px-Osaka_Castle_and_Osaka_Business_Park_skyscraper_20260610.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "KishujiRapid",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Osaka_Castle_and_Osaka_Business_Park_skyscraper_20260610.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Osaka_Castle_03bs3200.jpg/500px-Osaka_Castle_03bs3200.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Osaka_Castle_03bs3200.jpg/1920px-Osaka_Castle_03bs3200.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "663highland",
+        "license": "CC BY 2.5",
+        "page": "https://commons.wikimedia.org/wiki/File:Osaka_Castle_03bs3200.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Osaka_Dotonbori_Ebisu_Bridge.jpg/500px-Osaka_Dotonbori_Ebisu_Bridge.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Osaka_Dotonbori_Ebisu_Bridge.jpg/1920px-Osaka_Dotonbori_Ebisu_Bridge.jpg",
+        "w": 480,
+        "h": 319,
+        "credit": "Type specimen",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Osaka_Dotonbori_Ebisu_Bridge.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/The_Siege_of_Osaka_Castle.jpg/500px-The_Siege_of_Osaka_Castle.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/The_Siege_of_Osaka_Castle.jpg/1920px-The_Siege_of_Osaka_Castle.jpg",
+        "w": 480,
+        "h": 214,
+        "credit": "anonymous",
+        "license": "Public domain",
+        "page": "https://commons.wikimedia.org/wiki/File:The_Siege_of_Osaka_Castle.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Osaka_Skyline_from_Abeno_Harukas_20260505_121829_UTC%2B9_23_mm.jpg/500px-Osaka_Skyline_from_Abeno_Harukas_20260505_121829_UTC%2B9_23_mm.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Osaka_Skyline_from_Abeno_Harukas_20260505_121829_UTC%2B9_23_mm.jpg/1920px-Osaka_Skyline_from_Abeno_Harukas_20260505_121829_UTC%2B9_23_mm.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Loggieloggie",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Osaka_Skyline_from_Abeno_Harukas_20260505_121829_UTC%2B9_23_mm.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Dotonbori_Neon_Sign%2C_Osaka_20190415_1.jpg/500px-Dotonbori_Neon_Sign%2C_Osaka_20190415_1.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Dotonbori_Neon_Sign%2C_Osaka_20190415_1.jpg/1920px-Dotonbori_Neon_Sign%2C_Osaka_20190415_1.jpg",
+        "w": 480,
+        "h": 346,
+        "credit": "DXR",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Dotonbori_Neon_Sign,_Osaka_20190415_1.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Naniwa-no-miya-ato%2C_zenkei-2.jpg/500px-Naniwa-no-miya-ato%2C_zenkei-2.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Naniwa-no-miya-ato%2C_zenkei-2.jpg/1920px-Naniwa-no-miya-ato%2C_zenkei-2.jpg",
+        "w": 480,
+        "h": 319,
+        "credit": "Saigen Jiro",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Naniwa-no-miya-ato,_zenkei-2.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Sumiyoshi-taisha%2C_keidai-2.jpg/500px-Sumiyoshi-taisha%2C_keidai-2.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Sumiyoshi-taisha%2C_keidai-2.jpg/1920px-Sumiyoshi-taisha%2C_keidai-2.jpg",
+        "w": 480,
+        "h": 318,
+        "credit": "Saigen Jiro",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Sumiyoshi-taisha,_keidai-2.jpg"
+      }
+    ],
+    "fukuoka": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/20100719_Dazaifu_Tenmangu_Shrine_3328.jpg/500px-20100719_Dazaifu_Tenmangu_Shrine_3328.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/20100719_Dazaifu_Tenmangu_Shrine_3328.jpg/1920px-20100719_Dazaifu_Tenmangu_Shrine_3328.jpg",
+        "w": 480,
+        "h": 319,
+        "credit": "Jakub Hałun",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:20100719_Dazaifu_Tenmangu_Shrine_3328.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/%E5%A4%A7%E6%BF%A0%E5%85%AC%E5%9C%92_%283360365578%29.jpg/500px-%E5%A4%A7%E6%BF%A0%E5%85%AC%E5%9C%92_%283360365578%29.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/%E5%A4%A7%E6%BF%A0%E5%85%AC%E5%9C%92_%283360365578%29.jpg/1920px-%E5%A4%A7%E6%BF%A0%E5%85%AC%E5%9C%92_%283360365578%29.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Tzuhsun Hsu from Taipei, Taiwan",
+        "license": "CC BY-SA 2.0",
+        "page": "https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E6%BF%A0%E5%85%AC%E5%9C%92_(3360365578).jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Fukuoka_Tower_Before_Sunset.jpg/500px-Fukuoka_Tower_Before_Sunset.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Fukuoka_Tower_Before_Sunset.jpg/1920px-Fukuoka_Tower_Before_Sunset.jpg",
+        "w": 480,
+        "h": 775,
+        "credit": "Steffen Flor",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Fukuoka_Tower_Before_Sunset.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Fukuoka_Skyline_of_Seaside_Momochi.jpg/500px-Fukuoka_Skyline_of_Seaside_Momochi.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Fukuoka_Skyline_of_Seaside_Momochi.jpg/1920px-Fukuoka_Skyline_of_Seaside_Momochi.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Nryate",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Fukuoka_Skyline_of_Seaside_Momochi.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Fukuoka_Castle_20221231.jpg/500px-Fukuoka_Castle_20221231.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Fukuoka_Castle_20221231.jpg/1920px-Fukuoka_Castle_20221231.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Suicasmo",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Fukuoka_Castle_20221231.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Level5_Stadium_02.JPG/500px-Level5_Stadium_02.JPG",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Level5_Stadium_02.JPG/1920px-Level5_Stadium_02.JPG",
+        "w": 480,
+        "h": 311,
+        "credit": "Waka77",
+        "license": "Public domain",
+        "page": "https://commons.wikimedia.org/wiki/File:Level5_Stadium_02.JPG"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Seaside_Momochi_Seaside_Park_Jigy%C5%8Dhama_Ch%C5%AB%C5%8D-ku_Momochihama_Sawara-ku_Fukuoka_City_20221225.jpg/500px-Seaside_Momochi_Seaside_Park_Jigy%C5%8Dhama_Ch%C5%AB%C5%8D-ku_Momochihama_Sawara-ku_Fukuoka_City_20221225.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Seaside_Momochi_Seaside_Park_Jigy%C5%8Dhama_Ch%C5%AB%C5%8D-ku_Momochihama_Sawara-ku_Fukuoka_City_20221225.jpg/1920px-Seaside_Momochi_Seaside_Park_Jigy%C5%8Dhama_Ch%C5%AB%C5%8D-ku_Momochihama_Sawara-ku_Fukuoka_City_20221225.jpg",
+        "w": 480,
+        "h": 271,
+        "credit": "Hirho",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Seaside_Momochi_Seaside_Park_Jigy%C5%8Dhama_Ch%C5%AB%C5%8D-ku_Momochihama_Sawara-ku_Fukuoka_City_20221225.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Fukuoka_by_Sentinel-2%2C_2020-05-26.jpg/500px-Fukuoka_by_Sentinel-2%2C_2020-05-26.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Fukuoka_by_Sentinel-2%2C_2020-05-26.jpg/1920px-Fukuoka_by_Sentinel-2%2C_2020-05-26.jpg",
+        "w": 480,
+        "h": 449,
+        "credit": "Copernicus Sentinel-2, ESA",
+        "license": "CC BY-SA 3.0 igo",
+        "page": "https://commons.wikimedia.org/wiki/File:Fukuoka_by_Sentinel-2,_2020-05-26.jpg"
+      }
+    ],
+    "beppu": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/180131_Umi-Jigoku.jpg/500px-180131_Umi-Jigoku.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/180131_Umi-Jigoku.jpg/1920px-180131_Umi-Jigoku.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Totti",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:180131_Umi-Jigoku.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Beppu_Montage_2.jpg/500px-Beppu_Montage_2.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Beppu_Montage_2.jpg",
+        "w": 480,
+        "h": 769,
+        "credit": "水だらけのプール",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Beppu_Montage_2.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Beppu_City.jpg/500px-Beppu_City.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Beppu_City.jpg/1920px-Beppu_City.jpg",
+        "w": 480,
+        "h": 270,
+        "credit": "Japanexperterna",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Beppu_City.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Beppu_Chinoike-jigoku01n4272.jpg/500px-Beppu_Chinoike-jigoku01n4272.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Beppu_Chinoike-jigoku01n4272.jpg/1920px-Beppu_Chinoike-jigoku01n4272.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "663highland",
+        "license": "CC BY 2.5",
+        "page": "https://commons.wikimedia.org/wiki/File:Beppu_Chinoike-jigoku01n4272.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Beppu_Tatsumaki-jigoku03s5s4272.jpg/500px-Beppu_Tatsumaki-jigoku03s5s4272.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Beppu_Tatsumaki-jigoku03s5s4272.jpg/1920px-Beppu_Tatsumaki-jigoku03s5s4272.jpg",
+        "w": 480,
+        "h": 720,
+        "credit": "663highland",
+        "license": "CC BY 2.5",
+        "page": "https://commons.wikimedia.org/wiki/File:Beppu_Tatsumaki-jigoku03s5s4272.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Bozu-jigoku_2010-01-02_%284267213063%29.jpg/500px-Bozu-jigoku_2010-01-02_%284267213063%29.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Bozu-jigoku_2010-01-02_%284267213063%29.jpg/1920px-Bozu-jigoku_2010-01-02_%284267213063%29.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Tomo",
+        "license": "CC BY 2.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Bozu-jigoku_2010-01-02_(4267213063).jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Beppu_hotspring-well01.jpg/500px-Beppu_hotspring-well01.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Beppu_hotspring-well01.jpg/1920px-Beppu_hotspring-well01.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Miya.m",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Beppu_hotspring-well01.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Beppu_City_Hall.jpg/500px-Beppu_City_Hall.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Beppu_City_Hall.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "大分帰省中",
+        "license": "CC BY 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Beppu_City_Hall.jpg"
+      }
+    ]
+  },
+  "places": {
+    "Senso-ji (Asakusa)": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Sensoji_2023.jpg/500px-Sensoji_2023.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Sensoji_2023.jpg/1920px-Sensoji_2023.jpg",
+        "w": 480,
+        "h": 343,
+        "credit": "Akonnchiroll",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Sensoji_2023.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Hozomon_Gate%28left%29%E3%83%BBFive-storied_Pagoda%28center%29%E3%83%BBFortune_Slip_Shop%28right%29.jpg/500px-Hozomon_Gate%28left%29%E3%83%BBFive-storied_Pagoda%28center%29%E3%83%BBFortune_Slip_Shop%28right%29.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Hozomon_Gate%28left%29%E3%83%BBFive-storied_Pagoda%28center%29%E3%83%BBFortune_Slip_Shop%28right%29.jpg/1920px-Hozomon_Gate%28left%29%E3%83%BBFive-storied_Pagoda%28center%29%E3%83%BBFortune_Slip_Shop%28right%29.jpg",
+        "w": 480,
+        "h": 94,
+        "credit": "Souka Kinmei",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Hozomon_Gate(left)%E3%83%BBFive-storied_Pagoda(center)%E3%83%BBFortune_Slip_Shop(right).jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Inside_the_main_hall.jpg/500px-Inside_the_main_hall.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Inside_the_main_hall.jpg/1920px-Inside_the_main_hall.jpg",
+        "w": 480,
+        "h": 99,
+        "credit": "Souka Kinmei",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Inside_the_main_hall.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Hozomon_on_an_overcast_day_dllu.jpg/500px-Hozomon_on_an_overcast_day_dllu.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Hozomon_on_an_overcast_day_dllu.jpg/1920px-Hozomon_on_an_overcast_day_dllu.jpg",
+        "w": 480,
+        "h": 284,
+        "credit": "Daniel L. Lu (user:dllu)",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Hozomon_on_an_overcast_day_dllu.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Sensoji_at_night.JPG/500px-Sensoji_at_night.JPG",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Sensoji_at_night.JPG/1920px-Sensoji_at_night.JPG",
+        "w": 480,
+        "h": 316,
+        "credit": "Kakidai",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Sensoji_at_night.JPG"
+      }
+    ],
+    "Hamarikyu Gardens + matcha w pawilonie": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Hamarikyu_Garden_as_seen_from_Shiodome.jpg/500px-Hamarikyu_Garden_as_seen_from_Shiodome.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Hamarikyu_Garden_as_seen_from_Shiodome.jpg/1920px-Hamarikyu_Garden_as_seen_from_Shiodome.jpg",
+        "w": 480,
+        "h": 454,
+        "credit": "Wikimedia Commons",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Hamarikyu_Garden_as_seen_from_Shiodome.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bridge_across_Shioiri-no-ike_Pond_in_Hamarikyu_Gardens.jpg/500px-Bridge_across_Shioiri-no-ike_Pond_in_Hamarikyu_Gardens.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bridge_across_Shioiri-no-ike_Pond_in_Hamarikyu_Gardens.jpg/1920px-Bridge_across_Shioiri-no-ike_Pond_in_Hamarikyu_Gardens.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Gatorfan252525",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Bridge_across_Shioiri-no-ike_Pond_in_Hamarikyu_Gardens.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Hamarikyu_Gardens.jpg/500px-Hamarikyu_Gardens.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Hamarikyu_Gardens.jpg/1920px-Hamarikyu_Gardens.jpg",
+        "w": 480,
+        "h": 270,
+        "credit": "Eddy23",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Hamarikyu_Gardens.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Nakajima-no-ochaya_110925_2.jpg/500px-Nakajima-no-ochaya_110925_2.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Nakajima-no-ochaya_110925_2.jpg/1920px-Nakajima-no-ochaya_110925_2.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Ulf Klingström",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Nakajima-no-ochaya_110925_2.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Pine_trees_in_Hama-rikyu%2C_Tokyo.jpg/500px-Pine_trees_in_Hama-rikyu%2C_Tokyo.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Pine_trees_in_Hama-rikyu%2C_Tokyo.jpg/1920px-Pine_trees_in_Hama-rikyu%2C_Tokyo.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Alexandar Vujadinovic",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Pine_trees_in_Hama-rikyu,_Tokyo.jpg"
+      }
+    ],
+    "Akihabara": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Akihabara_1976.jpg/500px-Akihabara_1976.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Akihabara_1976.jpg/1920px-Akihabara_1976.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "JOHN LLOYD",
+        "license": "CC BY 2.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Akihabara_1976.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Akihabara_Night.jpg/500px-Akihabara_Night.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Akihabara_Night.jpg/1920px-Akihabara_Night.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "ElHeineken",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Akihabara_Night.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Japanese_shmup_arcade.jpg/500px-Japanese_shmup_arcade.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Japanese_shmup_arcade.jpg/1920px-Japanese_shmup_arcade.jpg",
+        "w": 480,
+        "h": 270,
+        "credit": "TarkusAB",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Japanese_shmup_arcade.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Hiroshige27_kakegawa.jpg/500px-Hiroshige27_kakegawa.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Hiroshige27_kakegawa.jpg/1920px-Hiroshige27_kakegawa.jpg",
+        "w": 480,
+        "h": 314,
+        "credit": "Utagawa Hiroshige",
+        "license": "Public domain",
+        "page": "https://commons.wikimedia.org/wiki/File:Hiroshige27_kakegawa.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Electric_City_Akihabara_Pachinko.jpg/500px-Electric_City_Akihabara_Pachinko.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Electric_City_Akihabara_Pachinko.jpg/1920px-Electric_City_Akihabara_Pachinko.jpg",
+        "w": 480,
+        "h": 343,
+        "credit": "Tischbeinahe",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Electric_City_Akihabara_Pachinko.jpg"
+      }
+    ],
+    "Meiji Jingu": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Meiji_Jingu_2023-3.jpg/500px-Meiji_Jingu_2023-3.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Meiji_Jingu_2023-3.jpg/1920px-Meiji_Jingu_2023-3.jpg",
+        "w": 480,
+        "h": 270,
+        "credit": "Akonnchiroll",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Meiji_Jingu_2023-3.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Meiji_Shrine_Treasure_Museum_panorama.jpg/500px-Meiji_Shrine_Treasure_Museum_panorama.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Meiji_Shrine_Treasure_Museum_panorama.jpg/1920px-Meiji_Shrine_Treasure_Museum_panorama.jpg",
+        "w": 480,
+        "h": 150,
+        "credit": "Daderot",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Meiji_Shrine_Treasure_Museum_panorama.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Meiji_shrine.jpg/500px-Meiji_shrine.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Meiji_shrine.jpg/1920px-Meiji_shrine.jpg",
+        "w": 480,
+        "h": 116,
+        "credit": "Wikimedia Commons",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Meiji_shrine.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Yoyogi_Park_from_Hyatt.jpg/500px-Yoyogi_Park_from_Hyatt.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Yoyogi_Park_from_Hyatt.jpg/1920px-Yoyogi_Park_from_Hyatt.jpg",
+        "w": 480,
+        "h": 326,
+        "credit": "jonny-mt",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Yoyogi_Park_from_Hyatt.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Meiji_Shrine%2C_Barrels_of_sake.jpg/500px-Meiji_Shrine%2C_Barrels_of_sake.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Meiji_Shrine%2C_Barrels_of_sake.jpg/1920px-Meiji_Shrine%2C_Barrels_of_sake.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Berlinuno",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Meiji_Shrine,_Barrels_of_sake.jpg"
+      }
+    ],
+    "Harajuku (Takeshita-dori) + Omotesando": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Omotesando_Tokyo_spring_2012.JPG/500px-Omotesando_Tokyo_spring_2012.JPG",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Omotesando_Tokyo_spring_2012.JPG/1920px-Omotesando_Tokyo_spring_2012.JPG",
+        "w": 480,
+        "h": 292,
+        "credit": "Kakidai",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Omotesando_Tokyo_spring_2012.JPG"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/JRE-Harajuku-Station-07.jpg/500px-JRE-Harajuku-Station-07.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/b/bd/JRE-Harajuku-Station-07.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Rs1421",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:JRE-Harajuku-Station-07.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Yoyogi_dancers.JPG/500px-Yoyogi_dancers.JPG",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Yoyogi_dancers.JPG/1920px-Yoyogi_dancers.JPG",
+        "w": 480,
+        "h": 320,
+        "credit": "Japanexperterna.se",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Yoyogi_dancers.JPG"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Watermill_at_Onden.jpg/500px-Watermill_at_Onden.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Watermill_at_Onden.jpg/1920px-Watermill_at_Onden.jpg",
+        "w": 480,
+        "h": 323,
+        "credit": "Katsushika Hokusai",
+        "license": "Public domain",
+        "page": "https://commons.wikimedia.org/wiki/File:Watermill_at_Onden.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Omote-sando03s3200.jpg/500px-Omote-sando03s3200.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Omote-sando03s3200.jpg/1920px-Omote-sando03s3200.jpg",
+        "w": 480,
+        "h": 321,
+        "credit": "663highland",
+        "license": "CC BY 2.5",
+        "page": "https://commons.wikimedia.org/wiki/File:Omote-sando03s3200.jpg"
+      }
+    ],
+    "Nezu Museum (Aoyama)": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/2018_Nezu_Museum_1.jpg/500px-2018_Nezu_Museum_1.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/2018_Nezu_Museum_1.jpg/1920px-2018_Nezu_Museum_1.jpg",
+        "w": 480,
+        "h": 314,
+        "credit": "Kakidai",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:2018_Nezu_Museum_1.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/KORIN-Irises-R.jpg/500px-KORIN-Irises-R.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/KORIN-Irises-R.jpg/1920px-KORIN-Irises-R.jpg",
+        "w": 480,
+        "h": 201,
+        "credit": "Ogata Korin, died 1716",
+        "license": "Public domain",
+        "page": "https://commons.wikimedia.org/wiki/File:KORIN-Irises-R.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/KORIN-Irises-L.jpg/500px-KORIN-Irises-L.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/KORIN-Irises-L.jpg/1920px-KORIN-Irises-L.jpg",
+        "w": 480,
+        "h": 201,
+        "credit": "Ogata Korin, died 1716",
+        "license": "Public domain",
+        "page": "https://commons.wikimedia.org/wiki/File:KORIN-Irises-L.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Suzuki_Kiitsu_-_Mountain_Stream_in_Summer_and_Autumn.jpg/500px-Suzuki_Kiitsu_-_Mountain_Stream_in_Summer_and_Autumn.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Suzuki_Kiitsu_-_Mountain_Stream_in_Summer_and_Autumn.jpg/1920px-Suzuki_Kiitsu_-_Mountain_Stream_in_Summer_and_Autumn.jpg",
+        "w": 480,
+        "h": 217,
+        "credit": "Suzuki Kiitsu",
+        "license": "Public domain",
+        "page": "https://commons.wikimedia.org/wiki/File:Suzuki_Kiitsu_-_Mountain_Stream_in_Summer_and_Autumn.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Suzuki_Kiitsu_-_Mountain_Stream_in_Summer_and_Autumn_2.jpg/500px-Suzuki_Kiitsu_-_Mountain_Stream_in_Summer_and_Autumn_2.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Suzuki_Kiitsu_-_Mountain_Stream_in_Summer_and_Autumn_2.jpg/1920px-Suzuki_Kiitsu_-_Mountain_Stream_in_Summer_and_Autumn_2.jpg",
+        "w": 480,
+        "h": 217,
+        "credit": "Suzuki Kiitsu",
+        "license": "Public domain",
+        "page": "https://commons.wikimedia.org/wiki/File:Suzuki_Kiitsu_-_Mountain_Stream_in_Summer_and_Autumn_2.jpg"
+      }
+    ],
+    "Shibuya Crossing + Shibuya Sky": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Shibuya_Crossing%2C_Aerial.jpg/500px-Shibuya_Crossing%2C_Aerial.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Shibuya_Crossing%2C_Aerial.jpg/1920px-Shibuya_Crossing%2C_Aerial.jpg",
+        "w": 480,
+        "h": 270,
+        "credit": "David Kernan",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Shibuya_Crossing,_Aerial.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/SHIBUYA_SCRAMBLE_SQUARE_East_Tower.jpg/500px-SHIBUYA_SCRAMBLE_SQUARE_East_Tower.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/SHIBUYA_SCRAMBLE_SQUARE_East_Tower.jpg/1920px-SHIBUYA_SCRAMBLE_SQUARE_East_Tower.jpg",
+        "w": 480,
+        "h": 720,
+        "credit": "Sakura Torch",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:SHIBUYA_SCRAMBLE_SQUARE_East_Tower.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Shibuya_Crossing_in_July_2026.jpg/500px-Shibuya_Crossing_in_July_2026.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Shibuya_Crossing_in_July_2026.jpg/1920px-Shibuya_Crossing_in_July_2026.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Gatorfan252525",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Shibuya_Crossing_in_July_2026.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Shibuya_Scramble_Square_Level_14_2019.jpg/500px-Shibuya_Scramble_Square_Level_14_2019.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Shibuya_Scramble_Square_Level_14_2019.jpg/1920px-Shibuya_Scramble_Square_Level_14_2019.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Wpcpey",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Shibuya_Scramble_Square_Level_14_2019.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Shibuya_Scramble_Square_Level_2_Office_Shuttle_Lobby_2019.jpg/500px-Shibuya_Scramble_Square_Level_2_Office_Shuttle_Lobby_2019.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Shibuya_Scramble_Square_Level_2_Office_Shuttle_Lobby_2019.jpg/1920px-Shibuya_Scramble_Square_Level_2_Office_Shuttle_Lobby_2019.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Wpcpey",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Shibuya_Scramble_Square_Level_2_Office_Shuttle_Lobby_2019.jpg"
+      }
+    ],
+    "Muzeum Narodowe w Tokio (Ueno)": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Tokyo_National_Museum%2C_Honkan_2010.jpg/500px-Tokyo_National_Museum%2C_Honkan_2010.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Tokyo_National_Museum%2C_Honkan_2010.jpg/1920px-Tokyo_National_Museum%2C_Honkan_2010.jpg",
+        "w": 480,
+        "h": 319,
+        "credit": "Wiiii",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Tokyo_National_Museum,_Honkan_2010.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Hiroshige_III_-_Daini_hakurankai_bijitsukan_narabini_funsuiki.jpg/500px-Hiroshige_III_-_Daini_hakurankai_bijitsukan_narabini_funsuiki.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Hiroshige_III_-_Daini_hakurankai_bijitsukan_narabini_funsuiki.jpg/1920px-Hiroshige_III_-_Daini_hakurankai_bijitsukan_narabini_funsuiki.jpg",
+        "w": 480,
+        "h": 233,
+        "credit": "Hiroshige III",
+        "license": "Public domain",
+        "page": "https://commons.wikimedia.org/wiki/File:Hiroshige_III_-_Daini_hakurankai_bijitsukan_narabini_funsuiki.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Interior_view_of_stairway_hall_-_Tokyo_National_Museum_-_DSC05617.JPG/500px-Interior_view_of_stairway_hall_-_Tokyo_National_Museum_-_DSC05617.JPG",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Interior_view_of_stairway_hall_-_Tokyo_National_Museum_-_DSC05617.JPG/1920px-Interior_view_of_stairway_hall_-_Tokyo_National_Museum_-_DSC05617.JPG",
+        "w": 480,
+        "h": 320,
+        "credit": "Daderot",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Interior_view_of_stairway_hall_-_Tokyo_National_Museum_-_DSC05617.JPG"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Eagle%2C_By_Suzuki_Chokichi_Suzuki_%E9%88%B4%E6%9C%A8%E9%95%B7%E5%90%89%E3%80%8C%E9%B7%B2%E7%BD%AE%E7%89%A9%E3%80%8D.jpg/500px-Eagle%2C_By_Suzuki_Chokichi_Suzuki_%E9%88%B4%E6%9C%A8%E9%95%B7%E5%90%89%E3%80%8C%E9%B7%B2%E7%BD%AE%E7%89%A9%E3%80%8D.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Eagle%2C_By_Suzuki_Chokichi_Suzuki_%E9%88%B4%E6%9C%A8%E9%95%B7%E5%90%89%E3%80%8C%E9%B7%B2%E7%BD%AE%E7%89%A9%E3%80%8D.jpg/1920px-Eagle%2C_By_Suzuki_Chokichi_Suzuki_%E9%88%B4%E6%9C%A8%E9%95%B7%E5%90%89%E3%80%8C%E9%B7%B2%E7%BD%AE%E7%89%A9%E3%80%8D.jpg",
+        "w": 480,
+        "h": 319,
+        "credit": "SLIMHANNYA",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Eagle,_By_Suzuki_Chokichi_Suzuki_%E9%88%B4%E6%9C%A8%E9%95%B7%E5%90%89%E3%80%8C%E9%B7%B2%E7%BD%AE%E7%89%A9%E3%80%8D.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/%E5%A4%A7%E5%8C%85%E5%B9%B3%2C_Okanehira.jpg/500px-%E5%A4%A7%E5%8C%85%E5%B9%B3%2C_Okanehira.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/%E5%A4%A7%E5%8C%85%E5%B9%B3%2C_Okanehira.jpg/1920px-%E5%A4%A7%E5%8C%85%E5%B9%B3%2C_Okanehira.jpg",
+        "w": 480,
+        "h": 319,
+        "credit": "SLIMHANNYA",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E5%8C%85%E5%B9%B3,_Okanehira.jpg"
+      }
+    ],
+    "Ameya-Yokocho - targ pod torami (kolacja)": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Ueno_20241210_133139.jpg/500px-Ueno_20241210_133139.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Ueno_20241210_133139.jpg/1920px-Ueno_20241210_133139.jpg",
+        "w": 480,
+        "h": 270,
+        "credit": "Ka23 13",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Ueno_20241210_133139.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Ameya_Yokocho_Shopping_Street_2016_%2832126807114%29.jpg/500px-Ameya_Yokocho_Shopping_Street_2016_%2832126807114%29.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Ameya_Yokocho_Shopping_Street_2016_%2832126807114%29.jpg/1920px-Ameya_Yokocho_Shopping_Street_2016_%2832126807114%29.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Dick Thomas Johnson from Tokyo, Japan",
+        "license": "CC BY 2.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Ameya_Yokocho_Shopping_Street_2016_(32126807114).jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Amaya_yokocho_from_Ueno_side_-_2024_July_13_various_11_32_16_155000.jpeg/500px-Amaya_yokocho_from_Ueno_side_-_2024_July_13_various_11_32_16_155000.jpeg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Amaya_yokocho_from_Ueno_side_-_2024_July_13_various_11_32_16_155000.jpeg/1920px-Amaya_yokocho_from_Ueno_side_-_2024_July_13_various_11_32_16_155000.jpeg",
+        "w": 480,
+        "h": 360,
+        "credit": "Nesnad",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Amaya_yokocho_from_Ueno_side_-_2024_July_13_various_11_32_16_155000.jpeg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Ueno_-_Ueno446.jpg/500px-Ueno_-_Ueno446.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Ueno_-_Ueno446.jpg/1920px-Ueno_-_Ueno446.jpg",
+        "w": 480,
+        "h": 640,
+        "credit": "lumoplank",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Ueno_-_Ueno446.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Ueno_Ameya-Yokocho_shops_under_track_2015.jpg/500px-Ueno_Ameya-Yokocho_shops_under_track_2015.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Ueno_Ameya-Yokocho_shops_under_track_2015.jpg/1920px-Ueno_Ameya-Yokocho_shops_under_track_2015.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Wpcpey",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Ueno_Ameya-Yokocho_shops_under_track_2015.jpg"
+      }
+    ],
+    "Nishiki Market - lunch na stojąco": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Nishiki_Ichiba_by_matsuyuki.jpg/500px-Nishiki_Ichiba_by_matsuyuki.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Nishiki_Ichiba_by_matsuyuki.jpg/1920px-Nishiki_Ichiba_by_matsuyuki.jpg",
+        "w": 480,
+        "h": 640,
+        "credit": "matsuyuki",
+        "license": "CC BY-SA 2.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Nishiki_Ichiba_by_matsuyuki.jpg"
+      }
+    ],
+    "Kinkaku-ji (Złoty Pawilon)": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Golden_Pavilion_Kinkaku-ji_water_mirror_2024.jpg/500px-Golden_Pavilion_Kinkaku-ji_water_mirror_2024.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Golden_Pavilion_Kinkaku-ji_water_mirror_2024.jpg/1920px-Golden_Pavilion_Kinkaku-ji_water_mirror_2024.jpg",
+        "w": 480,
+        "h": 720,
+        "credit": "Nacaru",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Golden_Pavilion_Kinkaku-ji_water_mirror_2024.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Kinkaku-ji_temple_in_Kyoto.jpg/500px-Kinkaku-ji_temple_in_Kyoto.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Kinkaku-ji_temple_in_Kyoto.jpg/1920px-Kinkaku-ji_temple_in_Kyoto.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Geertchaos",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Kinkaku-ji_temple_in_Kyoto.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Kyoto_Rokuon-ji_Kinkaku-ji_c12.jpg/500px-Kyoto_Rokuon-ji_Kinkaku-ji_c12.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Kyoto_Rokuon-ji_Kinkaku-ji_c12.jpg/1920px-Kyoto_Rokuon-ji_Kinkaku-ji_c12.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Hyppolyte de Saint-Rambert",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Kyoto_Rokuon-ji_Kinkaku-ji_c12.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Kinkaku-ji_the_Golden_Temple_in_Kyoto_overlooking_the_lake_-_high_rez.JPG/500px-Kinkaku-ji_the_Golden_Temple_in_Kyoto_overlooking_the_lake_-_high_rez.JPG",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Kinkaku-ji_the_Golden_Temple_in_Kyoto_overlooking_the_lake_-_high_rez.JPG/1920px-Kinkaku-ji_the_Golden_Temple_in_Kyoto_overlooking_the_lake_-_high_rez.JPG",
+        "w": 480,
+        "h": 360,
+        "credit": "Jaycangel",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Kinkaku-ji_the_Golden_Temple_in_Kyoto_overlooking_the_lake_-_high_rez.JPG"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Kyoto-Kinkaku-ji-White-Snake.jpg/500px-Kyoto-Kinkaku-ji-White-Snake.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Kyoto-Kinkaku-ji-White-Snake.jpg/1920px-Kyoto-Kinkaku-ji-White-Snake.jpg",
+        "w": 480,
+        "h": 310,
+        "credit": "Bjørn Christian Tørrissen",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Kyoto-Kinkaku-ji-White-Snake.jpg"
+      }
+    ],
+    "Ryoan-ji (ogród zen)": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Kare-sansui_zen_garden%2C_Ry%C5%8Dan-ji%2C_Kyoto_20190416_1.jpg/500px-Kare-sansui_zen_garden%2C_Ry%C5%8Dan-ji%2C_Kyoto_20190416_1.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Kare-sansui_zen_garden%2C_Ry%C5%8Dan-ji%2C_Kyoto_20190416_1.jpg/1920px-Kare-sansui_zen_garden%2C_Ry%C5%8Dan-ji%2C_Kyoto_20190416_1.jpg",
+        "w": 480,
+        "h": 322,
+        "credit": "DXR",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Kare-sansui_zen_garden,_Ry%C5%8Dan-ji,_Kyoto_20190416_1.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/150207_Ryoan-ji_Kyoto_Japan01s3.jpg/500px-150207_Ryoan-ji_Kyoto_Japan01s3.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/150207_Ryoan-ji_Kyoto_Japan01s3.jpg/1920px-150207_Ryoan-ji_Kyoto_Japan01s3.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "663highland",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:150207_Ryoan-ji_Kyoto_Japan01s3.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/150207_Ryoan-ji_Kyoto_Japan13s3.jpg/500px-150207_Ryoan-ji_Kyoto_Japan13s3.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/150207_Ryoan-ji_Kyoto_Japan13s3.jpg/1920px-150207_Ryoan-ji_Kyoto_Japan13s3.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "663highland",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:150207_Ryoan-ji_Kyoto_Japan13s3.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Ninna-ji_and_Ryoan-ji%2C_Kyoto_-_Ryoanji7753.jpg/500px-Ninna-ji_and_Ryoan-ji%2C_Kyoto_-_Ryoanji7753.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Ninna-ji_and_Ryoan-ji%2C_Kyoto_-_Ryoanji7753.jpg/1920px-Ninna-ji_and_Ryoan-ji%2C_Kyoto_-_Ryoanji7753.jpg",
+        "w": 480,
+        "h": 347,
+        "credit": "lumoplank",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Ninna-ji_and_Ryoan-ji,_Kyoto_-_Ryoanji7753.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/250201_Ryoan-ji_Kyoto_Japan06s3.jpg/500px-250201_Ryoan-ji_Kyoto_Japan06s3.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/250201_Ryoan-ji_Kyoto_Japan06s3.jpg/1920px-250201_Ryoan-ji_Kyoto_Japan06s3.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "663highland",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:250201_Ryoan-ji_Kyoto_Japan06s3.jpg"
+      }
+    ],
+    "Kiyomizu-dera + Sannenzaka / Ninenzaka": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Kiyomizu.jpg/500px-Kiyomizu.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Kiyomizu.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Jordy Meow",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Kiyomizu.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Kiyomizu-dera_panorama.jpg/500px-Kiyomizu-dera_panorama.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Kiyomizu-dera_panorama.jpg/1920px-Kiyomizu-dera_panorama.jpg",
+        "w": 480,
+        "h": 216,
+        "credit": "lumoplank",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Kiyomizu-dera_panorama.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Nio-mon%2C_Kiyomizu-dera_Temple%2C_Kyoto%2C_West_view_20190416_1.jpg/500px-Nio-mon%2C_Kiyomizu-dera_Temple%2C_Kyoto%2C_West_view_20190416_1.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Nio-mon%2C_Kiyomizu-dera_Temple%2C_Kyoto%2C_West_view_20190416_1.jpg/1920px-Nio-mon%2C_Kiyomizu-dera_Temple%2C_Kyoto%2C_West_view_20190416_1.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "DXR",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Nio-mon,_Kiyomizu-dera_Temple,_Kyoto,_West_view_20190416_1.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Kiyomizu-dera%2C_Kyoto%2C_November_2016_-06.jpg/500px-Kiyomizu-dera%2C_Kyoto%2C_November_2016_-06.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Kiyomizu-dera%2C_Kyoto%2C_November_2016_-06.jpg/1920px-Kiyomizu-dera%2C_Kyoto%2C_November_2016_-06.jpg",
+        "w": 480,
+        "h": 280,
+        "credit": "Martin Falbisoner",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Kiyomizu-dera,_Kyoto,_November_2016_-06.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Kiyomizu-dera%2C_Kyoto%2C_November_2016_-02.jpg/500px-Kiyomizu-dera%2C_Kyoto%2C_November_2016_-02.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Kiyomizu-dera%2C_Kyoto%2C_November_2016_-02.jpg/1920px-Kiyomizu-dera%2C_Kyoto%2C_November_2016_-02.jpg",
+        "w": 480,
+        "h": 317,
+        "credit": "Martin Falbisoner",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Kiyomizu-dera,_Kyoto,_November_2016_-02.jpg"
+      }
+    ],
+    "Fushimi Inari Taisha": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Torii_path_with_lantern_at_Fushimi_Inari_Taisha_Shrine%2C_Kyoto%2C_Japan.jpg/500px-Torii_path_with_lantern_at_Fushimi_Inari_Taisha_Shrine%2C_Kyoto%2C_Japan.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Torii_path_with_lantern_at_Fushimi_Inari_Taisha_Shrine%2C_Kyoto%2C_Japan.jpg/1920px-Torii_path_with_lantern_at_Fushimi_Inari_Taisha_Shrine%2C_Kyoto%2C_Japan.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Basile Morin",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Torii_path_with_lantern_at_Fushimi_Inari_Taisha_Shrine,_Kyoto,_Japan.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Fushimi-Inari-Shrine-Senbon-Torii-2016-Luka-Peternel.jpg/500px-Fushimi-Inari-Shrine-Senbon-Torii-2016-Luka-Peternel.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Fushimi-Inari-Shrine-Senbon-Torii-2016-Luka-Peternel.jpg/1920px-Fushimi-Inari-Shrine-Senbon-Torii-2016-Luka-Peternel.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Luka Peternel",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Fushimi-Inari-Shrine-Senbon-Torii-2016-Luka-Peternel.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Fushimi-Inari-Shrine-Senbon-Torii-2018-Luka-Peternel.jpg/500px-Fushimi-Inari-Shrine-Senbon-Torii-2018-Luka-Peternel.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Fushimi-Inari-Shrine-Senbon-Torii-2018-Luka-Peternel.jpg/1920px-Fushimi-Inari-Shrine-Senbon-Torii-2018-Luka-Peternel.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Luka Peternel",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Fushimi-Inari-Shrine-Senbon-Torii-2018-Luka-Peternel.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Nobu3withfoxy_IMG_0155_%2814564801685%29.jpg/500px-Nobu3withfoxy_IMG_0155_%2814564801685%29.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Nobu3withfoxy_IMG_0155_%2814564801685%29.jpg/1920px-Nobu3withfoxy_IMG_0155_%2814564801685%29.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "nobu3withfoxy from Iga,Mie, Japan",
+        "license": "CC BY 2.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Nobu3withfoxy_IMG_0155_(14564801685).jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Fukakusa_Kaidoguchicho%2C_Fushimi_Ward%2C_Kyoto%2C_Kyoto_Prefecture_612-0805%2C_Japan_-_panoramio_%281%29.jpg/500px-Fukakusa_Kaidoguchicho%2C_Fushimi_Ward%2C_Kyoto%2C_Kyoto_Prefecture_612-0805%2C_Japan_-_panoramio_%281%29.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Fukakusa_Kaidoguchicho%2C_Fushimi_Ward%2C_Kyoto%2C_Kyoto_Prefecture_612-0805%2C_Japan_-_panoramio_%281%29.jpg/1920px-Fukakusa_Kaidoguchicho%2C_Fushimi_Ward%2C_Kyoto%2C_Kyoto_Prefecture_612-0805%2C_Japan_-_panoramio_%281%29.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Fumihiko Ueno",
+        "license": "CC BY 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Fukakusa_Kaidoguchicho,_Fushimi_Ward,_Kyoto,_Kyoto_Prefecture_612-0805,_Japan_-_panoramio_(1).jpg"
+      }
+    ],
+    "Arashiyama (bambusowy gaj)": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Arashiyama%2C_Part_II_-_Arashiyama7534.jpg/500px-Arashiyama%2C_Part_II_-_Arashiyama7534.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Arashiyama%2C_Part_II_-_Arashiyama7534.jpg/1920px-Arashiyama%2C_Part_II_-_Arashiyama7534.jpg",
+        "w": 480,
+        "h": 292,
+        "credit": "lumoplank",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Arashiyama,_Part_II_-_Arashiyama7534.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Bamboo_Grove%2C_Arashiyama%2C_Kyoto%2C_Japan.jpg/500px-Bamboo_Grove%2C_Arashiyama%2C_Kyoto%2C_Japan.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Bamboo_Grove%2C_Arashiyama%2C_Kyoto%2C_Japan.jpg/1920px-Bamboo_Grove%2C_Arashiyama%2C_Kyoto%2C_Japan.jpg",
+        "w": 480,
+        "h": 720,
+        "credit": "Basile Morin",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Bamboo_Grove,_Arashiyama,_Kyoto,_Japan.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Aerial_panorama_of_Arashiyama_%28%E5%B5%90%E5%B1%B1%29.jpg/500px-Aerial_panorama_of_Arashiyama_%28%E5%B5%90%E5%B1%B1%29.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Aerial_panorama_of_Arashiyama_%28%E5%B5%90%E5%B1%B1%29.jpg/1920px-Aerial_panorama_of_Arashiyama_%28%E5%B5%90%E5%B1%B1%29.jpg",
+        "w": 480,
+        "h": 194,
+        "credit": "Bob Tan",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Aerial_panorama_of_Arashiyama_(%E5%B5%90%E5%B1%B1).jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Aerial_perspective_of_Arashiyama_Park_Nakanoshima_Area_%E5%B5%90%E5%B1%B1%E5%85%AC%E5%9C%92_%E4%B8%AD%E4%B9%8B%E5%B3%B6%E5%9C%B0%E5%8C%BA.jpg/500px-Aerial_perspective_of_Arashiyama_Park_Nakanoshima_Area_%E5%B5%90%E5%B1%B1%E5%85%AC%E5%9C%92_%E4%B8%AD%E4%B9%8B%E5%B3%B6%E5%9C%B0%E5%8C%BA.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Aerial_perspective_of_Arashiyama_Park_Nakanoshima_Area_%E5%B5%90%E5%B1%B1%E5%85%AC%E5%9C%92_%E4%B8%AD%E4%B9%8B%E5%B3%B6%E5%9C%B0%E5%8C%BA.jpg/1920px-Aerial_perspective_of_Arashiyama_Park_Nakanoshima_Area_%E5%B5%90%E5%B1%B1%E5%85%AC%E5%9C%92_%E4%B8%AD%E4%B9%8B%E5%B3%B6%E5%9C%B0%E5%8C%BA.jpg",
+        "w": 480,
+        "h": 194,
+        "credit": "Bob Tan",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Aerial_perspective_of_Arashiyama_Park_Nakanoshima_Area_%E5%B5%90%E5%B1%B1%E5%85%AC%E5%9C%92_%E4%B8%AD%E4%B9%8B%E5%B3%B6%E5%9C%B0%E5%8C%BA.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Togetsu-ky%C5%8D_bridge_at_golden_hour%2C_Kyoto%2C_Japan.jpg/500px-Togetsu-ky%C5%8D_bridge_at_golden_hour%2C_Kyoto%2C_Japan.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Togetsu-ky%C5%8D_bridge_at_golden_hour%2C_Kyoto%2C_Japan.jpg/1920px-Togetsu-ky%C5%8D_bridge_at_golden_hour%2C_Kyoto%2C_Japan.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Basile Morin",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Togetsu-ky%C5%8D_bridge_at_golden_hour,_Kyoto,_Japan.jpg"
+      }
+    ],
+    "Gion (dzielnica gejsz)": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/150124_Gion_Kyoto_Japan01s3.jpg/500px-150124_Gion_Kyoto_Japan01s3.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/150124_Gion_Kyoto_Japan01s3.jpg/1920px-150124_Gion_Kyoto_Japan01s3.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "663highland",
+        "license": "CC BY 2.5",
+        "page": "https://commons.wikimedia.org/wiki/File:150124_Gion_Kyoto_Japan01s3.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Wooden_and_bamboo_facades_of_dwellings_with_sudare_in_a_cobbled_street_of_Gion%2C_perspective_effect_with_vanishing_point%2C_Kyoto%2C_Japan.jpg/500px-Wooden_and_bamboo_facades_of_dwellings_with_sudare_in_a_cobbled_street_of_Gion%2C_perspective_effect_with_vanishing_point%2C_Kyoto%2C_Japan.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Wooden_and_bamboo_facades_of_dwellings_with_sudare_in_a_cobbled_street_of_Gion%2C_perspective_effect_with_vanishing_point%2C_Kyoto%2C_Japan.jpg/1920px-Wooden_and_bamboo_facades_of_dwellings_with_sudare_in_a_cobbled_street_of_Gion%2C_perspective_effect_with_vanishing_point%2C_Kyoto%2C_Japan.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Basile Morin",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Wooden_and_bamboo_facades_of_dwellings_with_sudare_in_a_cobbled_street_of_Gion,_perspective_effect_with_vanishing_point,_Kyoto,_Japan.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Gion_Higashi_Tsunemomo.jpg/500px-Gion_Higashi_Tsunemomo.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Gion_Higashi_Tsunemomo.jpg/1920px-Gion_Higashi_Tsunemomo.jpg",
+        "w": 480,
+        "h": 270,
+        "credit": "Japanexperterna.se",
+        "license": "CC BY-SA 2.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Gion_Higashi_Tsunemomo.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Gion.jpg/500px-Gion.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Gion.jpg/1920px-Gion.jpg",
+        "w": 480,
+        "h": 321,
+        "credit": "Andreas Tack",
+        "license": "Public domain",
+        "page": "https://commons.wikimedia.org/wiki/File:Gion.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Shirakara_Canal%2C_Gion%2C_Kyoto.jpg/500px-Shirakara_Canal%2C_Gion%2C_Kyoto.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Shirakara_Canal%2C_Gion%2C_Kyoto.jpg/1920px-Shirakara_Canal%2C_Gion%2C_Kyoto.jpg",
+        "w": 480,
+        "h": 334,
+        "credit": "MichaelMaggs",
+        "license": "CC BY-SA 2.5",
+        "page": "https://commons.wikimedia.org/wiki/File:Shirakara_Canal,_Gion,_Kyoto.jpg"
+      }
+    ],
+    "Nara - daytrip (Todai-ji + park z jeleniami)": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Nara_Park_-_panoramio_%282%29.jpg/500px-Nara_Park_-_panoramio_%282%29.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Nara_Park_-_panoramio_%282%29.jpg/1920px-Nara_Park_-_panoramio_%282%29.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Feri88",
+        "license": "CC BY 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Nara_Park_-_panoramio_(2).jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/T%C5%8Ddai-ji_Kon-d%C5%8D.jpg/500px-T%C5%8Ddai-ji_Kon-d%C5%8D.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/T%C5%8Ddai-ji_Kon-d%C5%8D.jpg/1920px-T%C5%8Ddai-ji_Kon-d%C5%8D.jpg",
+        "w": 480,
+        "h": 384,
+        "credit": "Wiiii",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:T%C5%8Ddai-ji_Kon-d%C5%8D.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Nara_Park_from_Nara_prefectural_government_office_20141002.jpg/500px-Nara_Park_from_Nara_prefectural_government_office_20141002.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Nara_Park_from_Nara_prefectural_government_office_20141002.jpg/1920px-Nara_Park_from_Nara_prefectural_government_office_20141002.jpg",
+        "w": 480,
+        "h": 39,
+        "credit": "Degueulasse",
+        "license": "CC BY 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Nara_Park_from_Nara_prefectural_government_office_20141002.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Aerial_panorama_of_Nara_Park.jpg/500px-Aerial_panorama_of_Nara_Park.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Aerial_panorama_of_Nara_Park.jpg/1920px-Aerial_panorama_of_Nara_Park.jpg",
+        "w": 480,
+        "h": 194,
+        "credit": "Bob Tan",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Aerial_panorama_of_Nara_Park.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Aerial_panorama_of_Nora_Park_facing_the_old_town.jpg/500px-Aerial_panorama_of_Nora_Park_facing_the_old_town.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Aerial_panorama_of_Nora_Park_facing_the_old_town.jpg/1920px-Aerial_panorama_of_Nora_Park_facing_the_old_town.jpg",
+        "w": 480,
+        "h": 193,
+        "credit": "Bob Tan",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Aerial_panorama_of_Nora_Park_facing_the_old_town.jpg"
+      }
+    ],
+    "Dotonbori": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Osaka_Dotonbori_Ebisu_Bridge.jpg/500px-Osaka_Dotonbori_Ebisu_Bridge.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Osaka_Dotonbori_Ebisu_Bridge.jpg/1920px-Osaka_Dotonbori_Ebisu_Bridge.jpg",
+        "w": 480,
+        "h": 319,
+        "credit": "Type specimen",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Osaka_Dotonbori_Ebisu_Bridge.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Dotonbori_Neon_Sign%2C_Osaka_20190415_1.jpg/500px-Dotonbori_Neon_Sign%2C_Osaka_20190415_1.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Dotonbori_Neon_Sign%2C_Osaka_20190415_1.jpg/1920px-Dotonbori_Neon_Sign%2C_Osaka_20190415_1.jpg",
+        "w": 480,
+        "h": 346,
+        "credit": "DXR",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Dotonbori_Neon_Sign,_Osaka_20190415_1.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Osaka_-_Osaka194.jpg/500px-Osaka_-_Osaka194.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Osaka_-_Osaka194.jpg/1920px-Osaka_-_Osaka194.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "lumoplank",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Osaka_-_Osaka194.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/%E6%9C%AC%E5%AE%B6_%E6%97%A5%E6%9C%AC%E4%B8%80_%E5%A4%A7%E3%81%9F%E3%81%93_%289642827577%29.jpg/500px-%E6%9C%AC%E5%AE%B6_%E6%97%A5%E6%9C%AC%E4%B8%80_%E5%A4%A7%E3%81%9F%E3%81%93_%289642827577%29.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/%E6%9C%AC%E5%AE%B6_%E6%97%A5%E6%9C%AC%E4%B8%80_%E5%A4%A7%E3%81%9F%E3%81%93_%289642827577%29.jpg/1920px-%E6%9C%AC%E5%AE%B6_%E6%97%A5%E6%9C%AC%E4%B8%80_%E5%A4%A7%E3%81%9F%E3%81%93_%289642827577%29.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "jit bag",
+        "license": "CC BY 2.0",
+        "page": "https://commons.wikimedia.org/wiki/File:%E6%9C%AC%E5%AE%B6_%E6%97%A5%E6%9C%AC%E4%B8%80_%E5%A4%A7%E3%81%9F%E3%81%93_(9642827577).jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Dotonbori%2C_Osaka_-_DSC05719.JPG/500px-Dotonbori%2C_Osaka_-_DSC05719.JPG",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Dotonbori%2C_Osaka_-_DSC05719.JPG/1920px-Dotonbori%2C_Osaka_-_DSC05719.JPG",
+        "w": 480,
+        "h": 360,
+        "credit": "Daderot",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Dotonbori,_Osaka_-_DSC05719.JPG"
+      }
+    ],
+    "Zamek Himeji (daytrip z Osaki)": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Himeji_castle_in_may_2015.jpg/500px-Himeji_castle_in_may_2015.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Himeji_castle_in_may_2015.jpg/1920px-Himeji_castle_in_may_2015.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Nikos Kitsakis",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Himeji_castle_in_may_2015.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Himeji_Castle_with_cherry_blossoms_from_front.jpg/500px-Himeji_Castle_with_cherry_blossoms_from_front.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Himeji_Castle_with_cherry_blossoms_from_front.jpg/1920px-Himeji_Castle_with_cherry_blossoms_from_front.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Seattleite7",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Himeji_Castle_with_cherry_blossoms_from_front.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Himeji_Castle_Japan.jpg/500px-Himeji_Castle_Japan.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Himeji_Castle_Japan.jpg/1920px-Himeji_Castle_Japan.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Gilles Desjardins",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Himeji_Castle_Japan.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Himeji-Castle-below-2017-Luka-Peternel.jpg/500px-Himeji-Castle-below-2017-Luka-Peternel.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Himeji-Castle-below-2017-Luka-Peternel.jpg/1920px-Himeji-Castle-below-2017-Luka-Peternel.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "Luka Peternel",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Himeji-Castle-below-2017-Luka-Peternel.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Himeji_Castle_Hallway.jpg/500px-Himeji_Castle_Hallway.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Himeji_Castle_Hallway.jpg/1920px-Himeji_Castle_Hallway.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "ScribblingGeek",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Himeji_Castle_Hallway.jpg"
+      }
+    ],
+    "Kobe - dzielnica Kitano Ijinkan": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Kobe_Port_Tower_and_Maritime_Museum%2C_November_2016.jpg/500px-Kobe_Port_Tower_and_Maritime_Museum%2C_November_2016.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Kobe_Port_Tower_and_Maritime_Museum%2C_November_2016.jpg/1920px-Kobe_Port_Tower_and_Maritime_Museum%2C_November_2016.jpg",
+        "w": 480,
+        "h": 419,
+        "credit": "Martin Falbisoner",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Kobe_Port_Tower_and_Maritime_Museum,_November_2016.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Kobe_kitano_thomas_house07_2816.jpg/500px-Kobe_kitano_thomas_house07_2816.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Kobe_kitano_thomas_house07_2816.jpg/1920px-Kobe_kitano_thomas_house07_2816.jpg",
+        "w": 480,
+        "h": 270,
+        "credit": "663highland",
+        "license": "CC BY 2.5",
+        "page": "https://commons.wikimedia.org/wiki/File:Kobe_kitano_thomas_house07_2816.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Views_from_Venus_Bridge_in_Kobe_001.jpg/500px-Views_from_Venus_Bridge_in_Kobe_001.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Views_from_Venus_Bridge_in_Kobe_001.jpg/1920px-Views_from_Venus_Bridge_in_Kobe_001.jpg",
+        "w": 480,
+        "h": 229,
+        "credit": "Naokijp",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Views_from_Venus_Bridge_in_Kobe_001.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Views_from_Venus_Bridge_in_Kobe_002.jpg/500px-Views_from_Venus_Bridge_in_Kobe_002.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Views_from_Venus_Bridge_in_Kobe_002.jpg/1920px-Views_from_Venus_Bridge_in_Kobe_002.jpg",
+        "w": 480,
+        "h": 134,
+        "credit": "Naokijp",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Views_from_Venus_Bridge_in_Kobe_002.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/140517_Kobe_Municipal_Arboretum_Japan02bs.jpg/500px-140517_Kobe_Municipal_Arboretum_Japan02bs.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/140517_Kobe_Municipal_Arboretum_Japan02bs.jpg/1920px-140517_Kobe_Municipal_Arboretum_Japan02bs.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "663highland",
+        "license": "CC BY 2.5",
+        "page": "https://commons.wikimedia.org/wiki/File:140517_Kobe_Municipal_Arboretum_Japan02bs.jpg"
+      }
+    ],
+    "Dazaifu - Tenmangu + Muzeum Narodowe Kyushu": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Southern_face_of_the_Kyushu_National_Museum_in_January_2019.jpg/500px-Southern_face_of_the_Kyushu_National_Museum_in_January_2019.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Southern_face_of_the_Kyushu_National_Museum_in_January_2019.jpg/1920px-Southern_face_of_the_Kyushu_National_Museum_in_January_2019.jpg",
+        "w": 480,
+        "h": 300,
+        "credit": "Nick-D",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Southern_face_of_the_Kyushu_National_Museum_in_January_2019.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/20100719_Dazaifu_Tenmangu_Shrine_3328.jpg/500px-20100719_Dazaifu_Tenmangu_Shrine_3328.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/20100719_Dazaifu_Tenmangu_Shrine_3328.jpg/1920px-20100719_Dazaifu_Tenmangu_Shrine_3328.jpg",
+        "w": 480,
+        "h": 319,
+        "credit": "Jakub Hałun",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:20100719_Dazaifu_Tenmangu_Shrine_3328.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Dazaifu_tenmangu_shrine_temporary_main_hall.jpg/500px-Dazaifu_tenmangu_shrine_temporary_main_hall.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Dazaifu_tenmangu_shrine_temporary_main_hall.jpg/1920px-Dazaifu_tenmangu_shrine_temporary_main_hall.jpg",
+        "w": 480,
+        "h": 300,
+        "credit": "水だらけのプール",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Dazaifu_tenmangu_shrine_temporary_main_hall.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Dazaifu_Tenmangu_Plum_Tree_2004-03-07.jpg/500px-Dazaifu_Tenmangu_Plum_Tree_2004-03-07.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Dazaifu_Tenmangu_Plum_Tree_2004-03-07.jpg/1920px-Dazaifu_Tenmangu_Plum_Tree_2004-03-07.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Wikimedia Commons",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Dazaifu_Tenmangu_Plum_Tree_2004-03-07.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Dazaifu_Tenmangu_Shrine_Honden_%28Main_Prayer_Hall%29.jpg/500px-Dazaifu_Tenmangu_Shrine_Honden_%28Main_Prayer_Hall%29.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Dazaifu_Tenmangu_Shrine_Honden_%28Main_Prayer_Hall%29.jpg/1920px-Dazaifu_Tenmangu_Shrine_Honden_%28Main_Prayer_Hall%29.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "ScribblingGeek",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Dazaifu_Tenmangu_Shrine_Honden_(Main_Prayer_Hall).jpg"
+      }
+    ],
+    "Yatai w Nakasu (uliczne bary)": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Yomise%28Yatai%29.JPG/500px-Yomise%28Yatai%29.JPG",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/4/43/Yomise%28Yatai%29.JPG",
+        "w": 480,
+        "h": 360,
+        "credit": "Tomomarusan",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Yomise(Yatai).JPG"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Wakaki_Yatai_in_Kumamoto.jpg/500px-Wakaki_Yatai_in_Kumamoto.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Wakaki_Yatai_in_Kumamoto.jpg/1920px-Wakaki_Yatai_in_Kumamoto.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Shochudanji",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Wakaki_Yatai_in_Kumamoto.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Yatai_selling_ramen_beside_Naka-gawa%2C_Fukuoka%2C_Japan_-_20110525.jpg/500px-Yatai_selling_ramen_beside_Naka-gawa%2C_Fukuoka%2C_Japan_-_20110525.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Yatai_selling_ramen_beside_Naka-gawa%2C_Fukuoka%2C_Japan_-_20110525.jpg/1920px-Yatai_selling_ramen_beside_Naka-gawa%2C_Fukuoka%2C_Japan_-_20110525.jpg",
+        "w": 480,
+        "h": 321,
+        "credit": "Jacklee.",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Yatai_selling_ramen_beside_Naka-gawa,_Fukuoka,_Japan_-_20110525.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Yatai_in_Car_park.JPG/500px-Yatai_in_Car_park.JPG",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Yatai_in_Car_park.JPG/1920px-Yatai_in_Car_park.JPG",
+        "w": 480,
+        "h": 360,
+        "credit": "Nightingale",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Yatai_in_Car_park.JPG"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Nagahamayatai_fukuoka.JPG/500px-Nagahamayatai_fukuoka.JPG",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Nagahamayatai_fukuoka.JPG",
+        "w": 480,
+        "h": 360,
+        "credit": "vigorous action",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Nagahamayatai_fukuoka.JPG"
+      }
+    ],
+    "Takachiho - wąwóz, łódki, kolejka Amaterasu (wycieczka)": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Takachiho_Town_Office_2009.JPG/500px-Takachiho_Town_Office_2009.JPG",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Takachiho_Town_Office_2009.JPG",
+        "w": 480,
+        "h": 360,
+        "credit": "ja:User:Sanjo",
+        "license": "Public domain",
+        "page": "https://commons.wikimedia.org/wiki/File:Takachiho_Town_Office_2009.JPG"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Amanoiwato-west-shrine_%2828795304727%29.jpg/500px-Amanoiwato-west-shrine_%2828795304727%29.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Amanoiwato-west-shrine_%2828795304727%29.jpg/1920px-Amanoiwato-west-shrine_%2828795304727%29.jpg",
+        "w": 480,
+        "h": 317,
+        "credit": "Big Ben in Japan",
+        "license": "CC BY-SA 2.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Amanoiwato-west-shrine_(28795304727).jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Takachihokyou55.jpg/500px-Takachihokyou55.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Takachihokyou55.jpg/1920px-Takachihokyou55.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "TANAKA Juuyoh",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Takachihokyou55.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/TakachihokyoWithManaiFalls.JPG/500px-TakachihokyoWithManaiFalls.JPG",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/TakachihokyoWithManaiFalls.JPG/1920px-TakachihokyoWithManaiFalls.JPG",
+        "w": 480,
+        "h": 360,
+        "credit": "Ippukucho",
+        "license": "CC BY 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:TakachihokyoWithManaiFalls.JPG"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Takachiho_town_panorama.jpg/500px-Takachiho_town_panorama.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Takachiho_town_panorama.jpg/1920px-Takachiho_town_panorama.jpg",
+        "w": 480,
+        "h": 147,
+        "credit": "Takasunrise0921",
+        "license": "CC BY 2.5",
+        "page": "https://commons.wikimedia.org/wiki/File:Takachiho_town_panorama.jpg"
+      }
+    ],
+    "Beppu - piekla (jigoku) + onsen": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/180131_Umi-Jigoku.jpg/500px-180131_Umi-Jigoku.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/180131_Umi-Jigoku.jpg/1920px-180131_Umi-Jigoku.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Totti",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:180131_Umi-Jigoku.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Beppu_Montage_2.jpg/500px-Beppu_Montage_2.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Beppu_Montage_2.jpg",
+        "w": 480,
+        "h": 769,
+        "credit": "水だらけのプール",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Beppu_Montage_2.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Beppu_City.jpg/500px-Beppu_City.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Beppu_City.jpg/1920px-Beppu_City.jpg",
+        "w": 480,
+        "h": 270,
+        "credit": "Japanexperterna",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Beppu_City.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Beppu_Chinoike-jigoku01n4272.jpg/500px-Beppu_Chinoike-jigoku01n4272.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Beppu_Chinoike-jigoku01n4272.jpg/1920px-Beppu_Chinoike-jigoku01n4272.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "663highland",
+        "license": "CC BY 2.5",
+        "page": "https://commons.wikimedia.org/wiki/File:Beppu_Chinoike-jigoku01n4272.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Beppu_Tatsumaki-jigoku03s5s4272.jpg/500px-Beppu_Tatsumaki-jigoku03s5s4272.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Beppu_Tatsumaki-jigoku03s5s4272.jpg/1920px-Beppu_Tatsumaki-jigoku03s5s4272.jpg",
+        "w": 480,
+        "h": 720,
+        "credit": "663highland",
+        "license": "CC BY 2.5",
+        "page": "https://commons.wikimedia.org/wiki/File:Beppu_Tatsumaki-jigoku03s5s4272.jpg"
+      }
+    ],
+    "Kamakura - Wielki Budda (Kotoku-in)": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/230128_Kamakura_Daibutsu_Japan04s3.jpg/500px-230128_Kamakura_Daibutsu_Japan04s3.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/230128_Kamakura_Daibutsu_Japan04s3.jpg/1920px-230128_Kamakura_Daibutsu_Japan04s3.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "663highland",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:230128_Kamakura_Daibutsu_Japan04s3.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/TsurugaokaHachiman-M8867.jpg/500px-TsurugaokaHachiman-M8867.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/5/5e/TsurugaokaHachiman-M8867.jpg",
+        "w": 480,
+        "h": 433,
+        "credit": "Fg2",
+        "license": "Public domain",
+        "page": "https://commons.wikimedia.org/wiki/File:TsurugaokaHachiman-M8867.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/230128_Kamakura_Daibutsu_Japan01s3.jpg/500px-230128_Kamakura_Daibutsu_Japan01s3.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/230128_Kamakura_Daibutsu_Japan01s3.jpg/1920px-230128_Kamakura_Daibutsu_Japan01s3.jpg",
+        "w": 480,
+        "h": 320,
+        "credit": "663highland",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:230128_Kamakura_Daibutsu_Japan01s3.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/The_Great_Buddha_of_Kamakura_Illumination.jpg/500px-The_Great_Buddha_of_Kamakura_Illumination.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/The_Great_Buddha_of_Kamakura_Illumination.jpg/1920px-The_Great_Buddha_of_Kamakura_Illumination.jpg",
+        "w": 480,
+        "h": 269,
+        "credit": "Manish Prabhune",
+        "license": "CC BY 2.0",
+        "page": "https://commons.wikimedia.org/wiki/File:The_Great_Buddha_of_Kamakura_Illumination.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Kamakura_Daibutsu_-_Takeshi_DSC_7849_%284833376057%29.jpg/500px-Kamakura_Daibutsu_-_Takeshi_DSC_7849_%284833376057%29.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Kamakura_Daibutsu_-_Takeshi_DSC_7849_%284833376057%29.jpg/1920px-Kamakura_Daibutsu_-_Takeshi_DSC_7849_%284833376057%29.jpg",
+        "w": 480,
+        "h": 319,
+        "credit": "Takeshi Kuboki from Amagasaki, Japan",
+        "license": "CC BY 2.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Kamakura_Daibutsu_-_Takeshi_DSC_7849_(4833376057).jpg"
+      }
+    ],
+    "Hokokuji - gaj bambusowy + matcha (Kamakura)": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Hokoku-ji_-_Kanagawa-_2024_April_28_various_17_08_14_467000.jpeg/500px-Hokoku-ji_-_Kanagawa-_2024_April_28_various_17_08_14_467000.jpeg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Hokoku-ji_-_Kanagawa-_2024_April_28_various_17_08_14_467000.jpeg/1920px-Hokoku-ji_-_Kanagawa-_2024_April_28_various_17_08_14_467000.jpeg",
+        "w": 480,
+        "h": 267,
+        "credit": "Nesnad",
+        "license": "CC BY 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Hokoku-ji_-_Kanagawa-_2024_April_28_various_17_08_14_467000.jpeg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Hokokuji_Belltower_Kamakura.jpg/500px-Hokokuji_Belltower_Kamakura.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Hokokuji_Belltower_Kamakura.jpg/1920px-Hokokuji_Belltower_Kamakura.jpg",
+        "w": 480,
+        "h": 321,
+        "credit": "Urashimataro",
+        "license": "Public domain",
+        "page": "https://commons.wikimedia.org/wiki/File:Hokokuji_Belltower_Kamakura.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Hokokuji_Bamboo_Forest_Kamakura.jpg/500px-Hokokuji_Bamboo_Forest_Kamakura.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Hokokuji_Bamboo_Forest_Kamakura.jpg/1920px-Hokokuji_Bamboo_Forest_Kamakura.jpg",
+        "w": 480,
+        "h": 335,
+        "credit": "Urashimataro",
+        "license": "Public domain",
+        "page": "https://commons.wikimedia.org/wiki/File:Hokokuji_Bamboo_Forest_Kamakura.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Kamakura_Takedera_03.jpg/500px-Kamakura_Takedera_03.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Kamakura_Takedera_03.jpg/1920px-Kamakura_Takedera_03.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Wikimedia Commons",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Kamakura_Takedera_03.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Kamakura_Takedera_01.jpg/500px-Kamakura_Takedera_01.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Kamakura_Takedera_01.jpg/1920px-Kamakura_Takedera_01.jpg",
+        "w": 480,
+        "h": 360,
+        "credit": "Wikimedia Commons",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Kamakura_Takedera_01.jpg"
+      }
+    ],
+    "Muzeum Narodowe w Tokio (Ueno) - alternatywa 25.05": [
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Tokyo_National_Museum%2C_Honkan_2010.jpg/500px-Tokyo_National_Museum%2C_Honkan_2010.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Tokyo_National_Museum%2C_Honkan_2010.jpg/1920px-Tokyo_National_Museum%2C_Honkan_2010.jpg",
+        "w": 480,
+        "h": 319,
+        "credit": "Wiiii",
+        "license": "CC BY-SA 3.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Tokyo_National_Museum,_Honkan_2010.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Hiroshige_III_-_Daini_hakurankai_bijitsukan_narabini_funsuiki.jpg/500px-Hiroshige_III_-_Daini_hakurankai_bijitsukan_narabini_funsuiki.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Hiroshige_III_-_Daini_hakurankai_bijitsukan_narabini_funsuiki.jpg/1920px-Hiroshige_III_-_Daini_hakurankai_bijitsukan_narabini_funsuiki.jpg",
+        "w": 480,
+        "h": 233,
+        "credit": "Hiroshige III",
+        "license": "Public domain",
+        "page": "https://commons.wikimedia.org/wiki/File:Hiroshige_III_-_Daini_hakurankai_bijitsukan_narabini_funsuiki.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Interior_view_of_stairway_hall_-_Tokyo_National_Museum_-_DSC05617.JPG/500px-Interior_view_of_stairway_hall_-_Tokyo_National_Museum_-_DSC05617.JPG",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Interior_view_of_stairway_hall_-_Tokyo_National_Museum_-_DSC05617.JPG/1920px-Interior_view_of_stairway_hall_-_Tokyo_National_Museum_-_DSC05617.JPG",
+        "w": 480,
+        "h": 320,
+        "credit": "Daderot",
+        "license": "CC0",
+        "page": "https://commons.wikimedia.org/wiki/File:Interior_view_of_stairway_hall_-_Tokyo_National_Museum_-_DSC05617.JPG"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Eagle%2C_By_Suzuki_Chokichi_Suzuki_%E9%88%B4%E6%9C%A8%E9%95%B7%E5%90%89%E3%80%8C%E9%B7%B2%E7%BD%AE%E7%89%A9%E3%80%8D.jpg/500px-Eagle%2C_By_Suzuki_Chokichi_Suzuki_%E9%88%B4%E6%9C%A8%E9%95%B7%E5%90%89%E3%80%8C%E9%B7%B2%E7%BD%AE%E7%89%A9%E3%80%8D.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Eagle%2C_By_Suzuki_Chokichi_Suzuki_%E9%88%B4%E6%9C%A8%E9%95%B7%E5%90%89%E3%80%8C%E9%B7%B2%E7%BD%AE%E7%89%A9%E3%80%8D.jpg/1920px-Eagle%2C_By_Suzuki_Chokichi_Suzuki_%E9%88%B4%E6%9C%A8%E9%95%B7%E5%90%89%E3%80%8C%E9%B7%B2%E7%BD%AE%E7%89%A9%E3%80%8D.jpg",
+        "w": 480,
+        "h": 319,
+        "credit": "SLIMHANNYA",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:Eagle,_By_Suzuki_Chokichi_Suzuki_%E9%88%B4%E6%9C%A8%E9%95%B7%E5%90%89%E3%80%8C%E9%B7%B2%E7%BD%AE%E7%89%A9%E3%80%8D.jpg"
+      },
+      {
+        "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/%E5%A4%A7%E5%8C%85%E5%B9%B3%2C_Okanehira.jpg/500px-%E5%A4%A7%E5%8C%85%E5%B9%B3%2C_Okanehira.jpg",
+        "large": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/%E5%A4%A7%E5%8C%85%E5%B9%B3%2C_Okanehira.jpg/1920px-%E5%A4%A7%E5%8C%85%E5%B9%B3%2C_Okanehira.jpg",
+        "w": 480,
+        "h": 319,
+        "credit": "SLIMHANNYA",
+        "license": "CC BY-SA 4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E5%8C%85%E5%B9%B3,_Okanehira.jpg"
+      }
+    ]
+  }
+}

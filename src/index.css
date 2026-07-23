@@ -256,8 +256,9 @@ h4 {
   &::after {
     content: "";
     position: absolute;
-    left: -6%;
-    right: -6%;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
     bottom: 0;
     height: 13px;
     z-index: 1;

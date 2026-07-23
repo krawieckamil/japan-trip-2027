@@ -29,7 +29,9 @@ export function Sakura() {
             {
               left: `${p.left}%`,
               opacity: p.o,
-              animationDelay: `${p.delay}s`,
+              /* ujemne opóźnienie: płatek startuje w połowie spadania już przy pierwszej klatce,
+                 zamiast wisieć zamrożony u góry przez czas dodatniego delay */
+              animationDelay: `-${p.delay}s`,
               animationDuration: `${p.dur}s`,
               "--drift": `${p.drift}px`,
               "--s": p.s,

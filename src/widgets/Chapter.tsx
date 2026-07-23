@@ -3,6 +3,7 @@ import type { Stint, City } from "../data/trip";
 import { money, nightsLabel, formatCurrency } from "../lib/format";
 import { BlockHead, Label } from "../ui";
 import { DayView } from "./DayView";
+import { Gallery, GalleryLabel } from "./Gallery";
 
 function PlateAbout({
   items,
@@ -103,7 +104,7 @@ export function Chapter({
 
   return (
     <section
-      className="pt-[26px] min-[720px]:pt-14"
+      className="pt-[26px] min-[720px]:pt-14 max-w-[46rem] mx-auto"
       id={`ch-${index}`}
       data-city={stint.city}
       data-accent={stint.city}
@@ -125,6 +126,13 @@ export function Chapter({
         </span>
         <PlateAbout items={about} cityName={city.name} />
       </header>
+
+      {!stint.coda && city.images.length > 0 && (
+        <div className="mx-auto max-w-[46rem] px-[22px] pt-[30px] min-[720px]:px-10">
+          <GalleryLabel jp={city.jp} />
+          <Gallery images={city.images} variant="city" />
+        </div>
+      )}
 
       <div className="mx-auto max-w-[44rem] px-[22px] pt-[34px] min-[720px]:px-10">
         <Setup stint={stint} mult={mult} />

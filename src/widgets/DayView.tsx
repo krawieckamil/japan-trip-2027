@@ -2,6 +2,7 @@ import type { Day } from "../data/trip";
 
 import { money } from "../lib/format";
 import { Label } from "../ui";
+import { Gallery } from "./Gallery";
 
 export function DayView({ day, mult }: { day: Day; mult: number }) {
   const items = day.items.filter((it) => it.kind !== "O mieście");
@@ -55,15 +56,22 @@ export function DayView({ day, mult }: { day: Day; mult: number }) {
                       {money(it.price, mult)}
                     </span>
                   )}
-                  <a
-                    className="it-ph inline-flex items-center gap-[5px] rounded-full bg-transparent px-[13px] py-[4px] text-[0.74rem] font-semibold whitespace-nowrap text-ink-3 no-underline"
-                    href={`https://www.google.com/search?tbm=isch&q=${q}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    zdjęcia&nbsp;↗
-                  </a>
+                  {!it.images && (
+                    <a
+                      className="it-ph inline-flex items-center gap-[5px] rounded-full bg-transparent px-[13px] py-[4px] text-[0.74rem] font-semibold whitespace-nowrap text-ink-3 no-underline"
+                      href={`https://www.google.com/search?tbm=isch&q=${q}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      zdjęcia&nbsp;↗
+                    </a>
+                  )}
                 </div>
+                {it.images && (
+                  <div className="mt-[14px]">
+                    <Gallery images={it.images} variant="spot" />
+                  </div>
+                )}
               </div>
             </div>
           );

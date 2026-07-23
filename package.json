@@ -8,6 +8,7 @@
     "dev": "vite",
     "format": "oxfmt",
     "generate": "node --env-file=.env scripts/fetch-tripsy-data.mjs --out src/data/tripsy-export.json",
+    "generate:images": "node scripts/fetch-images.mjs --out src/data/images.json",
     "lint": "oxlint --fix",
     "preview": "vite preview"
   },

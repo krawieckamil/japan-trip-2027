@@ -1,8 +1,20 @@
+import imagesExport from "./images.json";
 import rawExport from "./tripsy-export.json";
+
+export interface GalleryImage {
+  thumb: string;
+  large: string;
+  w: number;
+  h: number;
+  credit: string;
+  license: string;
+  page: string;
+}
 
 export interface City {
   name: string;
   jp: string;
+  images: GalleryImage[];
 }
 
 export interface Leg {
@@ -31,6 +43,7 @@ export interface ItineraryItem {
   tip?: string;
   price?: number;
   url?: string;
+  images?: GalleryImage[];
 }
 
 export interface Day {
@@ -116,8 +129,15 @@ interface TripsyExport {
 
 const TRIP_PEOPLE = 4;
 
+/* Galerie zdjęć (Wikimedia Commons) generowane przez scripts/fetch-images.mjs → images.json.
+   Odświeżenie: `npm run generate:images`. Klucze: miasta wg slugu, atrakcje wg nazwy aktywności. */
+const IMAGES = imagesExport as {
+  cities: Record<string, GalleryImage[]>;
+  places: Record<string, GalleryImage[]>;
+};
+
 /* Miasta, japońskie zapisy i kolory CSS nie są częścią eksportu Tripsy — trzymane tu ręcznie. */
-const CITY_META: Record<string, City> = {
+const CITY_META: Record<string, { name: string; jp: string }> = {
   tokyo: { name: "Tokio", jp: "東京" },
   kyoto: { name: "Kioto", jp: "京都" },
   osaka: { name: "Osaka", jp: "大阪" },
@@ -256,6 +276,8 @@ function buildItem(a: TripsyActivity): ItineraryItem {
   if (tip) item.tip = tip;
   if (a.price != null) item.price = a.price;
   if (a.website) item.url = a.website;
+  const imgs = IMAGES.places[a.name];
+  if (imgs?.length) item.images = imgs;
   return item;
 }
 
@@ -416,9 +438,16 @@ function buildTrip(raw: TripsyExport): Trip {
     "Warszawa",
   );
 
+  const cities: Record<string, City> = Object.fromEntries(
+    Object.entries(CITY_META).map(([slug, meta]) => [
+      slug,
+      { ...meta, images: IMAGES.cities[slug] ?? [] },
+    ]),
+  );
+
   return {
     people: TRIP_PEOPLE,
-    cities: CITY_META,
+    cities,
     stints,
     legOut,
     costGroups: buildCostGroups(stints, legOut, raw.activities),

@@ -89,11 +89,6 @@ function stripHtml(s) {
     .trim();
 }
 
-/* Miniatura o zadanej szerokości — Wikimedia pozwala przeskalować przez podmianę `<W>px-`. */
-function atWidth(thumbUrl, width) {
-  return thumbUrl.replace(/\/\d+px-/, `/${width}px-`);
-}
-
 async function leadImage(title) {
   const d = await api({
     action: "query",
@@ -125,7 +120,10 @@ async function imageTitles(title) {
   return names;
 }
 
-async function imageInfo(fileTitles) {
+/* Wikimedia serwuje tylko szerokości thumbów zwrócone przez API (żądaną mapuje na
+   najbliższy dozwolony „bucket"), więc URL-e miniatur bierzemy z API — nie budujemy ich sami.
+   Dwa przebiegi: metadane + thumb siatki, oraz thumb do lightboxa. */
+async function infoAt(fileTitles, width, withMeta) {
   const out = new Map();
   for (let i = 0; i < fileTitles.length; i += 40) {
     const batch = fileTitles.slice(i, i + 40);
@@ -133,9 +131,9 @@ async function imageInfo(fileTitles) {
       action: "query",
       titles: batch.join("|"),
       prop: "imageinfo",
-      iiprop: "url|size|mime|extmetadata",
-      iiurlwidth: String(LARGE_WIDTH),
-      iiextmetadatafilter: "Artist|LicenseShortName",
+      iiprop: withMeta ? "url|size|mime|extmetadata" : "url",
+      iiurlwidth: String(width),
+      ...(withMeta ? { iiextmetadatafilter: "Artist|LicenseShortName" } : {}),
     });
     for (const page of Object.values(d.query?.pages ?? {})) {
       const ii = page.imageinfo?.[0];
@@ -145,18 +143,18 @@ async function imageInfo(fileTitles) {
   return out;
 }
 
-function toImage(ii) {
-  if (!ii || ii.mime !== "image/jpeg") return null;
-  if (!ii.thumburl || (ii.width ?? 0) < MIN_WIDTH) return null;
-  const meta = ii.extmetadata ?? {};
+function toImage(gridII, largeII) {
+  if (!gridII || gridII.mime !== "image/jpeg") return null;
+  if (!gridII.thumburl || (gridII.width ?? 0) < MIN_WIDTH) return null;
+  const meta = gridII.extmetadata ?? {};
   return {
-    thumb: atWidth(ii.thumburl, GRID_WIDTH),
-    large: ii.thumburl,
-    w: ii.thumbwidth,
-    h: ii.thumbheight,
+    thumb: gridII.thumburl,
+    large: largeII?.thumburl ?? gridII.url,
+    w: gridII.thumbwidth,
+    h: gridII.thumbheight,
     credit: stripHtml(meta.Artist?.value) || "Wikimedia Commons",
     license: stripHtml(meta.LicenseShortName?.value) || "",
-    page: ii.descriptionurl || "",
+    page: gridII.descriptionurl || "",
   };
 }
 
@@ -180,17 +178,18 @@ async function collect(sources, cap) {
   }
 
   const unique = [...new Set(fileNames)];
-  const info = await imageInfo(unique);
+  const grid = await infoAt(unique, GRID_WIDTH, true);
+  const large = await infoAt(unique, LARGE_WIDTH, false);
 
   const images = [];
-  for (const [file, ii] of info) {
-    const img = toImage(ii);
-    if (img) images.push({ file, img, lead: leads.has(file) });
+  for (const [file, ii] of grid) {
+    const img = toImage(ii, large.get(file));
+    if (img) images.push({ file, img, orig: ii.width ?? 0, lead: leads.has(file) });
   }
 
   images.sort((a, b) => {
     if (a.lead !== b.lead) return a.lead ? -1 : 1;
-    return (b.img.w ?? 0) - (a.img.w ?? 0);
+    return b.orig - a.orig;
   });
 
   return images.slice(0, cap).map((x) => x.img);

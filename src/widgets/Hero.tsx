@@ -10,9 +10,9 @@ const FACTS = [
 
 export function Hero() {
   return (
-    <header className="hero relative mx-auto flex min-h-[96svh] max-w-[44rem] flex-col justify-center overflow-hidden px-[22px] py-[12vh] min-[720px]:px-10">
+    <header className="hero relative mx-auto flex min-h-[96svh] max-w-[44rem] flex-col justify-center px-[22px] py-[12vh] min-[720px]:px-10">
       <div
-        className="hero-art pointer-events-none absolute inset-0 z-0 overflow-hidden"
+        className="hero-art pointer-events-none absolute inset-y-0 left-1/2 z-0 w-screen -translate-x-1/2 overflow-hidden"
         aria-hidden="true"
       >
         <span className="hero-sun absolute top-[3%] right-[9%] aspect-square w-[clamp(110px,24vw,250px)] rounded-full bg-seal opacity-50"></span>
