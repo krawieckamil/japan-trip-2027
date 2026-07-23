@@ -107,23 +107,23 @@
         font-variant-numeric: tabular-nums;
     }
 
-    /* etykieta — bita jak podpis na rycinie */
+    /* etykieta — podpis kuratorski pod ryciną, nie korporacyjny "eyebrow" */
     .label {
         display: inline-block;
-        font-size: 0.6875rem;
-        letter-spacing: 0.28em;
-        text-transform: uppercase;
-        font-weight: 700;
-        color: var(--ink-3);
+        font-family: var(--f-jp);
+        font-weight: 500;
+        font-size: 1rem;
+        letter-spacing: 0.05em;
     }
 
     .sec-head .label::after {
         font-family: var(--f-jp);
-        font-size: 1.5em;
+        font-style: normal;
+        font-size: 1.15em;
         letter-spacing: 0;
         color: var(--seal);
-        margin-left: 0.55em;
-        vertical-align: -0.16em;
+        margin-left: 0.5em;
+        vertical-align: -0.14em;
     }
 
     #trasa .label::after {
@@ -156,6 +156,39 @@
         background-position: bottom;
         background-size: 100% 9px;
         backdrop-filter: blur(6px);
+    }
+
+    /* pasek postępu — to samo pociągnięcie pędzla, tylko dotuszowane barwą miasta w miarę przewijania */
+    @property --navp {
+        syntax: "<percentage>";
+        inherits: false;
+        initial-value: 0%;
+    }
+
+    .nav::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 9px;
+        background: var(--now);
+        -webkit-mask: var(--brush) bottom / 100% 9px no-repeat;
+        mask: var(--brush) bottom / 100% 9px no-repeat;
+        clip-path: inset(0 calc(100% - var(--navp)) 0 0);
+        pointer-events: none;
+    }
+
+    @supports (animation-timeline: scroll()) {
+        .nav::before {
+            animation: navProgress auto linear;
+            animation-timeline: scroll(root);
+        }
+    }
+
+    @keyframes navProgress {
+        from { --navp: 0%; }
+        to   { --navp: 100%; }
     }
 
     .nav-now {
@@ -735,8 +768,12 @@
         grid-template-columns: 1fr auto;
         gap: 6px 12px;
         align-items: baseline;
+        padding: 3px 0;
+        transition: transform 0.25s ease;
 
         .nm {
+            display: flex;
+            align-items: center;
             font-size: 0.94rem;
             font-weight: 600;
         }
@@ -745,12 +782,33 @@
             font-size: 0.94rem;
             font-weight: 700;
             font-variant-numeric: tabular-nums;
+            color: var(--bar-c, var(--ink));
         }
+
+        &:hover {
+            transform: translateX(3px);
+
+            .bar-fill {
+                filter: brightness(1.12);
+            }
+        }
+    }
+
+    /* pieczątka koloru przy nazwie — ten sam romb co kropki w nawigacji */
+    .nm-dot {
+        display: inline-block;
+        flex: none;
+        width: 8px;
+        height: 8px;
+        margin-right: 9px;
+        background: var(--bar-c, var(--ink));
+        transform: rotate(45deg);
     }
 
     .bar-track {
         grid-column: 1 / -1;
-        height: 3px;
+        height: 6px;
+        border-radius: 3px;
         background: var(--hair);
         overflow: hidden;
     }
@@ -758,7 +816,11 @@
     .bar-fill {
         display: block;
         height: 100%;
-        background: var(--ink);
+        border-radius: 3px;
+        background: linear-gradient(90deg, var(--bar-c, var(--ink)), color-mix(in srgb, var(--bar-c, var(--ink)) 70%, white 30%));
+        transform-origin: left center;
+        transform: scaleX(1);
+        transition: filter 0.2s ease;
     }
 
     .insight {
@@ -996,10 +1058,6 @@
         background-position: bottom;
         background-size: 100% 12px;
 
-        .label {
-            color: var(--ink-3);
-        }
-
         .block-k {
             font-family: var(--f-jp);
             font-size: 1.35rem;
@@ -1167,8 +1225,9 @@
     }
 
     .day-w {
-        font-size: 0.76rem;
-        letter-spacing: 0.12em;
+        font-family: var(--f-jp);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
         color: var(--ink-3);
         flex: 1;
@@ -1268,12 +1327,10 @@
 
     .it-k {
         display: block;
-        margin-bottom: 3px;
-        font-size: 0.66rem;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        font-weight: 700;
-        color: var(--ink-3);
+        font-family: var(--f-jp);
+        font-weight: 500;
+        font-size: 0.825rem;
+        color: var(--tint);
     }
 
     /* stopka pozycji: cena + dyskretny link do zdjęć */
@@ -1393,11 +1450,11 @@
 
     .grand {
         margin-top: 34px;
-        padding: 20px 24px;
+        padding: 20px 20px;
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
-        gap: 12px;
+        align-items: center;
+        gap: 8px;
         background: var(--ink);
         color: var(--ground);
         border-radius: 7px;
@@ -1407,7 +1464,9 @@
             font-weight: 800;
             letter-spacing: 0.02em;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.825rem;
+            max-width: 30%;
+            text-wrap: balance;
         }
 
         .vl {
@@ -1516,6 +1575,54 @@
         .plate {
             min-height: 40svh;
             padding: clamp(56px, 7vw, 84px) clamp(48px, 6vw, 76px);
+        }
+    }
+
+    /* ---------- wejścia w scrollu — te same elementy wracają na każdej planszy ---------- */
+    @media (prefers-reduced-motion: no-preference) {
+        @supports (animation-timeline: view()) and (animation-range: entry) {
+            @keyframes plateStamp {
+                from { opacity: 0; transform: scale(0.97) translateY(22px); }
+            }
+            .plate {
+                animation: plateStamp 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+                animation-timeline: view();
+                animation-range: entry 0% entry 55%;
+            }
+
+            @keyframes idxIn {
+                from { opacity: 0; transform: translateX(-18px); }
+            }
+            .idx {
+                animation: idxIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+                animation-timeline: view();
+                animation-range: entry 0% entry 85%;
+            }
+
+            @keyframes itIn {
+                from { opacity: 0; transform: translateY(18px); }
+            }
+            .it {
+                animation: itIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+                animation-timeline: view();
+                animation-range: entry 0% entry 60%;
+            }
+        }
+    }
+
+    /* przejście etykiety w nawigacji przy zmianie rozdziału */
+    @media (prefers-reduced-motion: no-preference) {
+        .nav-now { view-transition-name: nav-label; }
+
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+            animation: none;
+        }
+
+        ::view-transition-old(nav-label),
+        ::view-transition-new(nav-label) {
+            animation-duration: 0.32s;
+            animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
         }
     }
 
@@ -1979,7 +2086,7 @@
                     {
                         date: "25 maja", wd: "wtorek", items: [
                             {
-                                time: "cały dzień", kind: "Ostatni dzień", title: "Wolne popołudnie w Tokio",
+                                time: "cały dzień", kind: "Wolny czas", title: "Wolne popołudnie w Tokio",
                                 desc: "Dzień na ostatnie sprawunki i to, co wypadło z planu. Hotel jest wpięty prosto w Tokyo Station, więc bagaże można zostawić do wieczora.",
                                 tip: "Na Narita Express z Tokyo Station liczcie ok. godziny; przy wylocie 22:50 wyjazd z miasta najpóźniej ok. 19:30."
                             }
@@ -1999,14 +2106,14 @@
 
         costGroups: [
             {
-                label: "Przeloty", rows: [
+                label: "Przeloty", color: "--c-tokyo", rows: [
                     {name: "LOT LO79 · Warszawa → Narita", price: 4000},
                     {name: "LOT LO80 · Narita → Warszawa", price: 4000},
                     {name: "Oita → Haneda (krajowy)", price: 510}
                 ]
             },
             {
-                label: "Noclegi", rows: [
+                label: "Noclegi", color: "--c-kyoto", rows: [
                     {name: "TSUKI Tokyo · 4 noce", price: 1397},
                     {name: "Enso Machiya, Kioto · 3 noce", price: 1571},
                     {name: "Hotel Royal Classic, Osaka · 1 noc", price: 373},
@@ -2017,7 +2124,7 @@
                 ]
             },
             {
-                label: "Pociągi", rows: [
+                label: "Pociągi", color: "--c-hiroshima", rows: [
                     {name: "Nozomi · Tokio → Kioto", price: 330},
                     {name: "JR Rapid · Kioto → Osaka", price: 14},
                     {name: "Nozomi · Osaka → Hiroszima", price: 258},
@@ -2026,7 +2133,7 @@
                 ]
             },
             {
-                label: "Atrakcje i bilety", rows: [
+                label: "Atrakcje i bilety", color: "--c-beppu", rows: [
                     {name: "teamLab Planets", price: 98},
                     {name: "Shibuya Sky", price: 63},
                     {name: "Miyajima · świątynia i kolejka na Misen", price: 56},
@@ -2113,6 +2220,19 @@
         }).join("") + "</ol>";
     }
 
+    /* pociąga paski kosztów od zera do docelowej szerokości, z przesunięciem między rzędami — Web Animations API, żeby czas trwania był gwarantowany niezależnie od tego, jak szybko poleci scroll */
+    function armBars() {
+        const fills = [...document.querySelectorAll("#bars .bar-fill")];
+        fills.forEach((f) => f.getAnimations().forEach((a) => a.cancel()));
+        if (reduceMotion) return;
+        fills.forEach((f, i) => {
+            f.animate(
+                [{transform: "scaleX(0)"}, {transform: "scaleX(1)"}],
+                {duration: 900, delay: i * 110, easing: "cubic-bezier(0.3, 1.4, 0.4, 1)", fill: "both"}
+            );
+        });
+    }
+
     function renderMoney() {
         $("totalV").textContent = money(TOTAL);
         $("totalSub").textContent = mult === 1
@@ -2122,8 +2242,8 @@
         $("bars").innerHTML = TRIP.costGroups.map((g, i) => {
             const t = GROUP_TOTALS[i];
             const pct = t / TOTAL;
-            return `<div class="bar-row">
-      <span class="nm">${esc(g.label)}</span>
+            return `<div class="bar-row" style="--bar-c:var(${g.color})">
+      <span class="nm"><i class="nm-dot" aria-hidden="true"></i>${esc(g.label)}</span>
       <span class="vl">${money(t)} zł</span>
       <span class="bar-track"><span class="bar-fill" style="width:${(pct * 100).toFixed(1)}%"></span></span>
     </div>`;
@@ -2249,7 +2369,7 @@
         }).join("") + `<section class="sec wrap"><div class="block-head"><span class="label">Powrót</span><span class="block-k" style="--tint:var(--seal)">帰</span></div>${legHTML(TRIP.legOut, "tokyo", "tokyo")}</section>`;
     }
 
-    function setMult(m) {
+    function setMult(m, replay = true) {
         mult = m;
         $("bPer").setAttribute("aria-pressed", String(m === 1));
         $("bAll").setAttribute("aria-pressed", String(m !== 1));
@@ -2257,6 +2377,7 @@
         renderRibbon();
         renderJourney();
         bindChapters();
+        if (replay) armBars();
     }
 
     const reduceMotion = window.matchMedia
@@ -2285,20 +2406,29 @@
         const key = (found && window.scrollY > window.innerHeight * 0.5) ? found.dataset.city : null;
         const root = document.documentElement;
 
-        if (key && key !== activeCity) {
-            activeCity = key;
-            const c = TRIP.cities[key];
-            root.style.setProperty("--now", `var(${c.v})`);
-            $("navK").textContent = c.jp;
-            $("navT").textContent = c.name;
-            [...$("dots").children].forEach((btn) =>
-                btn.setAttribute("aria-current", String(btn.dataset.jump === key)));
-        } else if (!key && activeCity !== "intro") {
-            activeCity = "intro";
-            root.style.setProperty("--now", "var(--seal)");
-            $("navK").textContent = "日本";
-            $("navT").textContent = "Plan wyjazdu";
-            [...$("dots").children].forEach((btn) => btn.setAttribute("aria-current", "false"));
+        const apply = () => {
+            if (key && key !== activeCity) {
+                activeCity = key;
+                const c = TRIP.cities[key];
+                root.style.setProperty("--now", `var(${c.v})`);
+                $("navK").textContent = c.jp;
+                $("navT").textContent = c.name;
+                [...$("dots").children].forEach((btn) =>
+                    btn.setAttribute("aria-current", String(btn.dataset.jump === key)));
+            } else if (!key && activeCity !== "intro") {
+                activeCity = "intro";
+                root.style.setProperty("--now", "var(--seal)");
+                $("navK").textContent = "日本";
+                $("navT").textContent = "Plan wyjazdu";
+                [...$("dots").children].forEach((btn) => btn.setAttribute("aria-current", "false"));
+            }
+        };
+
+        const changed = (key && key !== activeCity) || (!key && activeCity !== "intro");
+        if (changed && !reduceMotion && document.startViewTransition) {
+            document.startViewTransition(apply);
+        } else {
+            apply();
         }
     }
 
@@ -2307,11 +2437,16 @@
        ============================================================ */
     renderFacts();
     renderDots();
-    setMult(1);
+    setMult(1, false);
     renderCosts();
 
     $("bPer").addEventListener("click", () => setMult(1));
     $("bAll").addEventListener("click", () => setMult(TRIP.people));
+
+    /* paski kosztów odpalają się, gdy same wjeżdżają w widok — nie cały rozdział "koszt" */
+    new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) armBars(); });
+    }, {threshold: 0, rootMargin: "0px 0px -15% 0px"}).observe($("bars"));
 
     let ticking = false;
     window.addEventListener("scroll", () => {
