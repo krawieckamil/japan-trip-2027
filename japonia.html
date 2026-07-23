@@ -1,0 +1,1148 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Japonia 2027 — plan wyjazdu</title>
+
+<style>
+
+/* ============================================================
+   浮世 — plan wyjazdu jako seria drzeworytów (ukiyo-e).
+   Papier + tusz. Płaskie plamy koloru per miasto. Pieczęcie.
+   Pasma mgły (kasumi) rozdzielają sceny. Zero animowanego tła.
+   ============================================================ */
+
+:root {
+  --ground:   #E7DBC0;   /* washi */
+  --paper-2:  #F1E7D1;   /* jaśniejszy papier na karty/plansze */
+  --ink:      #211A11;
+  --ink-2:    #574B37;
+  --ink-3:    #8B7D62;
+  --line:     rgba(33,26,17,0.90);   /* keyline drzeworytu */
+  --hair:     rgba(33,26,17,0.16);
+  --seal:     #B23A2B;
+  --plate-fg: #F4ECD8;   /* tekst na kolorowej planszy */
+  --plate-ink: rgba(18,13,7,0.32);
+  --now:      var(--seal);
+
+  --c-tokyo:     #4B3FD9;
+  --c-kyoto:     #17795E;
+  --c-osaka:     #CF3A26;
+  --c-hiroshima: #1A6FBC;
+  --c-fukuoka:   #0B7F7A;
+  --c-beppu:     #B9761A;
+
+  --f-jp: "Hiragino Mincho ProN","Yu Mincho",YuMincho,"Songti SC","Noto Serif JP",serif;
+  --f-ui: -apple-system,BlinkMacSystemFont,"SF Pro Text","Hiragino Sans","Segoe UI",system-ui,sans-serif;
+
+  --tint: var(--ink);
+  --pad: 22px;
+  --maxw: 44rem;
+
+  /* pociągnięcia pędzla zamiast twardych linijek */
+  --brush:  url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%2012'%20preserveAspectRatio='none'%3E%3Cpath%20d='M5%207%20C%20200%204%20340%209%20560%206%20C%20760%203.5%20900%209.5%201195%206.5%20C%20900%208.5%20760%206%20560%208.5%20C%20340%2011%20200%206.5%205%209%20Z'%20fill='%23211a11'%20fill-opacity='0.42'/%3E%3C/svg%3E");
+  --brush-b: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%2016'%20preserveAspectRatio='none'%3E%3Cpath%20d='M4%208%20C%20220%203%20360%2012%20580%207%20C%20800%202.5%20940%2012.5%201196%207.5%20C%20940%2011.5%20800%208%20580%2012%20C%20360%2015%20220%208.5%204%2011%20Z'%20fill='%23211a11'%20fill-opacity='0.72'/%3E%3C/svg%3E");
+
+  color-scheme: light;
+}
+
+
+/* ---------- baza ---------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--f-ui);
+  font-size: 17px;
+  line-height: 1.62;
+  letter-spacing: -0.006em;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* włókno papieru na całej stronie */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  mix-blend-mode: multiply;
+  opacity: 0.35;
+}
+
+.stack { position: relative; z-index: 2; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--seal); outline-offset: 3px; }
+
+h1,h2,h3,h4 { margin: 0; font-weight: 750; letter-spacing: -0.03em; line-height: 1.05; text-wrap: balance; }
+.jp { font-family: var(--f-jp); font-weight: 400; }
+.n  { font-variant-numeric: tabular-nums; }
+
+/* etykieta — bita jak podpis na rycinie */
+.label {
+  display: inline-block;
+  font-size: 0.6875rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink-3);
+}
+.sec-head .label::after {
+  font-family: var(--f-jp);
+  font-size: 1.5em;
+  letter-spacing: 0;
+  color: var(--seal);
+  margin-left: 0.55em;
+  vertical-align: -0.16em;
+}
+#trasa   .label::after { content: "道"; }
+#koszt   .label::after { content: "費"; }
+#rozbicie .label::after { content: "帳"; }
+
+
+/* ---------- nawigacja ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 11px var(--pad);
+  background: color-mix(in srgb, var(--ground) 90%, transparent);
+  border-bottom: 0;
+  background-image: var(--brush);
+  background-repeat: no-repeat; background-position: bottom; background-size: 100% 9px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.nav-now { display: flex; align-items: baseline; gap: 9px; min-width: 0; }
+.nav-now .k { font-family: var(--f-jp); font-size: 1.15rem; color: var(--now); }
+.nav-now .t {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--ink-2);
+}
+.dots { display: flex; gap: 9px; flex: none; }
+.dots button {
+  appearance: none; border: 0; padding: 0; width: 20px; height: 20px;
+  background: transparent; cursor: pointer; display: grid; place-items: center;
+}
+.dots button i {
+  display: block; width: 9px; height: 9px; background: var(--dot);
+  opacity: 0.30; transform: rotate(45deg);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.dots button[aria-current="true"] i { opacity: 1; transform: rotate(45deg) scale(1.35); }
+
+/* ---------- układ ---------- */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+.sec  { padding-top: 68px; }
+.sec-head { margin-bottom: 26px; }
+.sec-head h2 { font-size: clamp(2rem, 8vw, 3rem); margin-top: 8px; }
+.sec-head p  { margin: 12px 0 0; color: var(--ink-2); font-size: 0.94rem; max-width: 32rem; }
+
+/* ---------- hero / okładka serii ---------- */
+.hero {
+  position: relative;
+  min-height: 96svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12vh var(--pad) 12vh;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  overflow: hidden;
+}
+/* góra Yotei — tuszem, bardzo cicho, w tle okładki */
+.hero::after {
+  content: "";
+  position: absolute;
+  left: -6%; right: -6%; bottom: 0;
+  height: 52%;
+  background: var(--ink);
+  opacity: 0.06;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 500' preserveAspectRatio='xMidYMax meet'%3E%3Cpath d='M0 500 L455 120 C560 40 640 40 745 120 L1200 500 Z'/%3E%3Cpath d='M470 108 L500 150 L540 120 L575 156 L615 118 L655 152 L690 120 L725 150' fill='none' stroke='black' stroke-width='9'/%3E%3C/svg%3E") bottom center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 500' preserveAspectRatio='xMidYMax meet'%3E%3Cpath d='M0 500 L455 120 C560 40 640 40 745 120 L1200 500 Z'/%3E%3Cpath d='M470 108 L500 150 L540 120 L575 156 L615 118 L655 152 L690 120 L725 150' fill='none' stroke='black' stroke-width='9'/%3E%3C/svg%3E") bottom center / contain no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero > * { position: relative; z-index: 1; }
+.hero-mark { position: relative; display: inline-block; align-self: flex-start; }
+.hero-jp {
+  display: block;
+  font-family: var(--f-jp);
+  font-weight: 500;
+  font-size: clamp(5rem, 34vw, 12rem);
+  line-height: 0.82;
+  letter-spacing: 0.03em;
+  margin: 0 0 0.1em -0.04em;
+}
+.seal {
+  position: absolute;
+  top: -0.06em; right: -0.5em;
+  width: clamp(58px, 15vw, 104px);
+  aspect-ratio: 3 / 3.4;
+  display: grid;
+  place-items: center;
+  color: var(--plate-fg);
+  background: var(--seal);
+  border-radius: 8% 12% 9% 13% / 11% 8% 12% 9%;
+  transform: rotate(3deg);
+  box-shadow: 0 10px 26px -16px rgba(120,30,20,0.9);
+}
+.seal span { font-family: var(--f-jp); font-size: clamp(1.9rem, 6.5vw, 3.4rem); line-height: 1; }
+.hero h1 {
+  font-size: clamp(2rem, 7vw, 3.1rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: 0.5em;
+}
+.hero-when {
+  font-family: var(--f-jp);
+  font-size: 1.2rem;
+  color: var(--ink-2);
+  letter-spacing: 0.04em;
+  margin-bottom: 26px;
+}
+.hero-facts { display: flex; flex-wrap: wrap; gap: 0; margin-bottom: 6px; }
+.fact {
+  font-size: 0.82rem; font-weight: 600; color: var(--ink-2);
+  padding: 0 16px; border-left: 1px solid var(--hair);
+}
+.hero-facts .fact:first-child { padding-left: 0; border-left: 0; }
+.fact b { font-weight: 800; font-variant-numeric: tabular-nums; color: var(--ink); }
+.hero-note {
+  margin-top: 30px;
+  font-size: 0.86rem; line-height: 1.6; color: var(--ink-2);
+  max-width: 30rem; padding-left: 15px; border-left: 3px solid var(--seal);
+}
+
+/* ---------- indeks trasy (seria widoków) ---------- */
+.index {
+  list-style: none; margin: 0; padding-top: 6px;
+  background-image: var(--brush-b);
+  background-repeat: no-repeat; background-position: top; background-size: 100% 12px;
+}
+.idx {
+  background-image: var(--brush);
+  background-repeat: no-repeat; background-position: bottom; background-size: 100% 10px;
+}
+.idx a {
+  display: grid;
+  grid-template-columns: 3ch 2.4rem 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 4px;
+  text-decoration: none;
+  transition: padding-left 0.3s cubic-bezier(0.2,0.8,0.2,1);
+}
+.idx a:hover { padding-left: 12px; }
+.idx-no {
+  font-family: var(--f-jp);
+  font-size: 1rem; color: var(--ink-3); font-variant-numeric: tabular-nums;
+}
+.idx-k { font-family: var(--f-jp); font-size: 1.7rem; color: var(--tint); line-height: 1; }
+.idx-name { display: block; font-weight: 700; font-size: 1.06rem; letter-spacing: -0.01em; }
+.idx-dates { display: block; font-size: 0.8rem; color: var(--ink-3); font-variant-numeric: tabular-nums; margin-top: 2px; }
+.idx-nights { font-size: 0.8rem; color: var(--ink-3); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ---------- koszt / rejestr ---------- */
+.toggle {
+  display: inline-flex; gap: 3px; margin-bottom: 26px; padding: 3px;
+  border-radius: 999px; background: var(--paper-2);
+  box-shadow: inset 0 0 0 1px var(--hair);
+}
+.toggle button {
+  appearance: none; border: 0; background: transparent; color: var(--ink-2);
+  font-family: inherit; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; padding: 9px 18px; min-height: 40px; cursor: pointer;
+  border-radius: 999px;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.toggle button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+
+.total { font-family: var(--f-jp); font-size: clamp(3.4rem, 18vw, 6rem); letter-spacing: -0.03em; line-height: 0.9; font-variant-numeric: tabular-nums; }
+.total-u { font-family: var(--f-ui); font-size: 0.2em; letter-spacing: 0.04em; font-weight: 700; text-transform: uppercase; color: var(--ink-3); margin-left: 0.5em; }
+.total-sub { color: var(--ink-2); font-size: 0.9rem; margin-top: 12px; font-variant-numeric: tabular-nums; }
+
+.bars { margin-top: 34px; display: flex; flex-direction: column; gap: 18px; }
+.bar-row { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: baseline; }
+.bar-row .nm { font-size: 0.94rem; font-weight: 600; }
+.bar-row .vl { font-size: 0.94rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.bar-track { grid-column: 1 / -1; height: 3px; background: var(--hair); overflow: hidden; }
+.bar-fill { display: block; height: 100%; background: var(--ink); }
+
+.insight { margin-top: 34px; font-size: 1.06rem; line-height: 1.55; color: var(--ink); max-width: 30rem; }
+.insight b { font-weight: 800; }
+
+/* ---------- rozdział miasta ---------- */
+.chapter { padding-top: 26px; }
+
+/* PLANSZA — stonowane pole koloru w ramce, karta unosząca się na papierze (muji/plakat) */
+.plate {
+  position: relative;
+  color: var(--plate-fg);
+  min-height: 44svh;
+  margin: 6px clamp(2px, 3vw, 16px) 0;
+  border-radius: 3px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.10)),
+    color-mix(in srgb, var(--tint) 60%, var(--ground));
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.22) inset,
+    0 20px 46px -26px rgba(33,26,17,0.6),
+    0 2px 8px rgba(33,26,17,0.12);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
+  gap: 10px;
+  padding: clamp(40px, 9vw, 68px) clamp(26px, 6vw, 52px);
+}
+/* delikatna wewnętrzna linia (keyline plakatu) */
+.plate::before {
+  content: ""; position: absolute; inset: 13px; pointer-events: none; z-index: 1;
+  border: 1px solid rgba(244,236,216,0.34);
+  border-radius: 2px;
+}
+.plate-no, .plate-k, .plate-cap { position: relative; z-index: 2; }
+.plate-no {
+  grid-column: 1; grid-row: 1;
+  align-self: start; justify-self: start;
+  font-family: var(--f-jp); font-size: 1rem; font-variant-numeric: tabular-nums;
+  letter-spacing: 0.28em; opacity: 0.82;
+}
+/* kanji drobne w rogu */
+.plate-k {
+  grid-column: 2; grid-row: 1;
+  align-self: start; justify-self: end;
+  font-family: var(--f-jp); font-weight: 500;
+  font-size: 1.5rem; letter-spacing: 0.14em;
+  opacity: 0.72;
+}
+.plate-cap { grid-column: 1 / 3; grid-row: 2; align-self: end; }
+.plate-name {
+  display: block; font-size: clamp(1.8rem, 8vw, 2.8rem); font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.01em;
+}
+.plate-when { display: block; margin-top: 6px; font-size: 0.9rem; font-weight: 600; opacity: 0.86; font-variant-numeric: tabular-nums; }
+
+.chapter-body { padding-top: 34px; }
+
+/* przejazd — nitka tuszu z kolorem obu miast */
+.leg {
+  display: grid; grid-template-columns: 30px 1fr; gap: 14px; align-items: start;
+  padding: 6px 0 30px;
+}
+.leg-rail { display: flex; flex-direction: column; align-items: center; gap: 7px; padding-top: 4px; }
+.leg-rail i { width: 2px; flex: 1; min-height: 24px; background: linear-gradient(var(--from), var(--to)); }
+.leg-rail .k { font-family: var(--f-jp); font-size: 0.9rem; color: var(--ink-3); }
+.leg-b { font-size: 0.88rem; color: var(--ink-2); }
+.leg-b .w { font-weight: 700; color: var(--ink); display: block; letter-spacing: -0.01em; }
+.leg-b .t { font-variant-numeric: tabular-nums; }
+.leg-b .note { margin: 6px 0 0; font-size: 0.82rem; color: var(--ink-3); line-height: 1.5; }
+
+/* nocleg — miękka karta na papierze */
+.stay {
+  margin-top: 8px; padding: 24px; background: var(--paper-2);
+  border-radius: 6px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset, 0 22px 44px -34px rgba(33,26,17,0.6);
+}
+.stay .label { color: var(--tint); }
+.stay h3 { font-size: 1.35rem; margin-top: 8px; }
+.stay-when { font-size: 0.82rem; color: var(--ink-3); margin-top: 5px; font-variant-numeric: tabular-nums; }
+.stay p { margin: 13px 0 0; font-size: 0.94rem; color: var(--ink-2); line-height: 1.6; }
+.stay-foot {
+  margin-top: 18px; padding-top: 17px;
+  background-image: var(--brush); background-repeat: no-repeat; background-position: top; background-size: 100% 9px;
+  display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between;
+}
+.stay-foot .cost { font-weight: 800; font-variant-numeric: tabular-nums; }
+.stay-foot .yen { flex: 1 1 100%; font-size: 0.74rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.stay-foot a { font-size: 0.86rem; font-weight: 700; text-decoration: none; color: var(--tint); border-bottom: 1.5px solid var(--tint); }
+
+/* ---------- galeria — ryciny w ramkach ---------- */
+.gal { margin-top: 26px; }
+.gal-track {
+  display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  margin-inline: calc(var(--pad) * -1); padding-inline: var(--pad); padding-bottom: 2px;
+}
+.gal-track::-webkit-scrollbar { display: none; }
+.shot {
+  flex: 0 0 76%; scroll-snap-align: center;
+  display: flex; flex-direction: column; text-decoration: none; color: inherit;
+  padding: 20px 20px 22px; border-radius: 3px;
+  background: var(--paper-2);
+  box-shadow: 0 0 0 1px var(--hair) inset, 0 18px 34px -24px rgba(33,26,17,0.5);
+  transition: transform 0.35s cubic-bezier(0.2,0.8,0.2,1);
+}
+.shot:hover { transform: translateY(-3px); }
+.shot b { display: block; font-size: 0.98rem; font-weight: 800; }
+.shot span { display: block; margin-top: 6px; font-size: 0.82rem; color: var(--ink-3); line-height: 1.5; }
+.shot-go { display: inline-block; align-self: start; margin-top: 14px; font-style: normal;
+  font-size: 0.78rem; font-weight: 700; color: var(--tint); border-bottom: 1.5px solid var(--tint); }
+.gal-hint { margin-top: 12px; font-size: 0.74rem; color: var(--ink-3); letter-spacing: 0.04em; }
+
+/* ---------- dni ---------- */
+.days {
+  margin-top: 26px; display: flex; flex-direction: column;
+  background-image: var(--brush-b); background-repeat: no-repeat; background-position: bottom; background-size: 100% 12px;
+}
+.day {
+  background-image: var(--brush); background-repeat: no-repeat; background-position: top; background-size: 100% 10px;
+}
+.day > summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px;
+  padding: 16px 2px; min-height: 56px;
+}
+.day > summary::-webkit-details-marker { display: none; }
+.day-d { font-family: var(--f-jp); font-weight: 600; font-size: 1.1rem; flex: none; }
+.day-w { font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); flex: 1; }
+.day-x { flex: none; color: var(--tint); font-family: var(--f-jp); transition: transform 0.35s cubic-bezier(0.2,0.8,0.2,1); }
+.day[open] .day-x { transform: rotate(45deg); }
+.day-in { padding: 0 2px 10px; }
+
+.it { padding: 18px 0 16px; background-image: var(--brush); background-repeat: no-repeat; background-position: top; background-size: 100% 9px; }
+.it:first-child { background-image: none; padding-top: 6px; }
+.it-top { display: flex; align-items: baseline; gap: 10px; }
+.it-t { font-size: 0.8rem; font-weight: 800; color: var(--tint); font-variant-numeric: tabular-nums; flex: none; }
+.it-k { font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--ink-3); }
+.it h4 { font-size: 1.14rem; margin-top: 6px; font-weight: 750; letter-spacing: -0.01em; }
+.it h4 a { text-decoration: none; border-bottom: 2px solid var(--tint); }
+.it p { margin: 8px 0 0; font-size: 0.94rem; color: var(--ink-2); line-height: 1.58; }
+.it .tip { margin-top: 10px; font-size: 0.82rem; color: var(--ink-3); line-height: 1.5; padding-left: 13px; border-left: 2px solid var(--hair); }
+.price {
+  display: inline-block; margin-top: 12px; padding: 4px 13px;
+  font-size: 0.8rem; font-weight: 700; font-variant-numeric: tabular-nums;
+  border-radius: 999px; background: var(--paper-2); box-shadow: inset 0 0 0 1px var(--hair);
+}
+.price.free { color: var(--ink-3); font-weight: 600; background: transparent; box-shadow: inset 0 0 0 1px var(--hair); }
+
+/* ---------- rozbicie / rejestr ---------- */
+.cost-g { margin-top: 30px; }
+.cost-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 12px; background-image: var(--brush-b); background-repeat: no-repeat; background-position: bottom; background-size: 100% 12px; }
+.cost-h .nm { font-weight: 800; font-size: 1.06rem; }
+.cost-h .vl { font-weight: 800; font-variant-numeric: tabular-nums; }
+.cost-r { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 11px 0; background-image: var(--brush); background-repeat: no-repeat; background-position: bottom; background-size: 100% 9px; font-size: 0.94rem; }
+.cost-r .nm { color: var(--ink-2); }
+.cost-r .vl { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; }
+.cost-r .vl s { color: var(--ink-3); text-decoration: none; font-weight: 400; margin-left: 9px; font-size: 0.875em; }
+
+.grand { margin-top: 34px; padding: 20px 24px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; background: var(--ink); color: var(--ground); border-radius: 7px; box-shadow: 0 20px 40px -30px rgba(33,26,17,0.8); }
+.grand .nm { font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; font-size: 0.9rem; }
+.grand .vl { font-family: var(--f-jp); font-weight: 700; font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+
+.excl { margin-top: 30px; padding: 24px; border-radius: 6px; background: var(--paper-2); box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset, 0 22px 44px -34px rgba(33,26,17,0.6); }
+.excl h3 { font-size: 1.06rem; }
+.excl ul { margin: 14px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.excl li { font-size: 0.92rem; color: var(--ink-2); line-height: 1.55; padding-left: 18px; position: relative; }
+.excl li::before { content: "×"; position: absolute; left: 0; top: 0; color: var(--seal); font-weight: 700; }
+
+/* ---------- stopka ---------- */
+.foot { position: relative; padding: 40px var(--pad) 64px; text-align: center; max-width: var(--maxw); margin: 0 auto; }
+.foot .seal-foot {
+  display: inline-grid; place-items: center; width: 66px; aspect-ratio: 3/3.4;
+  background: var(--seal); color: var(--plate-fg); font-family: var(--f-jp); font-size: 1rem;
+  border-radius: 9% 12% 9% 13% / 11% 8% 12% 9%; transform: rotate(-3deg); margin-bottom: 22px;
+}
+.foot .jp { font-family: var(--f-jp); font-size: 1.6rem; color: var(--ink); display: block; margin-bottom: 16px; }
+.foot p { margin: 0 auto; max-width: 26rem; font-size: 0.84rem; color: var(--ink-3); line-height: 1.6; }
+
+/* ---------- tablet ---------- */
+@media (min-width: 720px) {
+  :root { --pad: 40px; }
+  body { font-size: 18px; }
+  .shot { flex-basis: 46%; }
+  .sec { padding-top: 96px; }
+  .chapter { padding-top: 56px; }
+  .plate { min-height: 40svh; padding: clamp(56px, 7vw, 84px) clamp(48px, 6vw, 76px); }
+  .stays-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+</style>
+
+<!-- tło: papier rysuje się w body::before, brak animowanego pola -->
+
+<div class="stack">
+  <nav class="nav" aria-label="Nawigacja po wyjeździe">
+    <span class="nav-now"><span class="k" id="navK">日本</span><span class="t" id="navT">Plan wyjazdu</span></span>
+    <span class="dots" id="dots"></span>
+  </nav>
+
+  <header class="hero">
+    <span class="hero-mark">
+      <span class="hero-jp">日本</span>
+      <span class="seal" aria-hidden="true"><span>旅</span></span>
+    </span>
+    <h1>Japonia</h1>
+    <div class="hero-when">10 – 26 maja 2027</div>
+    <div class="hero-facts" id="facts"></div>
+    <p class="hero-note">Plan wciąż się układa. Noclegi to wybrane propozycje do rezerwacji,
+    ceny — szacunki po kursie <span class="n">100&nbsp;JPY = 2,328&nbsp;PLN</span>.</p>
+  </header>
+
+  <main>
+    <section class="sec wrap" id="trasa">
+      <div class="sec-head">
+        <span class="label">Trasa</span>
+        <h2>Sześć miast, czternaście nocy</h2>
+        <p>Sześć przystanków, każdy odbity w swoim kolorze — jak plansze jednej serii drzeworytów. Dotknij, żeby przeskoczyć do miasta.</p>
+      </div>
+      <div class="ribbon" id="ribbon"></div>
+    </section>
+
+    <section class="sec wrap" id="koszt">
+      <div class="sec-head">
+        <span class="label">Koszt</span>
+        <h2>Ile to kosztuje</h2>
+      </div>
+
+      <div class="toggle" role="group" aria-label="Sposób pokazywania kwot">
+        <button type="button" id="bPer" aria-pressed="true">na osobę</button>
+        <button type="button" id="bAll" aria-pressed="false">za 4 osoby</button>
+      </div>
+
+      <div class="total"><span id="totalV">0</span><span class="total-u">zł</span></div>
+      <div class="total-sub" id="totalSub"></div>
+
+      <div class="bars" id="bars"></div>
+      <p class="insight" id="insight"></p>
+    </section>
+
+    <div id="journey"></div>
+
+    <section class="sec wrap" id="rozbicie">
+      <div class="sec-head">
+        <span class="label">Rozbicie</span>
+        <h2>Pozycja po pozycji</h2>
+        <p>Wszystko, co da się dziś wycenić. Druga kwota to koszt całej czwórki.</p>
+      </div>
+      <div id="costList"></div>
+      <div class="grand">
+        <span class="nm">Razem na osobę</span>
+        <span class="vl" id="grandV"></span>
+      </div>
+
+      <div class="excl">
+        <h3>Czego ta kwota nie obejmuje</h3>
+        <ul>
+          <li>Jedzenia i picia — restauracje w planie są rekomendacjami, nie mają jeszcze wycen.</li>
+          <li>Lokalnego transportu: metro i autobusy w miastach, JR Kioto–Nara (~¥720/os. w jedną stronę), pociąg i prom na Miyajimę (~¥600/os. w obie), dojazd do Itoshimy (~¥400/os. w jedną stronę), autobus Beppu–lotnisko Oita.</li>
+          <li>Zakupów — w Akihabarze warto ustalić limit z góry.</li>
+          <li>Ubezpieczenia, wejść opcjonalnych (rejs po Dōtonbori, pokazy w Gion) i pieniędzy na drobne.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span class="seal-foot" aria-hidden="true">終</span>
+    <span class="jp">また明日</span>
+    <p>Plan wyjazdu 10–26 maja 2027. Dane pochodzą z Tripsy i są odświeżane przy każdej zmianie —
+    ten link zawsze pokazuje aktualną wersję.</p>
+    <p style="margin-top:14px">Zdjęcia: Wikimedia Commons, na licencjach Creative Commons.
+    Autor i licencja każdego zdjęcia są podane po jego otwarciu.</p>
+  </footer>
+</div>
+
+<script>
+/* ============================================================
+   DANE
+   Godziny przeliczone z UTC na czas japoński (UTC+9) przy budowie.
+   Odświeżenie z Tripsy = podmiana tego obiektu.
+   ============================================================ */
+
+/* ============================================================
+   ZDJECIA
+   Wbudowane jako data: URI — CSP artefaktow blokuje wszystkie
+   zewnetrzne hosty, wiec podlinkowane zdjecia by sie nie zaladowaly.
+   Zrodlo: Wikimedia Commons, licencje CC (autor przy kazdym zdjeciu).
+   ============================================================ */
+
+const PHOTOS = {
+  tokyo: [
+    { cap: "Sensō-ji i brama Kaminarimon", desc: "Najstarsza świątynia Tokio. Wielki czerwony lampion i uliczka Nakamise pełna straganów.",
+    },
+    { cap: "Shibuya Crossing", desc: "Najsłynniejsze przejście dla pieszych na świecie. Nad nim taras Shibuya Sky.",
+    },
+    { cap: "Akihabara", desc: "Elektronika, gry i manga. Wielopiętrowe sklepy i retro salony arcade.",
+    },
+    { cap: "Omoide Yokocho", desc: "Uliczka maleńkich barów yakitori przy Shinjuku — kolacja pierwszego wieczoru.",
+    },
+  ],
+  kyoto: [
+    { cap: "Fushimi Inari Taisha", desc: "Tysiące pomarańczowych bram torii tworzących tunele w górę świętej góry.",
+    },
+    { cap: "Gaj bambusowy w Arashiyamie", desc: "Ścieżka przez bambusowy las. Obok Tenryū-ji i restauracja Shōraian nad rzeką.",
+    },
+    { cap: "Kinkaku-ji, Złoty Pawilon", desc: "Pokryty złotem pawilon odbijający się w stawie. Do wpasowania razem z Arashiyamą.",
+    },
+    { cap: "Gion", desc: "Drewniane uliczki dzielnicy gejsz. Wieczorny spacer — uwaga na zakaz fotografowania.",
+    },
+    { cap: "Wielki Budda w Tōdai-ji", desc: "Piętnastometrowy posąg z brązu w Narze, w największym drewnianym budynku świata.",
+    },
+    { cap: "Jelenie w Narze", desc: "Oswojone jelenie kłaniają się po ciasteczka shika senbei.",
+    },
+  ],
+  osaka: [
+    { cap: "Dōtonbori", desc: "Kanał w neonach ze słynnym biegaczem Glico. Takoyaki, okonomiyaki, kushikatsu.",
+    },
+  ],
+  hiroshima: [
+    { cap: "Genbaku Dome", desc: "Jedyny budynek, który przetrwał wybuch bomby atomowej. Zachowany jako pomnik.",
+    },
+    { cap: "Pływające torii na Miyajimie", desc: "Brama „unosi się” na wodzie przy przypływie. Najpiękniej o zachodzie słońca.",
+    },
+  ],
+  fukuoka: [
+    { cap: "Yatai nad rzeką Naka", desc: "Uliczne stragany-bary rozstawiane wieczorem wzdłuż nabrzeża w Nakasu. Ramen tonkotsu ramię w ramię z lokalsami.",
+    },
+    { cap: "Futamigaura w Itoshimie", desc: "Biała brama torii stojąca w morzu — cel przejażdżki rowerowej wzdłuż wybrzeża.",
+    },
+  ],
+  beppu: [
+    { cap: "Umi Jigoku, Morskie Piekło", desc: "Parujące, mlecznobłękitne gorące źródło. Jedno z siedmiu „piekieł Beppu”.",
+    },
+    { cap: "Chinoike Jigoku, Krwawy Staw", desc: "Krwistoczerwone źródło od tlenku żelaza. Najbardziej znane z piekieł.",
+    },
+  ],
+};
+
+const TRIP = {
+  people: 4,
+
+  cities: {
+    tokyo:     { name: "Tokio",     jp: "東京", v: "--c-tokyo",
+                 field: ["#4B3FD9", "#B14FE0", "#2A6BE0"] },
+    kyoto:     { name: "Kioto",     jp: "京都", v: "--c-kyoto",
+                 field: ["#1E8F6E", "#7FBF52", "#2FA98C"] },
+    osaka:     { name: "Osaka",     jp: "大阪", v: "--c-osaka",
+                 field: ["#E8452F", "#F79A23", "#D93B6B"] },
+    hiroshima: { name: "Hiroszima", jp: "広島", v: "--c-hiroshima",
+                 field: ["#1D7FD4", "#63C6E8", "#3F9FE0"] },
+    fukuoka:   { name: "Fukuoka",   jp: "福岡", v: "--c-fukuoka",
+                 field: ["#0E9B95", "#5FD9C0", "#2BB3A0"] },
+    beppu:     { name: "Beppu",     jp: "別府", v: "--c-beppu",
+                 field: ["#D98A1F", "#E0587C", "#E8A93C"] }
+  },
+
+  /* kolejność zwiedzania; Tokio pojawia się dwa razy */
+  stints: [
+    {
+      city: "tokyo", dates: "11–15 maja", nights: 4,
+      legIn: { mode: "空", what: "LOT LO79 · Warszawa → Narita", when: "10 maja, 22:50 → 11 maja, 18:30",
+               price: 4000, note: "Premium Economy, Boeing 787-8. Data przesunięta o tydzień — pobyt wydłużony do 14 nocy, wymaga przebukowania w LOT." },
+      stay: { name: "TSUKI Tokyo", room: "2 pokoje dwuosobowe", price: 1397,
+              from: "11 maja, 15:00", to: "15 maja, 11:00", url: "https://www.tsukihotel.com/",
+              yen: "¥240 000 za 2 pokoje × 4 noce",
+              why: "Butik w stylu japońskim, ocena 4.6. Wanny z drewna hinoki w pokojach, wspólne łaźnie z cyprysu hiba, powitalna matcha. Metro Tsukiji 3 min, Ginza 12 min pieszo, targ Tsukiji obok. Warto dopłacić do pokoju 24 m² z wanną." },
+      days: [
+        { date: "11 maja", wd: "wtorek", items: [
+          { time: "19:30", kind: "Kolacja", title: "Omoide Yokocho",
+            desc: "Klimatyczna uliczka z dziesiątkami maleńkich barów yakitori tuż przy stacji Shinjuku. Szaszłyki z grilla, piwo, lampiony i stare Tokio — idealne na pierwszy wieczór." }
+        ]},
+        { date: "12 maja", wd: "środa", items: [
+          { time: "10:00", kind: "Dzielnica", title: "Akihabara", price: 0,
+            desc: "Dzielnica-legenda dla fanów elektroniki, gier i mangi. Wielopiętrowe sklepy, retro salony arcade, części i gadżety. Spokojnie na pół dnia.",
+            tip: "Wstęp wolny, salony arcade na monety (¥100 za grę). Realny koszt to zakupy — najbardziej nieprzewidywalna pozycja całego wyjazdu." },
+          { time: "12:30", kind: "Lunch", title: "Daikokuya Tempura",
+            desc: "Legendarna tempura z ponad 130-letnią tradycją, kilka kroków od Sensō-ji. Słynne tendon w ciemnym sosie, duże porcje.",
+            tip: "Tylko gotówka. Spodziewaj się kolejki." },
+          { time: "13:00", kind: "Świątynia", title: "Sensō-ji", price: 0,
+            desc: "Najstarsza świątynia Tokio. Wielka czerwona brama Kaminarimon z lampionem i uliczka Nakamise pełna straganów.",
+            tip: "Wstęp wolny. Najlepiej rano, przed tłumami. Jedyny wydatek to omikuji (wróżby, ¥100) i przekąski na Nakamise." }
+        ]},
+        { date: "13 maja", wd: "czwartek", items: [
+          { time: "17:00", kind: "Widok", title: "Shibuya Crossing i Shibuya Sky", price: 63,
+            desc: "Najsłynniejsze przejście dla pieszych na świecie, a obok taras widokowy Shibuya Sky. Wjazd o zmierzchu na panoramę miasta. Wieczorem Shinjuku: Golden Gai i Omoide Yokocho.",
+            tip: "Samo skrzyżowanie za darmo. Bilety na Shibuya Sky kupujcie online — w kasie drożej, a slot o zachodzie słońca schodzi najszybciej." },
+          { time: "19:30", kind: "Kolacja", title: "Gonpachi Shibuya",
+            desc: "Izakaya, która zainspirowała scenę z „Kill Billa”. Yakitori, karaage, sushi i świetny klimat z widokiem na Shibuyę. Jest też menu wege." }
+        ]},
+        { date: "14 maja", wd: "piątek", items: [
+          { time: "09:00", kind: "Śniadanie", title: "Sushi Dai — targ Toyosu",
+            desc: "Kultowe omakase na targu Toyosu, praktycznie obok teamLab Planets. Najświeższe sushi prosto z targu, otwarte od rana." },
+          { time: "11:00", kind: "Instalacja", title: "teamLab Planets", price: 98, url: "https://www.teamlab.art/e/planets/",
+            desc: "Immersyjne cyfrowe instalacje — chodzi się boso przez wodę i światło.",
+            tip: "Bilety wchodzą do sprzedaży ok. 3 miesiące przed datą, z konkretną godziną wejścia. Na pierwszy slot 9:00 rezerwujcie dokładnie 3 miesiące wcześniej." }
+        ]}
+      ]
+    },
+    {
+      city: "kyoto", dates: "15–18 maja", nights: 3,
+      legIn: { mode: "鉄", what: "Shinkansen Nozomi · Tokio → Kioto", when: "15 maja, 09:00 → 11:15",
+               price: 330, note: "Tokaido, 2 godz. 15 min. ¥14 170/os. z miejscówką. Rezerwacja obowiązkowa — Nozomi nie ma wagonów bez miejscówek; rezerwujcie miesiąc wcześniej w apce smartEX." },
+      stay: { name: "Enso Machiya", room: "2 pokoje — Superior Twin / Premier Suite z ogrodem", price: 1571,
+              from: "15 maja, 15:00", to: "18 maja, 11:00", url: "https://ensomachiya.com/",
+              yen: "¥270 000 za 2 pokoje × 3 noce · stawki nie są publikowane na porównywarkach, pytajcie bezpośrednio",
+              why: "170-letnia kamienica machiya po sklepie z kimonami, w tkackiej dzielnicy Nishijin, ocena 4.8. Pokoje z widokiem na ogród zen, kąpiel przy ogrodzie, pralka w pokoju. Wynajem na pokoje, nie na cały dom — stąd sensowna cena." },
+      days: [
+        { date: "15 maja", wd: "sobota", items: [
+          { time: "19:30", kind: "Kolacja", title: "Manzara-tei Pontochō",
+            desc: "Izakaya w klimatycznej alejce Pontochō nad rzeką. Kyoto white/red, czarny dorsz, sałatka tofu. Dobry pierwszy wieczór w Kioto.",
+            tip: "Zdejmuje się buty, na górę prowadzą strome schody." }
+        ]},
+        { date: "16 maja", wd: "niedziela", items: [
+          { time: "09:00", kind: "Świątynia", title: "Fushimi Inari Taisha", price: 0,
+            desc: "Tysiące pomarańczowych bram torii tworzących tunele w górę świętej góry.",
+            tip: "Czynne całą dobę, bez bramek. Pełna pętla na szczyt to 2–3 godziny; większość zawraca przy Yotsutsuji po ok. 45 minutach — i tam jest najlepszy widok." },
+          { time: "12:30", kind: "Lunch", title: "Shōraian — kaiseki tofu",
+            desc: "Michelinowskie kaiseki na bazie tofu, ukryte nad rzeką w Arashiyamie. Spokojne tatami, jeden z kulinarnych highlightów wyjazdu.",
+            tip: "Rezerwacja wskazana. Dojście ścieżką wzdłuż rzeki, w las." },
+          { time: "14:00", kind: "Dzielnica", title: "Arashiyama — gaj bambusowy", price: 30,
+            desc: "Słynny gaj bambusowy i cała dzielnica Arashiyama. Kinkaku-ji, Złoty Pawilon, warto wpasować tego samego dnia.",
+            tip: "Sam gaj za darmo. Tenryū-ji (ogród i budynki) ok. ¥800, Kinkaku-ji ¥500." },
+          { time: "18:00", kind: "Spacer", title: "Gion — dzielnica gejsz", price: 0,
+            desc: "Klimatyczny wieczorny spacer drewnianymi uliczkami; czasem można zobaczyć gejsze.",
+            tip: "Na Hanamikōji i przyległych prywatnych uliczkach obowiązuje zakaz fotografowania — mandat do ¥10 000. Płatne są tylko pokazy (Gion Corner ok. ¥5500), poza budżetem." }
+        ]},
+        { date: "17 maja", wd: "poniedziałek", items: [
+          { time: "10:00", kind: "Wycieczka", title: "Nara — Tōdai-ji i park z jeleniami", price: 19,
+            desc: "Daytrip z Kioto, ok. 45 min pociągiem. Park z oswojonymi jeleniami, które kłaniają się po ciasteczka, i świątynia Tōdai-ji z gigantycznym Wielkim Buddą.",
+            tip: "Bilet dotyczy Daibutsuden (¥800). Park wolny, ciasteczka shika senbei ok. ¥200 za paczkę. Przejazd Kioto–Nara ok. ¥720/os. w jedną stronę nie jest w budżecie." },
+          { time: "13:00", kind: "Lunch", title: "NAGOMI — wagyu",
+            desc: "Znakomity wagyu tuż przy parku w Narze, ocena 4.8. Kilkudaniowe menu, darmowe dolewki zupy miso, są też tańsze opcje." }
+        ]}
+      ]
+    },
+    {
+      city: "osaka", dates: "18–19 maja", nights: 1,
+      legIn: { mode: "鉄", what: "JR Special Rapid · Kioto → Osaka", when: "18 maja, 10:00 → 10:30",
+               price: 14, note: "JR Kioto Line, 30 min. ¥580/os. Bez rezerwacji — można wejść na Suice albo ICOCA." },
+      stay: { name: "Hotel Royal Classic", room: "2 pokoje dwuosobowe", price: 373,
+              from: "18 maja, 15:00", to: "19 maja, 11:00", url: "https://hotel-royalclassic.jp/",
+              yen: "¥64 000 za 2 pokoje × 1 noc",
+              why: "Projekt Kengo Kumy na miejscu dawnego teatru Shin-Kabukiza, z zachowaną falistą fasadą. Wejście prosto z podziemi stacji Namba (wyjście 12), recepcja na 11. piętrze. Pokoje wyraźnie większe niż japoński standard, do Dōtonbori 5 minut." },
+      days: [
+        { date: "18 maja", wd: "wtorek", items: [
+          { time: "18:00", kind: "Dzielnica", title: "Dōtonbori", price: 0,
+            desc: "Serce Osaki: kanał w neonach ze słynnym biegaczem Glico i setki knajp. Takoyaki, okonomiyaki, kushikatsu.",
+            tip: "Opcjonalnie rejs Tombori River Cruise (ok. ¥1500) i diabelski młyn Ebisu Tower (ok. ¥900) — poza budżetem." },
+          { time: "18:30", kind: "Kolacja", title: "Okonomiyaki Mizuno",
+            desc: "Okonomiyaki w stylu Osaki z ośmioma nagrodami Michelin Bib Gourmand pod rząd, w sercu Dōtonbori. Spróbujcie zestawu Hōzenji.",
+            tip: "Spodziewajcie się kolejki — zamawia się często stojąc w niej." }
+        ]}
+      ]
+    },
+    {
+      city: "hiroshima", dates: "19–21 maja", nights: 2,
+      legIn: { mode: "鉄", what: "Shinkansen Nozomi · Shin-Ōsaka → Hiroszima", when: "19 maja, 10:00 → 11:30",
+               price: 258, note: "Sanyō, 1 godz. 25 min. ok. ¥11 100/os. z miejscówką. Z centrum Osaki dojazd do Shin-Ōsaka zajmuje ok. 15 minut — doliczcie go." },
+      stay: { name: "GRAND BASE Peace Memorial Park", room: "2 apartamenty", price: 629,
+              from: "19 maja, 15:00", to: "21 maja, 11:00", url: "https://www.gb-hiroshima-peacememorialpark-hotel.jp/",
+              yen: "¥108 000 za 2 apartamenty × 2 noce",
+              why: "Ocena 4.9. Apartamenty z aneksem kuchennym i pralką w każdym lokalu — dobre miejsce na pranie w połowie wyjazdu. Peace Park po drugiej stronie ulicy, przystań promów na Miyajimę kilka minut pieszo." },
+      days: [
+        { date: "19 maja", wd: "środa", items: [
+          { time: "14:00", kind: "Muzeum", title: "Peace Memorial Park i Genbaku Dome", price: 5,
+            desc: "Park Pokoju i muzeum. Genbaku Dome to jedyny budynek, który przetrwał wybuch bomby atomowej, zachowany jako pomnik. Trudne, ale ważne i poruszające miejsce.",
+            tip: "Park, Genbaku Dome i pomniki są bezpłatne; muzeum kosztuje symboliczne ¥200. Zarezerwujcie na nie co najmniej 1,5–2 godziny." },
+          { time: "18:00", kind: "Kolacja", title: "Nagataya",
+            desc: "Jedno z najlepszych okonomiyaki w stylu Hiroszimy, z makaronem, tuż przy Peace Park i przystani promów. Dorzućcie ostrygi i lemon sour." }
+        ]},
+        { date: "20 maja", wd: "czwartek", items: [
+          { time: "11:00", kind: "Wycieczka", title: "Miyajima — Itsukushima i pływające torii", price: 56,
+            desc: "Daytrip z Hiroszimy, pociąg i prom, ok. godziny. Wielka brama torii „unosi się” na wodzie podczas przypływu — magicznie o zachodzie słońca. Jelenie jak w Narze, a na górę Misen kolejka albo lekki trekking.",
+            tip: "W cenie: świątynia ¥300, opłata turystyczna wyspy ¥100 i kolejka na Misen w obie strony ok. ¥2000. Wejście pieszo (1,5–2 godz.) zbija koszt do 9 zł/os. Sprawdźcie tabelę pływów — torii „pływa” tylko przy przypływie." },
+          { time: "13:00", kind: "Lunch", title: "Anagomeshi Ueno",
+            desc: "Słynny anago meshi — węgorz morski na ryżu — przy stacji Miyajimaguchi, po stronie promu. Miejsce z historią, działa od 1901, świetny stosunek jakości do ceny.",
+            tip: "Potrafi być długa kolejka; można wpaść przed promem albo po nim." }
+        ]}
+      ]
+    },
+    {
+      city: "fukuoka", dates: "21–23 maja", nights: 2,
+      legIn: { mode: "鉄", what: "Shinkansen Nozomi · Hiroszima → Hakata", when: "21 maja, 10:00 → 11:05",
+               price: 229, note: "Sanyō, godzina i 5 minut. ok. ¥9830/os. z miejscówką." },
+      stay: { name: "WITH THE STYLE", room: "2 pokoje dwuosobowe", price: 1048,
+              from: "21 maja, 16:00", to: "23 maja, 12:00", url: "https://www.withthestyle.com/",
+              yen: "¥180 000 za 2 pokoje × 2 noce · zameldowanie dopiero od 16:00",
+              why: "Kameralny hotel-resort, tylko kilkanaście pokoi, z basenem na dziedzińcu, jacuzzi i sauną, 7–10 min pieszo od stacji Hakata. Napoje z minibaru i lounge w cenie, bardzo chwalone śniadanie." },
+      days: [
+        { date: "21 maja", wd: "piątek", items: [
+          { time: "13:00", kind: "Lunch", title: "Shin-Shin — hakata ramen",
+            desc: "Kultowy hakata ramen z kremowym bulionem tonkotsu w Tenjin. Zamówcie też yaki meshi, smażony ryż." },
+          { time: "19:00", kind: "Wieczór", title: "Yatai w Nakasu",
+            desc: "Kultowe uliczne stragany-bary nad rzeką. Siadasz ramię w ramię z lokalsami, zamawiasz ramen i piwo. Fukuoka to ojczyzna tonkotsu — najbardziej autentyczny wieczór wyjazdu." }
+        ]},
+        { date: "22 maja", wd: "sobota", items: [
+          { time: "10:00", kind: "Wycieczka", title: "Itoshima — rowerem wzdłuż wybrzeża", price: 47,
+            desc: "Daytrip z Fukuoki. Wynajmujecie rowery i jedziecie wzdłuż wybrzeża: dzikie plaże, skalne klify, surf-bary i ikoniczna biała brama torii stojąca w morzu.",
+            tip: "To wynajem roweru, nie wstęp — jedyna płatna pozycja dnia. Plaże, klify i torii za darmo. Rowery elektryczne ok. ¥3000–4000, warto przy pagórkach. Dojazd ok. ¥400/os. w jedną stronę poza budżetem." },
+          { time: "13:00", kind: "Lunch", title: "Beach Cafe SUNSET",
+            desc: "Nadmorska knajpka na wybrzeżu Itoshimy z widokiem na morze — idealny przystanek w trakcie przejażdżki. Krewetki w czosnku, locomoco, lody matcha." },
+          { time: "19:30", kind: "Kolacja", title: "Motsunabe Rakutenchi",
+            desc: "Motsunabe, hotpot z wołowych flaczków — lokalna specjalność Fukuoki. Obsługa mówi po angielsku i pomaga w gotowaniu. Danie kończy się makaronem champon." }
+        ]}
+      ]
+    },
+    {
+      city: "beppu", dates: "23–24 maja", nights: 1,
+      legIn: { mode: "鉄", what: "Limited Express Sonic · Hakata → Beppu", when: "23 maja, 10:00 → 12:10",
+               price: 151, note: "2 godz. 10 min. ok. ¥6470/os. Alternatywa: widokowy pociąg Yufuin no Mori do Yufuin — miejscówki znikają błyskawicznie." },
+      stay: { name: "Kappo Ryokan Kannawa Bettei", room: "2 pokoje japońskie z prywatnym onsenem, z kolacją i śniadaniem", price: 873,
+              from: "23 maja, 15:00", to: "24 maja, 11:00", url: "https://www.kannawa-bettei.com/",
+              yen: "¥150 000 za 2 pokoje × 1 noc, z dwoma posiłkami · tańsza alternatywa: Ryokan Kiraku",
+              why: "Prawdziwy ryokan, tylko 6 pokoi — rezerwować z dużym wyprzedzeniem. Prywatna kąpiel onsen wewnętrzna i zewnętrzna przy pokoju, kolacja kaiseki i japońskie śniadanie w cenie. Pieszo do piekieł Kannawa." },
+      days: [
+        { date: "23 maja", wd: "niedziela", items: [
+          { time: "12:30", kind: "Lunch", title: "Jigokumushi Kōbō Kannawa",
+            desc: "Jigoku mushi — jedzenie gotowane na parze z gorących źródeł, unikat Beppu. Sami wybieracie składniki i wkładacie je do pieca parowego.",
+            tip: "Weźcie lokalną kukurydzę — jest wyjątkowo słodka." },
+          { time: "14:00", kind: "Onsen", title: "Piekła Beppu i onsen", price: 56,
+            desc: "Onsenowa stolica Japonii — miasto dosłownie paruje. „Piekła Beppu” to kolorowe gorące źródła: krwistoczerwone, kobaltowo niebieskie. Wieczorem kąpiel w onsenie.",
+            tip: "Bilet łączony na wszystkie siedem piekieł, ważny 2 dni. Pojedyncze ¥450–500, więc łączony opłaca się od piątego. Na obejście ok. 3 godzin. Warto dokupić Kamenoi Bus 1-Day Pass (ok. ¥1100). Wieczorny onsen jest w cenie ryokanu." }
+        ]}
+      ]
+    },
+    {
+      city: "tokyo", dates: "24–25 maja", nights: 1, coda: true,
+      legIn: { mode: "空", what: "Lot krajowy · Oita → Haneda", when: "24 maja, 09:00 → 10:35",
+               price: 510, note: "1 godz. 35 min, ANA / JAL / Solaseed. ok. ¥22 000/os. Z Beppu na lotnisko Oita autobus ok. 45 min — wliczcie go. Taryfy Super Value wchodzą do sprzedaży ok. 355 dni przed wylotem." },
+      stay: { name: "Metropolitan Tokyo Marunouchi", room: "2 pokoje dwuosobowe", price: 466,
+              from: "24 maja, 15:00", to: "25 maja, 11:00", url: "https://marunouchi.metropolitan.jp/",
+              yen: "¥80 000 za 2 pokoje × 1 noc",
+              why: "Noc buforowa przed powrotem. Lobby na 27. piętrze Sapia Tower z widokiem na perony shinkansenów, wejście prosto z Tokyo Station — rano Narita Express bez przesiadek i bez stresu. Do kolacji w Ginzie kilka minut." },
+      days: [
+        { date: "24 maja", wd: "poniedziałek", items: [
+          { time: "20:00", kind: "Kolacja", title: "Wagyu Sukiyaki Goku Ginza",
+            desc: "Pożegnalna kolacja: sukiyaki z wołowiny A5 w Ginzie, ocena 4.9. Na koniec ryż z truflą startą przy stole." }
+        ]},
+        { date: "25 maja", wd: "wtorek", items: [
+          { time: "cały dzień", kind: "Ostatni dzień", title: "Wolne popołudnie w Tokio",
+            desc: "Dzień na ostatnie sprawunki i to, co wypadło z planu. Hotel jest wpięty prosto w Tokyo Station, więc bagaże można zostawić do wieczora.",
+            tip: "Na Narita Express z Tokyo Station liczcie ok. godziny; przy wylocie 22:50 wyjazd z miasta najpóźniej ok. 19:30." }
+        ]}
+      ]
+    }
+  ],
+
+  legOut: { mode: "空", what: "LOT LO80 · Narita → Warszawa", when: "25 maja, 22:50 → 26 maja, 06:05",
+            price: 4000, note: "Premium Economy, Boeing 787-8. Godzina przylotu czasu polskiego. Przebukowanie razem z lotem tam." },
+
+  costGroups: [
+    { label: "Przeloty", rows: [
+      { name: "LOT LO79 · Warszawa → Narita", price: 4000 },
+      { name: "LOT LO80 · Narita → Warszawa", price: 4000 },
+      { name: "Oita → Haneda (krajowy)", price: 510 }
+    ]},
+    { label: "Noclegi", rows: [
+      { name: "TSUKI Tokyo · 4 noce", price: 1397 },
+      { name: "Enso Machiya, Kioto · 3 noce", price: 1571 },
+      { name: "Hotel Royal Classic, Osaka · 1 noc", price: 373 },
+      { name: "GRAND BASE, Hiroszima · 2 noce", price: 629 },
+      { name: "WITH THE STYLE, Fukuoka · 2 noce", price: 1048 },
+      { name: "Kappo Ryokan, Beppu · 1 noc", price: 873 },
+      { name: "Metropolitan Marunouchi · 1 noc", price: 466 }
+    ]},
+    { label: "Pociągi", rows: [
+      { name: "Nozomi · Tokio → Kioto", price: 330 },
+      { name: "JR Rapid · Kioto → Osaka", price: 14 },
+      { name: "Nozomi · Osaka → Hiroszima", price: 258 },
+      { name: "Nozomi · Hiroszima → Fukuoka", price: 229 },
+      { name: "Sonic · Fukuoka → Beppu", price: 151 }
+    ]},
+    { label: "Atrakcje i bilety", rows: [
+      { name: "teamLab Planets", price: 98 },
+      { name: "Shibuya Sky", price: 63 },
+      { name: "Miyajima · świątynia i kolejka na Misen", price: 56 },
+      { name: "Piekła Beppu · bilet łączony", price: 56 },
+      { name: "Itoshima · wynajem roweru", price: 47 },
+      { name: "Arashiyama · Tenryū-ji i Kinkaku-ji", price: 30 },
+      { name: "Nara · Tōdai-ji Daibutsuden", price: 19 },
+      { name: "Hiroszima · muzeum Peace Memorial", price: 5 },
+      { name: "Sensō-ji, Akihabara, Gion, Dōtonbori", price: 0 }
+    ]}
+  ]
+};
+
+/* ============================================================
+   POMOCNICZE
+   ============================================================ */
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const zl = (n) => n.toLocaleString("pl-PL");
+
+let mult = 1;
+const money = (per) => zl(per * mult);
+
+const GROUP_TOTALS = TRIP.costGroups.map((g) => g.rows.reduce((s, r) => s + r.price, 0));
+const TOTAL = GROUP_TOTALS.reduce((a, b) => a + b, 0);
+
+const tint = (key) => `var(${TRIP.cities[key].v})`;
+const nights = (n) => n === 1 ? "1 noc" : `${n} noce`;
+
+/* pierwszy rozdział każdego miasta — cel skoku z kropki */
+const firstStint = {};
+TRIP.stints.forEach((s, i) => { if (!(s.city in firstStint)) firstStint[s.city] = i; });
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+function renderFacts() {
+  $("facts").innerHTML = [
+    "<b>15</b> dni w Japonii", "<b>6</b> miast", "<b>14</b> nocy", "<b>4</b> osoby"
+  ].map((f) => `<span class="fact">${f}</span>`).join("");
+}
+
+function renderDots() {
+  $("dots").innerHTML = Object.keys(TRIP.cities).map((k) => {
+    const c = TRIP.cities[k];
+    return `<button type="button" data-jump="${k}" aria-label="Przejdź do: ${esc(c.name)}"
+      style="--dot:${tint(k)}"><i></i></button>`;
+  }).join("");
+  $("dots").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-jump]");
+    if (!b) return;
+    const el = $("ch-" + firstStint[b.dataset.jump]);
+    if (el) el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  });
+}
+
+/* indeks serii — kolejne przystanki jak numerowane widoki */
+function renderRibbon() {
+  $("ribbon").innerHTML = '<ol class="index">' + TRIP.stints.map((s, i) => {
+    const c = TRIP.cities[s.city];
+    const no = String(i + 1).padStart(2, "0");
+    return `<li class="idx" style="--tint:${tint(s.city)}">
+      <a href="#ch-${i}">
+        <span class="idx-no">${no}</span>
+        <span class="idx-k">${c.jp}</span>
+        <span class="idx-main">
+          <span class="idx-name">${esc(c.name)}${s.coda ? " · powrót" : ""}</span>
+          <span class="idx-dates">${esc(s.dates)}</span>
+        </span>
+        <span class="idx-nights">${nights(s.nights)}</span>
+      </a>
+    </li>`;
+  }).join("") + "</ol>";
+}
+
+function renderMoney() {
+  $("totalV").textContent = money(TOTAL);
+  $("totalSub").textContent = mult === 1
+    ? `na osobę · ${zl(TOTAL * TRIP.people)} zł za całą czwórkę`
+    : `za czwórkę · ${zl(TOTAL)} zł na osobę`;
+
+  $("bars").innerHTML = TRIP.costGroups.map((g, i) => {
+    const t = GROUP_TOTALS[i];
+    const pct = t / TOTAL;
+    return `<div class="bar-row">
+      <span class="nm">${esc(g.label)}</span>
+      <span class="vl">${money(t)} zł</span>
+      <span class="bar-track"><span class="bar-fill" style="width:${(pct * 100).toFixed(1)}%"></span></span>
+    </div>`;
+  }).join("");
+
+  const big = Math.round(((GROUP_TOTALS[0] + GROUP_TOTALS[1]) / TOTAL) * 100);
+  $("insight").innerHTML =
+    `Dolecieć i się wyspać to <b>${big}%</b> budżetu. Wszystko, co będziecie pamiętać — ` +
+    `teamLab, Shibuya Sky, pływające torii, piekła Beppu, rowery w Itoshimie — ` +
+    `kosztuje razem <b>${money(GROUP_TOTALS[3])} zł</b>.`;
+}
+
+function renderCosts() {
+  $("costList").innerHTML = TRIP.costGroups.map((g, i) => `
+    <div class="cost-g">
+      <div class="cost-h">
+        <span class="nm">${esc(g.label)}</span>
+        <span class="vl">${zl(GROUP_TOTALS[i])} zł<s>${zl(GROUP_TOTALS[i] * TRIP.people)} zł</s></span>
+      </div>
+      ${g.rows.map((r) => `<div class="cost-r">
+        <span class="nm">${esc(r.name)}</span>
+        <span class="vl">${r.price === 0 ? "wstęp wolny" : zl(r.price) + " zł<s>" + zl(r.price * TRIP.people) + " zł</s>"}</span>
+      </div>`).join("")}
+    </div>`).join("");
+  $("grandV").innerHTML = `${zl(TOTAL)} zł<s style="color:var(--ink-3);text-decoration:none;font-weight:400;margin-left:10px;font-size:0.8em">${zl(TOTAL * TRIP.people)} zł</s>`;
+}
+
+function legHTML(leg, fromKey, toKey) {
+  return `<div class="leg" style="--from:${fromKey ? tint(fromKey) : "transparent"};--to:${tint(toKey)}">
+    <span class="leg-rail"><i></i><span class="k">${leg.mode}</span><i></i></span>
+    <span class="leg-b">
+      <span class="w">${esc(leg.what)}</span>
+      <span class="t">${esc(leg.when)} · ${money(leg.price)} zł</span>
+      <p class="note">${esc(leg.note)}</p>
+    </span>
+  </div>`;
+}
+
+function dayHTML(d, key, open) {
+  const items = d.items.map((it) => {
+    let price = "";
+    if (it.price === 0) price = `<span class="price free">wstęp wolny</span>`;
+    else if (it.price) price = `<span class="price">${money(it.price)} zł${mult === 1 ? "/os." : ""}</span>`;
+    const title = it.url
+      ? `<a href="${esc(it.url)}" target="_blank" rel="noopener noreferrer">${esc(it.title)}</a>`
+      : esc(it.title);
+    return `<div class="it">
+      <span class="it-top"><span class="it-t">${esc(it.time)}</span><span class="it-k">${esc(it.kind)}</span></span>
+      <h4>${title}</h4>
+      <p>${esc(it.desc)}</p>
+      ${it.tip ? `<p class="tip">${esc(it.tip)}</p>` : ""}
+      ${price}
+    </div>`;
+  }).join("");
+
+  return `<details class="day panel"${open ? " open" : ""} style="--tint:${tint(key)}">
+    <summary>
+      <span class="day-d">${esc(d.date)}</span>
+      <span class="day-w">${esc(d.wd)}</span>
+      <span class="day-x" aria-hidden="true">＋</span>
+    </summary>
+    <div class="day-in">${items}</div>
+  </details>`;
+}
+
+/* ---------- galeria ---------- */
+
+function galleryHTML(cityKey) {
+  const list = PHOTOS[cityKey];
+  if (!list || !list.length) return "";
+  const shots = list.map((p) => {
+    const q = encodeURIComponent(`${p.cap} Japonia`);
+    return `<a class="shot" href="https://www.google.com/search?tbm=isch&q=${q}" target="_blank" rel="noopener noreferrer">
+      <b>${esc(p.cap)}</b>
+      <span>${esc(p.desc)}</span>
+      <em class="shot-go">Grafika Google →</em>
+    </a>`;
+  }).join("");
+  return `<div class="gal">
+    <div class="gal-track">${shots}</div>
+    <p class="gal-hint">${list.length > 1 ? `${list.length} miejsc — ` : ""}linki otwierają Grafikę Google w nowej karcie.</p>
+  </div>`;
+}
+
+function renderJourney() {
+  $("journey").innerHTML = TRIP.stints.map((s, i) => {
+    const c = TRIP.cities[s.city];
+    const prev = i > 0 ? TRIP.stints[i - 1].city : null;
+    const st = s.stay;
+
+    const no = String(i + 1).padStart(2, "0");
+    return `<section class="chapter" id="ch-${i}" data-city="${s.city}" style="--tint:${tint(s.city)}">
+      <header class="plate">
+        <span class="plate-no">${no}</span>
+        <span class="plate-k">${c.jp}</span>
+        <span class="plate-cap">
+          <span class="plate-name">${esc(c.name)}${s.coda ? ", znowu" : ""}</span>
+          <span class="plate-when">${esc(s.dates)} · ${nights(s.nights)}</span>
+        </span>
+      </header>
+
+      <div class="wrap chapter-body">
+        ${legHTML(s.legIn, prev, s.city)}
+
+        ${s.coda ? "" : galleryHTML(s.city)}
+
+        <article class="stay">
+          <span class="label">Nocleg</span>
+          <h3>${esc(st.name)}</h3>
+          <div class="stay-when">${esc(st.from)} → ${esc(st.to)}</div>
+          <p>${esc(st.why)}</p>
+          <div class="stay-foot">
+            <span class="cost">${money(st.price)} zł${mult === 1 ? "/os." : ""}</span>
+            <a href="${esc(st.url)}" target="_blank" rel="noopener noreferrer">strona hotelu →</a>
+            <span class="yen">${esc(st.room)} · ${esc(st.yen)}</span>
+          </div>
+        </article>
+
+        <div class="days">
+          ${s.days.map((d, k) => dayHTML(d, s.city, k === 0)).join("")}
+        </div>
+      </div>
+    </section>`;
+  }).join("") + `<div class="sec wrap">${legHTML(TRIP.legOut, "tokyo", "tokyo")}</div>`;
+}
+
+function setMult(m) {
+  mult = m;
+  $("bPer").setAttribute("aria-pressed", String(m === 1));
+  $("bAll").setAttribute("aria-pressed", String(m !== 1));
+  const openIds = [...document.querySelectorAll(".day[open]")].map((d) => d.id || "");
+  renderMoney();
+  renderRibbon();
+  renderJourney();
+  void openIds;
+  bindChapters();
+}
+
+/* ============================================================
+   POLE ŚWIATŁA
+   Mały bufor rozciągnięty na cały ekran i rozmyty przez CSS —
+   dzięki temu płynne kolory kosztują prawie nic na telefonie.
+   ============================================================ */
+
+const reduceMotion = window.matchMedia
+  && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- który rozdział jest teraz — tylko pasek nawigacji ---------- */
+let chapters = [];
+let activeCity = "intro";
+
+function bindChapters() {
+  chapters = [...document.querySelectorAll("[data-city]")];
+}
+
+function updateActive() {
+  const mid = window.innerHeight * 0.42;
+  let found = null;
+  for (const ch of chapters) {
+    const r = ch.getBoundingClientRect();
+    if (r.top <= mid && r.bottom > mid) { found = ch; break; }
+    if (r.top > mid) break;
+    found = ch;
+  }
+  const key = (found && window.scrollY > window.innerHeight * 0.5) ? found.dataset.city : null;
+  const root = document.documentElement;
+
+  if (key && key !== activeCity) {
+    activeCity = key;
+    const c = TRIP.cities[key];
+    root.style.setProperty("--now", `var(${c.v})`);
+    $("navK").textContent = c.jp;
+    $("navT").textContent = c.name;
+    [...$("dots").children].forEach((btn) =>
+      btn.setAttribute("aria-current", String(btn.dataset.jump === key)));
+  } else if (!key && activeCity !== "intro") {
+    activeCity = "intro";
+    root.style.setProperty("--now", "var(--seal)");
+    $("navK").textContent = "日本";
+    $("navT").textContent = "Plan wyjazdu";
+    [...$("dots").children].forEach((btn) => btn.setAttribute("aria-current", "false"));
+  }
+}
+
+/* ============================================================
+   START
+   ============================================================ */
+renderFacts();
+renderDots();
+setMult(1);
+renderCosts();
+
+$("bPer").addEventListener("click", () => setMult(1));
+$("bAll").addEventListener("click", () => setMult(TRIP.people));
+
+let ticking = false;
+window.addEventListener("scroll", () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => { updateActive(); ticking = false; });
+}, { passive: true });
+
+updateActive();
+
+</script>
