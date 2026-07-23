@@ -1,0 +1,824 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-seal: var(--seal);
+  --color-ground: var(--ground);
+  --color-paper-2: var(--paper-2);
+  --color-plate-fg: var(--plate-fg);
+  --color-hair: var(--hair);
+  --color-line: var(--line);
+  --font-jp: var(--f-jp);
+  --font-ui: var(--f-ui);
+}
+
+/* ============================================================
+       浮世 — plan wyjazdu jako seria drzeworytów (ukiyo-e).
+       Papier + tusz. Płaskie plamy koloru per miasto. Pieczęcie.
+       Pasma mgły (kasumi) rozdzielają sceny. Zero animowanego tła.
+       ============================================================ */
+
+:root {
+  --ground: #e7dbc0; /* washi */
+  --paper-2: #f1e7d1; /* jaśniejszy papier na karty/plansze */
+  --ink: #211a11;
+  --ink-2: #574b37;
+  --ink-3: #6b5d40; /* przyciemnione — 4.7:1 na washi, przechodzi WCAG AA */
+  --line: rgba(33, 26, 17, 0.9); /* keyline drzeworytu */
+  --hair: rgba(33, 26, 17, 0.16);
+  --seal: #b23a2b;
+  --plate-fg: #f4ecd8; /* tekst na kolorowej planszy */
+  --now: var(--seal);
+
+  --c-tokyo: #4b3fd9;
+  --c-kyoto: #17795e;
+  --c-osaka: #cf3a26;
+  --c-hiroshima: #1a6fbc;
+  --c-fukuoka: #0b7f7a;
+  --c-beppu: #b9761a;
+
+  --f-jp: "Hiragino Mincho ProN", "Yu Mincho", YuMincho, "Songti SC", "Noto Serif JP", serif;
+  --f-ui:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Segoe UI", system-ui,
+    sans-serif;
+
+  --tint: var(--ink);
+
+  /* pociągnięcia pędzla zamiast twardych linijek */
+  --brush: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%2012'%20preserveAspectRatio='none'%3E%3Cpath%20d='M5%207%20C%20200%204%20340%209%20560%206%20C%20760%203.5%20900%209.5%201195%206.5%20C%20900%208.5%20760%206%20560%208.5%20C%20340%2011%20200%206.5%205%209%20Z'%20fill='%23211a11'%20fill-opacity='0.42'/%3E%3C/svg%3E");
+  --brush-b: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%2016'%20preserveAspectRatio='none'%3E%3Cpath%20d='M4%208%20C%20220%203%20360%2012%20580%207%20C%20800%202.5%20940%2012.5%201196%207.5%20C%20940%2011.5%20800%208%20580%2012%20C%20360%2015%20220%208.5%204%2011%20Z'%20fill='%23211a11'%20fill-opacity='0.72'/%3E%3C/svg%3E");
+
+  color-scheme: light;
+}
+
+/* ---------- baza ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--f-ui);
+  font-size: 17px;
+  line-height: 1.62;
+  letter-spacing: -0.006em;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+
+  /* włókno papieru na całej stronie */
+
+  &::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    mix-blend-mode: multiply;
+    opacity: 0.35;
+  }
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--seal);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+/* etykieta — podpis kuratorski pod ryciną, nie korporacyjny "eyebrow" */
+.sec-head .label::after {
+  font-family: var(--f-jp);
+  font-style: normal;
+  font-size: 1.15em;
+  letter-spacing: 0;
+  color: var(--seal);
+  margin-left: 0.5em;
+  vertical-align: -0.14em;
+}
+
+#trasa .label::after {
+  content: "道";
+}
+
+#koszt .label::after {
+  content: "費";
+}
+
+#rozbicie .label::after {
+  content: "帳";
+}
+
+/* ---------- nawigacja ---------- */
+.nav {
+  background: color-mix(in srgb, var(--ground) 90%, transparent);
+  background-image: var(--brush);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 9px;
+  backdrop-filter: blur(6px);
+}
+
+/* pasek postępu — to samo pociągnięcie pędzla, tylko dotuszowane barwą miasta w miarę przewijania */
+@property --navp {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+.nav::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 9px;
+  background: var(--now);
+  -webkit-mask: var(--brush) bottom / 100% 9px no-repeat;
+  mask: var(--brush) bottom / 100% 9px no-repeat;
+  clip-path: inset(0 calc(100% - var(--navp)) 0 0);
+  pointer-events: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  .nav::before {
+    animation: navProgress auto linear;
+    animation-timeline: scroll(root);
+  }
+}
+
+@keyframes navProgress {
+  from {
+    --navp: 0%;
+  }
+  to {
+    --navp: 100%;
+  }
+}
+
+.dots {
+  button {
+    appearance: none;
+    border: 0;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+
+    i {
+      display: block;
+      width: 9px;
+      height: 9px;
+      background: var(--dot);
+      opacity: 0.3;
+      transform: rotate(45deg);
+      transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+    }
+
+    &[aria-current="true"] i {
+      opacity: 1;
+      transform: rotate(45deg) scale(1.35);
+    }
+  }
+}
+
+/* ---------- układ ---------- */
+/* ---------- hero / okładka serii ---------- */
+.hero {
+  /* pasmo mgły zamyka okładkę u dołu, zaciera krawędź grzbietu */
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: -6%;
+    right: -6%;
+    bottom: 0;
+    height: 13px;
+    z-index: 1;
+    background-image: var(--brush-b);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 13px;
+    pointer-events: none;
+  }
+
+  > *:not(.hero-art):not(.hero-cue) {
+    position: relative;
+    z-index: 2;
+  }
+
+  h1 {
+    /* pociągnięcie pędzla pod tytułem, jak podpis pod ryciną */
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: min(210px, 55%);
+      height: 9px;
+      background-image: var(--brush);
+      background-repeat: no-repeat;
+      background-size: 100% 9px;
+    }
+  }
+}
+
+/* ---------- scena okładki — słońce i grzbiety gór, warstwami jak w serii Hokusaia ---------- */
+.hero-ridge {
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  bottom: 0;
+  background: var(--ink);
+}
+
+.hero-ridge--far {
+  height: 34%;
+  opacity: 0.055;
+  --m: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 400' preserveAspectRatio='xMidYMax meet'%3E%3Cpath d='M0 400 L120 250 Q220 180 320 250 L430 190 Q540 130 650 210 L760 150 Q880 100 1000 190 L1200 280 L1200 400 Z'/%3E%3C/svg%3E");
+  mask: var(--m) bottom center / cover no-repeat;
+  -webkit-mask: var(--m) bottom center / cover no-repeat;
+}
+
+.hero-ridge--near {
+  height: 52%;
+  opacity: 0.12;
+  --m: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 500' preserveAspectRatio='xMidYMax meet'%3E%3Cpath d='M0 500 L455 120 C560 40 640 40 745 120 L1200 500 Z'/%3E%3Cpath d='M470 108 L500 150 L540 120 L575 156 L615 118 L655 152 L690 120 L725 150' fill='none' stroke='black' stroke-width='9'/%3E%3C/svg%3E");
+  mask: var(--m) bottom center / contain no-repeat;
+  -webkit-mask: var(--m) bottom center / contain no-repeat;
+}
+
+/* mgła jako plama papieru na tuszu gór — kasumi zaciera grzbiet zamiast go kreślić */
+.hero-mist {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: 23%;
+  height: 90px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--ground) 40%,
+    var(--ground) 60%,
+    transparent
+  );
+  filter: blur(9px);
+  opacity: 0.85;
+}
+
+/* kolofon — cichy pionowy podpis przy prawej krawędzi */
+/* zaproszenie do przewinięcia */
+.hero-cue {
+  i {
+    width: 1px;
+    height: 28px;
+    background: linear-gradient(var(--ink-3), transparent);
+    transform-origin: top;
+    animation: cueDrop 2s ease-in-out infinite;
+  }
+}
+
+/* wejście okładki — jak odbicie świeżo zdjęte z prasy */
+@keyframes heroFade {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroStamp {
+  0% {
+    opacity: 0;
+    transform: rotate(3deg) scale(1.6);
+  }
+  60% {
+    opacity: 1;
+    transform: rotate(3deg) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(3deg) scale(1);
+  }
+}
+
+@keyframes cueDrop {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.hero-art {
+  animation: heroFade 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.hero-jp {
+  animation: heroFade 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.hero h1 {
+  animation: heroFade 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.12s both;
+}
+
+.hero-when {
+  animation: heroFade 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.22s both;
+}
+
+.hero-facts {
+  animation: heroFade 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s both;
+}
+
+.hero-note {
+  animation: heroFade 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.38s both;
+}
+
+.hero-colophon {
+  animation: heroFade 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.45s both;
+}
+
+.seal {
+  animation: heroStamp 0.7s cubic-bezier(0.3, 1.4, 0.4, 1) 0.5s both;
+}
+
+/* przewijanie sceny — grzbiety i mgła oddalają się w różnym tempie */
+@supports (animation-timeline: view()) and (animation-range: entry) {
+  .hero-art {
+    view-timeline: --heroScene;
+  }
+
+  .hero-sun,
+  .hero-ridge--far,
+  .hero-ridge--near,
+  .hero-mist {
+    animation: heroParallax linear both;
+    animation-timeline: --heroScene;
+    animation-range: cover 0% cover 100%;
+  }
+
+  .hero-sun {
+    --amt: 30px;
+  }
+
+  .hero-ridge--far {
+    --amt: 55px;
+  }
+
+  .hero-ridge--near {
+    --amt: 95px;
+  }
+
+  .hero-mist {
+    --amt: 150px;
+  }
+}
+
+@keyframes heroParallax {
+  to {
+    transform: translateY(var(--amt, 60px));
+  }
+}
+
+.seal {
+  box-shadow: 0 10px 26px -16px rgba(120, 30, 20, 0.9);
+}
+
+.hero-facts {
+  .fact:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+/* ---------- indeks trasy (seria widoków) ---------- */
+#trasa {
+  ol {
+    padding-left: 0;
+  }
+}
+
+.index {
+  background-image: var(--brush-b);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100% 12px;
+}
+
+.idx {
+  background-image: var(--brush);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 10px;
+
+  a {
+    transition: padding-left 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    &:hover {
+      padding-left: 12px;
+    }
+  }
+}
+
+/* ---------- koszt / rejestr ---------- */
+.toggle {
+  box-shadow: inset 0 0 0 1px var(--hair);
+
+  button {
+    transition:
+      background 0.25s ease,
+      color 0.25s ease;
+  }
+}
+
+.bar-row {
+  transition: transform 0.25s ease;
+
+  &:hover {
+    transform: translateX(3px);
+
+    .bar-fill {
+      filter: brightness(1.12);
+    }
+  }
+}
+
+.bar-fill {
+  background: linear-gradient(
+    90deg,
+    var(--bar-c, var(--ink)),
+    color-mix(in srgb, var(--bar-c, var(--ink)) 70%, white 30%)
+  );
+  transition: filter 0.2s ease;
+}
+
+.insight {
+  margin-top: 34px;
+  font-size: 1.06rem;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 30rem;
+
+  b {
+    font-weight: 800;
+  }
+}
+
+/* ---------- rozdział miasta ---------- */
+/* PLANSZA — stonowane pole koloru w ramce, karta unosząca się na papierze (muji/plakat) */
+.plate {
+  --pmix: 82%; /* pełny kolor drzeworytu; kremowy tekst ≥5:1 (Beppu ma własny) */
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.14)),
+    color-mix(in srgb, var(--tint) var(--pmix), var(--ink));
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.22) inset,
+    0 20px 46px -26px rgba(33, 26, 17, 0.6),
+    0 2px 8px rgba(33, 26, 17, 0.12);
+
+  /* sylwetka-znak miasta, tuszem, cicho w rogu — jak góra w hero */
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    right: 16px;
+    bottom: 16px;
+    width: 52%;
+    height: 66%;
+    background: var(--plate-fg);
+    opacity: 0.13;
+    -webkit-mask: var(--motif, none) right bottom / contain no-repeat;
+    mask: var(--motif, none) right bottom / contain no-repeat;
+  }
+
+  /* delikatna wewnętrzna linia (keyline plakatu) */
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 13px;
+    pointer-events: none;
+    z-index: 1;
+    border: 1px solid rgba(244, 236, 216, 0.34);
+    border-radius: 2px;
+  }
+}
+
+.plate-about-i {
+  p {
+    color: color-mix(in srgb, var(--plate-fg) 68%, transparent);
+  }
+
+  &.lead p::first-letter {
+    float: left;
+    font-family: var(--f-jp);
+    font-weight: 600;
+    font-size: 1.7em;
+    line-height: 0.78;
+    padding: 0.03em 0.06em 0 0;
+    color: color-mix(in srgb, var(--plate-fg) 88%, transparent);
+  }
+}
+
+/* pasmo mgły między wątkami tego samego plakatu (np. wycieczka w środku pobytu) */
+.plate-about-div {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--plate-fg) 28%, transparent),
+    transparent 70%
+  );
+}
+
+/* Beppu (pomarańcz) — więcej tuszu, żeby kremowy tekst utrzymał kontrast */
+[data-city="beppu"] .plate {
+  --pmix: 66%;
+}
+
+/* sylwetki-znaki miast: wieża, pagoda, zamek, torii, wieża, onsen */
+[data-city="tokyo"] .plate {
+  --motif: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%20300%27%20preserveAspectRatio%3D%27xMaxYMax%20meet%27%3E%3Crect%20x%3D%27147%27%20y%3D%272%27%20width%3D%276%27%20height%3D%2740%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C40%20129%2C140%20171%2C140%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%27118%27%20y%3D%27138%27%20width%3D%2764%27%20height%3D%2716%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27128%2C156%20172%2C156%20216%2C296%20178%2C296%20150%2C206%20122%2C296%2084%2C296%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+}
+
+[data-city="kyoto"] .plate {
+  --motif: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%20300%27%20preserveAspectRatio%3D%27xMaxYMax%20meet%27%3E%3Crect%20x%3D%27146%27%20y%3D%274%27%20width%3D%278%27%20height%3D%2726%27%20fill%3D%27black%27%2F%3E%3Ccircle%20cx%3D%27150%27%20cy%3D%278%27%20r%3D%278%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C28%20118%2C58%20182%2C58%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C56%20108%2C92%20192%2C92%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C90%2098%2C128%20202%2C128%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C126%2088%2C166%20212%2C166%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C164%2078%2C210%20222%2C210%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%27122%27%20y%3D%27202%27%20width%3D%2756%27%20height%3D%2794%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+}
+
+[data-city="osaka"] .plate {
+  --motif: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%20300%27%20preserveAspectRatio%3D%27xMaxYMax%20meet%27%3E%3Crect%20x%3D%27146%27%20y%3D%2714%27%20width%3D%278%27%20height%3D%2718%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C30%20120%2C64%20180%2C64%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C60%20102%2C102%20198%2C102%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C98%2086%2C146%20214%2C146%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%27106%27%20y%3D%27140%27%20width%3D%2788%27%20height%3D%2764%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%2778%2C204%20222%2C204%20234%2C296%2066%2C296%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+}
+
+[data-city="hiroshima"] .plate {
+  --motif: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%20300%27%20preserveAspectRatio%3D%27xMaxYMax%20meet%27%3E%3Cpath%20d%3D%27M78%2060%20Q150%2046%20222%2060%20L222%2078%20Q150%2066%2078%2078%20Z%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%27106%27%20y%3D%2796%27%20width%3D%2788%27%20height%3D%2715%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%27146%27%20y%3D%2774%27%20width%3D%278%27%20height%3D%2724%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%27104%27%20y%3D%2772%27%20width%3D%2715%27%20height%3D%27182%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%27181%27%20y%3D%2772%27%20width%3D%2715%27%20height%3D%27182%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%2740%27%20y%3D%27258%27%20width%3D%27230%27%20height%3D%277%27%20fill%3D%27black%27%2F%3E%3Crect%20x%3D%2760%27%20y%3D%27276%27%20width%3D%27120%27%20height%3D%275%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+}
+
+[data-city="fukuoka"] .plate {
+  --motif: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%20300%27%20preserveAspectRatio%3D%27xMaxYMax%20meet%27%3E%3Crect%20x%3D%27148%27%20y%3D%270%27%20width%3D%274%27%20height%3D%2718%27%20fill%3D%27black%27%2F%3E%3Cpolygon%20points%3D%27150%2C16%20171%2C286%20129%2C286%27%20fill%3D%27black%27%2F%3E%3C%2Fsvg%3E");
+}
+
+[data-city="beppu"] .plate {
+  --motif: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20300%20300%27%20preserveAspectRatio%3D%27xMaxYMax%20meet%27%3E%3Cpath%20d%3D%27M74%20214%20Q150%20246%20226%20214%20L214%20258%20Q150%20284%2086%20258%20Z%27%20fill%3D%27black%27%2F%3E%3Cpath%20d%3D%27M118%20208%20C98%20182%20138%20162%20118%20132%20C102%20106%20136%2090%20118%2060%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%2710%27%20stroke-linecap%3D%27round%27%2F%3E%3Cpath%20d%3D%27M150%20216%20C130%20188%20170%20168%20150%20136%20C132%20108%20168%2092%20150%2058%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%2710%27%20stroke-linecap%3D%27round%27%2F%3E%3Cpath%20d%3D%27M182%20208%20C162%20182%20202%20162%20182%20132%20C166%20106%20200%2090%20182%2060%27%20fill%3D%27none%27%20stroke%3D%27black%27%20stroke-width%3D%2710%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E");
+}
+
+/* ---------- setup: dojazd + nocleg w jednej karcie ---------- */
+.setup {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    0 22px 44px -34px rgba(33, 26, 17, 0.6);
+}
+
+.mode {
+  box-shadow: 0 6px 16px -10px rgba(33, 26, 17, 0.9);
+}
+
+/* pasmo mgły rozdziela dojazd i nocleg wewnątrz karty */
+.setup-div {
+  background-image: var(--brush);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 10px;
+}
+
+/* nagłówek bloku — Plan dnia / Warto zobaczyć */
+.block-head {
+  background-image: var(--brush-b);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 12px;
+}
+
+/* przejazd — nitka tuszu z kolorem obu miast (lot powrotny) */
+.leg-rail {
+  i {
+    width: 2px;
+    flex: 1;
+    min-height: 24px;
+    background: linear-gradient(var(--from), var(--to));
+  }
+}
+
+/* nocleg — wnętrze karty setup (bez własnej ramki) */
+.stay-foot {
+  background-image: var(--brush);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100% 9px;
+}
+
+.day {
+  /* spokojna cienka linia zamiast falującego pasma między dniami */
+  border-top: 1px solid var(--hair);
+
+  &:first-child {
+    border-top: 0;
+  }
+}
+
+/* oś czasu dnia — jedna nitka tuszu z węzłami zamiast wielu kresek */
+.it {
+  /* nitka łącząca kolejne godziny */
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: calc(3.4rem + 12px);
+    top: 9px;
+    bottom: -9px;
+    width: 2px;
+    background: color-mix(in srgb, var(--tint) 28%, var(--hair));
+  }
+
+  &:last-child::before {
+    display: none;
+  }
+
+  /* węzeł godziny */
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: calc(3.4rem + 7px);
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--tint);
+  }
+
+  .tip {
+    &::before {
+      content: "\203B\00A0";
+      color: var(--tint);
+      font-weight: 700;
+    }
+  }
+}
+
+/* ta sama pigułka co badge ceny (wariant ghost), żeby rząd był spójny */
+.it-ph {
+  box-shadow: inset 0 0 0 1px var(--hair);
+  transition:
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--tint);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tint) 55%, transparent);
+  }
+}
+
+.price {
+  box-shadow: inset 0 0 0 1px var(--hair);
+}
+
+/* ---------- rozbicie / rejestr ---------- */
+.cost-h {
+  background-image: var(--brush-b);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 12px;
+}
+
+.cost-r {
+  background-image: var(--brush);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 9px;
+}
+
+.grand {
+  box-shadow: 0 20px 40px -30px rgba(33, 26, 17, 0.8);
+}
+
+.excl {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    0 22px 44px -34px rgba(33, 26, 17, 0.6);
+
+  li {
+    &::before {
+      content: "×";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--seal);
+      font-weight: 700;
+    }
+  }
+}
+
+/* ---------- stopka ---------- */
+/* ---------- tablet ---------- */
+@media (min-width: 720px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+/* ---------- wejścia w scrollu — te same elementy wracają na każdej planszy ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) and (animation-range: entry) {
+    @keyframes plateStamp {
+      from {
+        opacity: 0;
+        transform: scale(0.97) translateY(22px);
+      }
+    }
+    .plate {
+      animation: plateStamp 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+
+    @keyframes idxIn {
+      from {
+        opacity: 0;
+        transform: translateX(-18px);
+      }
+    }
+    .idx {
+      animation: idxIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+      animation-timeline: view();
+      animation-range: entry 0% entry 85%;
+    }
+
+    @keyframes itIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+    }
+    .it {
+      animation: itIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
+}
+
+/* przejście etykiety w nawigacji przy zmianie rozdziału */
+@media (prefers-reduced-motion: no-preference) {
+  .nav-now {
+    view-transition-name: nav-label;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
+  ::view-transition-old(nav-label),
+  ::view-transition-new(nav-label) {
+    animation-duration: 0.32s;
+    animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .hero-cue i,
+  .hero-sun,
+  .hero-ridge--far,
+  .hero-ridge--near,
+  .hero-mist {
+    animation: none !important;
+  }
+}
