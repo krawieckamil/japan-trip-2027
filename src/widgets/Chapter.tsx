@@ -116,7 +116,7 @@ export function Chapter({
           {city.jp}
         </span>
         <span className="plate-cap relative z-[2] col-span-2 row-start-2 self-end">
-          <span className="block text-[clamp(1.8rem,8vw,2.8rem)] font-extrabold tracking-[0.01em] uppercase">
+          <span className="block font-title text-[clamp(1.9rem,8vw,3rem)] font-extrabold tracking-[0.05em] uppercase">
             {city.name}
           </span>
           <span className="mt-[6px] block text-[0.9rem] font-semibold tabular-nums opacity-[0.94]">

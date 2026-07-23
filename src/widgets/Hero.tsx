@@ -35,7 +35,7 @@ export function Hero() {
           <span className="text-[clamp(1.9rem,6.5vw,3.4rem)] leading-none">旅</span>
         </Seal>
       </span>
-      <h1 className="hero-h1 mb-[0.5em] pb-[0.32em] text-[clamp(2rem,7vw,3.1rem)] font-extrabold tracking-[0.02em] uppercase">
+      <h1 className="hero-h1 mb-[0.5em] pb-[0.32em] font-title text-[clamp(2.2rem,7.6vw,3.4rem)] font-extrabold tracking-[0.06em] uppercase">
         Japonia
       </h1>
       <div className="hero-when mb-[26px] font-jp text-[1.2rem] tracking-[0.04em] text-ink-2">

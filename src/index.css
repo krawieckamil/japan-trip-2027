@@ -17,7 +17,12 @@
   --color-plate-fg: #f4ecd8; /* tekst na kolorowej planszy */
   --color-hair: rgba(33, 26, 17, 0.16);
 
-  --font-jp: "Hiragino Mincho ProN", "Yu Mincho", YuMincho, "Songti SC", "Noto Serif JP", serif;
+  /* Shippori Mincho B1 — odrodzenie 明朝 w duchu druku/drzeworytu; wspólny głos dla glifów JP
+     i wielkich tytułów łacińskich (font-title). Systemowe Mincho jako fallback. */
+  --font-jp:
+    "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", YuMincho, "Songti SC",
+    "Noto Serif JP", serif;
+  --font-title: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", YuMincho, serif;
   --font-ui:
     -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Segoe UI", system-ui,
     sans-serif;
