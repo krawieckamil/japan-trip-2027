@@ -1,23 +1,15 @@
 import type { Trip } from "../data/trip";
 
 import { cssVar, nightsLabel } from "../lib/format";
+import { Section, SectionHead } from "../ui";
 
 export function RouteIndex({ trip }: { trip: Trip }) {
   return (
-    <section
-      className="mx-auto max-w-[44rem] px-[22px] pt-[68px] min-[720px]:px-10 min-[720px]:pt-24"
-      id="trasa"
-    >
-      <div className="sec-head mb-[26px]">
-        <span className="label inline-block font-jp text-base font-medium tracking-[0.05em]">
-          Trasa
-        </span>
-        <h2 className="mt-2 text-[clamp(2rem,8vw,3rem)]">Pięć miast, czternaście nocy</h2>
-        <p className="mt-3 mb-0 max-w-[32rem] text-[0.94rem] text-ink-2">
-          Pięć przystanków, każdy odbity w swoim kolorze — jak plansze jednej serii drzeworytów.
-          Dotknij, żeby przeskoczyć do miasta.
-        </p>
-      </div>
+    <Section id="trasa">
+      <SectionHead label="Trasa" title="Pięć miast, czternaście nocy">
+        Pięć przystanków, każdy odbity w swoim kolorze — jak plansze jednej serii drzeworytów.
+        Dotknij, żeby przeskoczyć do miasta.
+      </SectionHead>
       <ol className="index m-0 list-none pt-1.5">
         {trip.stints.map((s, i) => {
           const c = trip.cities[s.city];
@@ -52,6 +44,6 @@ export function RouteIndex({ trip }: { trip: Trip }) {
           );
         })}
       </ol>
-    </section>
+    </Section>
   );
 }

@@ -19,6 +19,7 @@ const FIELDS = {
     "ends_at",
     "timezone",
     "address",
+    "description",
     "room_type",
     "price",
     "currency",

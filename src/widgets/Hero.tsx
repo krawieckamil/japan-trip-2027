@@ -1,3 +1,5 @@
+import { Seal } from "../ui";
+
 const FACTS = [
   { v: "15", l: "dni w Japonii" },
   { v: "6", l: "miast" },
@@ -27,12 +29,9 @@ export function Hero() {
         <span className="hero-jp m-0 mb-[0.1em] ml-[-0.04em] block font-jp text-[clamp(5rem,34vw,12rem)] leading-[0.82] font-medium tracking-[0.03em]">
           日本
         </span>
-        <span
-          className="seal absolute top-[-0.16em] right-[-0.66em] grid aspect-[3/3.4] w-[clamp(58px,15vw,104px)] rotate-3 place-items-center rounded-[8%_12%_9%_13%/11%_8%_12%_9%] bg-seal text-plate-fg"
-          aria-hidden="true"
-        >
-          <span className="font-jp text-[clamp(1.9rem,6.5vw,3.4rem)] leading-none">旅</span>
-        </span>
+        <Seal className="seal absolute top-[-0.16em] right-[-0.66em] w-[clamp(58px,15vw,104px)] rotate-3">
+          <span className="text-[clamp(1.9rem,6.5vw,3.4rem)] leading-none">旅</span>
+        </Seal>
       </span>
       <h1 className="mb-[0.5em] pb-[0.32em] text-[clamp(2rem,7vw,3.1rem)] font-extrabold tracking-[0.02em] uppercase">
         Japonia

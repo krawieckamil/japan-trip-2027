@@ -1,6 +1,6 @@
 import type { Day } from "../data/trip";
 
-import { zl } from "../lib/format";
+import { money } from "../lib/format";
 
 export function DayView({ day, mult }: { day: Day; mult: number }) {
   const items = day.items.filter((it) => it.kind !== "O mieście");
@@ -51,7 +51,7 @@ export function DayView({ day, mult }: { day: Day; mult: number }) {
                   )}
                   {!!it.price && (
                     <span className="price inline-block rounded-full bg-paper-2 px-[13px] py-[4px] text-[0.8rem] font-bold tabular-nums">
-                      {zl(it.price * mult)} zł{mult === 1 ? "/os." : ""}
+                      {money(it.price, mult)}
                     </span>
                   )}
                   <a

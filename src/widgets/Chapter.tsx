@@ -1,6 +1,7 @@
 import type { Stint, City } from "../data/trip";
 
-import { cssVar, nightsLabel, zl } from "../lib/format";
+import { cssVar, money, nightsLabel, formatCurrency } from "../lib/format";
+import { BlockHead } from "../ui";
 import { DayView } from "./DayView";
 
 function PlateAbout({
@@ -45,9 +46,9 @@ function Setup({ stint, mult }: { stint: Stint; mult: number }) {
           <span className="label text-[var(--tint)]">Dojazd</span>
           <span className="mt-[3px] block font-bold tracking-[-0.01em] text-ink">{leg.what}</span>
           <span className="mt-[2px] block text-[0.88rem] text-ink-2 tabular-nums">
-            {leg.when} · {zl(leg.price * mult)} zł
+            {leg.when} · {formatCurrency(leg.price * mult)}
           </span>
-          <p className="mt-2 text-[0.82rem] leading-[1.5] text-ink-3">{leg.note}</p>
+          <p className="mt-2 text-[0.82rem] leading-[1.5] text-ink-3 whitespace-pre-wrap">{leg.note}</p>
         </span>
       </div>
       <div className="setup-div my-[22px] h-[10px]" aria-hidden="true"></div>
@@ -57,12 +58,12 @@ function Setup({ stint, mult }: { stint: Stint; mult: number }) {
         <div className="stay-when mt-[5px] text-[0.82rem] text-ink-3 tabular-nums">
           {st.from} → {st.to}
         </div>
-        <p className="mt-[13px] text-[0.94rem] leading-[1.6] text-ink-2">{st.why}</p>
+        <p className="mt-[13px] text-[0.94rem] leading-[1.6] text-ink-2 whitespace-pre-wrap">{st.description}</p>
         <div className="stay-foot mt-[18px] flex flex-wrap items-center justify-between gap-x-[16px] gap-y-2 pt-[17px]">
           <span className="cost flex items-baseline gap-2 font-extrabold tabular-nums">
-            {zl(st.price * mult)} zł{mult === 1 ? "/os." : ""}
+            {money(st.price, mult)}
             <span className="per-night text-[0.76rem] font-normal text-ink-3">
-              {zl(Math.round(st.price / stint.nights))} zł/os./noc
+              {formatCurrency(Math.round(st.price / stint.nights))} /os./noc
             </span>
           </span>
           <a
@@ -74,7 +75,7 @@ function Setup({ stint, mult }: { stint: Stint; mult: number }) {
             strona hotelu →
           </a>
           <span className="yen grow basis-full text-[0.74rem] text-ink-3 tabular-nums">
-            {st.room} · {st.yen}
+            {st.room} · {st.price}
           </span>
         </div>
       </div>
@@ -125,14 +126,7 @@ export function Chapter({
         <Setup stint={stint} mult={mult} />
 
         <section className="pt-11">
-          <div className="block-head mb-1 flex items-baseline gap-[14px] pb-[12px]">
-            <span className="label inline-block font-jp text-base font-medium tracking-[0.05em]">
-              Plan dnia
-            </span>
-            <span className="ml-auto font-jp text-[1.35rem] leading-none text-[var(--tint)]">
-              日程
-            </span>
-          </div>
+          <BlockHead label="Plan dnia" jp="日程" />
           <div className="mt-[20px] flex flex-col">
             {stint.days.map((d, i) => (
               <DayView day={d} mult={mult} key={i} />

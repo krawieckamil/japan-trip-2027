@@ -3,7 +3,8 @@ import { useEffect, useRef } from "react";
 import type { Trip } from "../data/trip";
 
 import { grandTotal, groupTotals } from "../lib/costs";
-import { zl } from "../lib/format";
+import { formatCurrency } from "../lib/format";
+import { Section, SectionHead } from "../ui";
 
 function playBars(container: HTMLElement, reduceMotion: boolean) {
   const fills = Array.from(container.querySelectorAll<HTMLElement>(".bar-fill"));
@@ -33,7 +34,7 @@ export function CostOverview({
 
   const totals = groupTotals(trip);
   const total = grandTotal(trip);
-  const money = (per: number) => zl(per * mult);
+  const money = (per: number) => formatCurrency(per * mult);
 
   /* paski kosztów odpalają się, gdy same wjeżdżają w widok — nie cały rozdział "koszt" */
   useEffect(() => {
@@ -60,16 +61,8 @@ export function CostOverview({
   }, [mult]);
 
   return (
-    <section
-      className="mx-auto max-w-[44rem] px-[22px] pt-[68px] min-[720px]:px-10 min-[720px]:pt-24"
-      id="koszt"
-    >
-      <div className="sec-head mb-[26px]">
-        <span className="label inline-block font-jp text-base font-medium tracking-[0.05em]">
-          Koszt
-        </span>
-        <h2 className="mt-2 text-[clamp(2rem,8vw,3rem)]">Ile to kosztuje</h2>
-      </div>
+    <Section id="koszt">
+      <SectionHead label="Koszt" title="Ile to kosztuje" />
 
       <div
         className="toggle mb-[26px] inline-flex gap-[3px] rounded-full bg-paper-2 p-[3px]"
@@ -96,14 +89,11 @@ export function CostOverview({
 
       <div className="font-jp text-[clamp(3.4rem,18vw,6rem)] leading-[0.9] tracking-[-0.03em] tabular-nums">
         <span>{money(total)}</span>
-        <span className="ml-[0.5em] font-ui text-[0.2em] font-bold tracking-[0.04em] text-ink-3 uppercase">
-          zł
-        </span>
       </div>
       <div className="mt-3 text-[0.9rem] text-ink-2 tabular-nums">
         {mult === 1
-          ? `na osobę · ${zl(total * trip.people)} zł za całą czwórkę`
-          : `za czwórkę · ${zl(total)} zł na osobę`}
+          ? `na osobę · ${formatCurrency(total * trip.people)} za całą czwórkę`
+          : `za czwórkę · ${formatCurrency(total)} na osobę`}
       </div>
 
       <div className="mt-[34px] flex flex-col gap-[18px]" ref={barsRef}>
@@ -124,7 +114,7 @@ export function CostOverview({
                 {g.label}
               </span>
               <span className="text-[0.94rem] font-bold text-[var(--bar-c,var(--ink))] tabular-nums">
-                {money(t)} zł
+                {money(t)}
               </span>
               <span className="col-span-full h-[6px] overflow-hidden rounded-[3px] bg-hair">
                 <span
@@ -136,6 +126,6 @@ export function CostOverview({
           );
         })}
       </div>
-    </section>
+    </Section>
   );
 }

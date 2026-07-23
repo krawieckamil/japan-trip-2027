@@ -2749,7 +2749,7 @@
       <span class="label">Nocleg</span>
       <h3>${esc(st.name)}</h3>
       <div class="stay-when">${esc(st.from)} → ${esc(st.to)}</div>
-      <p>${esc(st.why)}</p>
+      <p>${esc(st.description)}</p>
       <div class="stay-foot">
         <span class="cost">${money(st.price)} zł${mult === 1 ? "/os." : ""}<span class="per-night">${zl(Math.round(st.price / s.nights))} zł/os./noc</span></span>
         <a href="${esc(st.url)}" target="_blank" rel="noopener noreferrer">strona hotelu →</a>

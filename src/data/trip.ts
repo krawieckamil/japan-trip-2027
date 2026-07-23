@@ -21,8 +21,7 @@ export interface Stay {
   from: string;
   to: string;
   url: string;
-  yen: string;
-  why: string;
+  description: string;
 }
 
 export interface ItineraryItem {
@@ -77,6 +76,7 @@ interface TripsyHosting {
   name: string;
   starts_at: string;
   ends_at: string;
+  description: string | null;
   room_type: string;
   price: number | null;
   website: string | null;
@@ -124,23 +124,6 @@ const CITY_META: Record<string, City> = {
   osaka: { name: "Osaka", jp: "大阪", v: "--c-osaka" },
   fukuoka: { name: "Fukuoka", jp: "福岡", v: "--c-fukuoka" },
   beppu: { name: "Beppu", jp: "別府", v: "--c-beppu" },
-};
-
-/* Tripsy nie eksportuje redakcyjnego "dlaczego tu nocleg" — reszta (ceny, zmiany, logistyka)
-   pochodzi z notatek noclegu i jest doklejana automatycznie w buildStay(). */
-const WHY_TEXT: Record<string, string> = {
-  tokyo:
-    "Butik w stylu japońskim, ocena 4.6. Wanny z drewna hinoki w pokojach, wspólne łaźnie z cyprysu hiba, powitalna matcha. Metro Tsukiji 3 min, Ginza 12 min pieszo, targ Tsukiji obok.",
-  kyoto:
-    "170-letnia kamienica machiya po sklepie z kimonami, w tkackiej dzielnicy Nishijin, ocena 4.8. Pokoje z widokiem na ogród zen, kąpiel przy ogrodzie, pralka w pokoju.",
-  osaka:
-    "Projekt Kengo Kumy na miejscu dawnego teatru Shin-Kabukiza, z zachowaną falistą fasadą. Wejście prosto z podziemi stacji Namba (wyjście 12), recepcja na 11. piętrze.",
-  fukuoka:
-    "Kameralny hotel-resort, tylko kilkanaście pokoi, z basenem na dziedzińcu, jacuzzi i sauną, 7–10 min pieszo od stacji Hakata. Napoje z minibaru i lounge w cenie, bardzo chwalone śniadanie.",
-  beppu:
-    "Prawdziwy ryokan, tylko 6 pokoi. Prywatna kąpiel onsen wewnętrzna i zewnętrzna przy pokoju, kolacja kaiseki i japońskie śniadanie w cenie. Pieszo do piekieł Kannawa.",
-  "tokyo-coda":
-    "Lobby na 27. piętrze Sapia Tower z widokiem na perony shinkansenów, wejście prosto z Tokyo Station. Do kolacji w Ginzie kilka minut.",
 };
 
 const COLOR_FLIGHTS = "--c-tokyo";
@@ -192,19 +175,6 @@ function splitParagraphs(notes: string | null | undefined): string[] {
 
 function paragraphsExcludingPricing(notes: string | null | undefined): string[] {
   return splitParagraphs(notes).filter((p) => !/^KONWENCJA/i.test(p));
-}
-
-function extractYen(notes: string | null): string {
-  if (!notes) return "";
-  const m = notes.match(/Oryginal:\s*([^\n]+)/);
-  if (!m) return "";
-  return m[1]
-    .replace(/\([^)]*\)/g, "")
-    .replace(/lacznie za/i, "za")
-    .replace(/\s+x\s+/g, " × ")
-    .replace(/[\s.]+$/, "")
-    .replace(/\s+/g, " ")
-    .trim();
 }
 
 function detectCity(name: string): string {
@@ -347,9 +317,7 @@ function buildLeg(t: TripsyTransportation, fromLabel: string, toLabel: string): 
   };
 }
 
-function buildStay(h: TripsyHosting, citySlug: string, coda: boolean): Stay {
-  const key = coda ? `${citySlug}-coda` : citySlug;
-  const extra = paragraphsExcludingPricing(h.notes).join(" ");
+function buildStay(h: TripsyHosting): Stay {
   return {
     name: h.name.replace(/\s*\(propozycja\)\s*$/i, "").trim(),
     room: h.room_type,
@@ -357,8 +325,7 @@ function buildStay(h: TripsyHosting, citySlug: string, coda: boolean): Stay {
     from: withComma(h.starts_at_jst),
     to: withComma(h.ends_at_jst),
     url: h.website ?? "",
-    yen: extractYen(h.notes),
-    why: [WHY_TEXT[key] ?? "", extra].filter(Boolean).join(" "),
+    description: h.description || '',
   };
 }
 
@@ -436,7 +403,7 @@ function buildTrip(raw: TripsyExport): Trip {
       dates,
       nights,
       legIn: buildLeg(transports[i], fromLabel, CITY_META[citySlug].name),
-      stay: buildStay(h, citySlug, coda),
+      stay: buildStay(h),
       days: groupIntoDays(buckets[i]),
     };
     if (coda) stint.coda = true;
